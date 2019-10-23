@@ -16,6 +16,7 @@
                     </li>
                     <li><a href="{{route('customerSay.create')}}">صحبت مشتری ها</a></li>
                     <li><a href="{{route('ourTeam.create')}}">تیم ما</a></li>
+                    <li><a href="{{route('free_advice.create')}}">مشاوره رایگان</a></li>
                 </ul>
             </li>
             {{--<li><a href="widgets.html"><i class="icon ti-paint-bucket"></i> <span>ویجت‌ها</span> </a></li>

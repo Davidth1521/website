@@ -24,102 +24,102 @@
                     <div class="form-group col-sm-6">
                         <label for="">هدر چپ</label>
                         <input type="text" class="form-control" aria-describedby="emailHelp"
-                               placeholder="هدر چپ" name="leftHeader">
+                               placeholder="هدر چپ" name="leftHeader" value="{{old('leftHeader')}}">
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="">هدر راست</label>
                         <input type="text" class="form-control" aria-describedby="emailHelp"
-                               placeholder="هدر راست" name="rightHeader">
+                               placeholder="هدر راست" name="rightHeader" value="{{old('rightHeader')}}">
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="">عنوان چرا ما 1</label>
                         <input type="text" class="form-control" aria-describedby="emailHelp"
-                               placeholder="عنوان چرا ما 1" name="whyUs1">
+                               placeholder="عنوان چرا ما 1" name="whyUs1" value="{{old('whyUs1')}}">
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="">عنوان چرا ما 2</label>
                         <input type="text" class="form-control" aria-describedby="emailHelp"
-                               placeholder="عنوان چرا ما 2" name="whyUs2">
+                               placeholder="عنوان چرا ما 2" name="whyUs2" value="{{old('whyUs2')}}">
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="">عنوان چرا ما 3</label>
                         <input type="text" class="form-control" aria-describedby="emailHelp"
-                               placeholder="عنوان چرا ما 3" name="whyUs3">
+                               placeholder="عنوان چرا ما 3" name="whyUs3" value="{{old('whyUs3')}}">
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="">عنوان مهارت 1</label>
                         <input type="text" class="form-control" aria-describedby="emailHelp"
-                               name="skillTitle1" placeholder="عنوان مهارت1">
+                               name="skillTitle1" placeholder="عنوان مهارت1" value="{{old('skillTitle1')}}">
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="">عنوان مهارت 2</label>
                         <input type="text" class="form-control" aria-describedby="emailHelp"
-                               name="skillTitle2" placeholder="عنوان مهارت2">
+                               name="skillTitle2" placeholder="عنوان مهارت2" value="{{old('skillTitle2')}}">
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="">عنوان مهارت 3</label>
                         <input type="text" class="form-control" aria-describedby="emailHelp"
-                               name="skillTitle3" placeholder="عنوان مهارت3">
+                               name="skillTitle3" placeholder="عنوان مهارت3" value="{{old('skillTitle3')}}">
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="">عنوان مهارت 4</label>
                         <input type="text" class="form-control" aria-describedby="emailHelp"
-                               name="skillTitle4" placeholder="عنوان مهارت4">
+                               name="skillTitle4" placeholder="عنوان مهارت4" value="{{old('skillTitle4')}}">
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="">عنوان مهارت 5</label>
                         <input type="text" class="form-control" aria-describedby="emailHelp"
-                               name="skillTitle5" placeholder="عنوان مهارت5">
+                               name="skillTitle5" placeholder="عنوان مهارت5" value="{{old('skillTitle5')}}">
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="">درصد مهارت 1</label>
                         <input type="text" class="form-control" aria-describedby="emailHelp"
-                               name="skillTitle1Percent" placeholder="درصد مهارت1">
+                               name="skillTitle1Percent" placeholder="درصد مهارت1" value="{{old('skillTitle1Percent')}}">
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="">درصد مهارت 2</label>
                         <input type="text" class="form-control" aria-describedby="emailHelp"
-                               name="skillTitle2Percent" placeholder="درصد مهارت2">
+                               name="skillTitle2Percent" placeholder="درصد مهارت2" value="{{old('skillTitle2Percent')}}">
                     </div>
 
                     <div class="form-group col-sm-6">
                         <label for="">درصد مهارت 3</label>
                         <input type="text" class="form-control" aria-describedby="emailHelp"
-                               name="skillTitle3Percent" placeholder="درصد مهارت3">
+                               name="skillTitle3Percent" placeholder="درصد مهارت3" value="{{old('skillTitle3Percent')}}">
                     </div>
 
                     <div class="form-group col-sm-6">
                         <label for="">درصد مهارت 4</label>
                         <input type="text" class="form-control" aria-describedby="emailHelp"
-                               name="skillTitle4Percent" placeholder="درصد مهارت4">
+                               name="skillTitle4Percent" placeholder="درصد مهارت4" value="{{old('skillTitle4Percent')}}">
                     </div>
 
                     <div class="form-group col-sm-6">
                         <label for="">درصد مهارت 5</label>
                         <input type="text" class="form-control" aria-describedby="emailHelp"
-                               name="skillTitle5Percent" placeholder="درصد مهارت5">
+                               name="skillTitle5Percent" placeholder="درصد مهارت5" value="{{old('skillTitle5Percent')}}">
                     </div>
                 </div>
                 <div class="row">
                     <div class="form-group col-sm-6">
                         <label for="">متن اصلی</label>
                         <textarea class="form-control" rows="3" name="headerDescription"
-                                  placeholder="متن اصلی"></textarea>
+                                  placeholder="متن اصلی">{{old('headerDescription')}}</textarea>
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="">متن چرا ما 1</label>
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                                  name="whyUs1Description" placeholder="متن چرا ما 1"></textarea>
+                                  name="whyUs1Description" placeholder="متن چرا ما 1">{{old('whyUs1Description')}}</textarea>
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="">متن چرا ما 2</label>
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                                  name="whyUs2Description" placeholder="متن چرا ما 2"></textarea>
+                                  name="whyUs2Description" placeholder="متن چرا ما 2">{{old('whyUs2Description')}}</textarea>
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="">متن چرا ما 3</label>
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                                  name="whyUs3Description" placeholder="متن چرا ما 3"></textarea>
+                                  name="whyUs3Description" placeholder="متن چرا ما 3">{{old('whyUs3Description')}}</textarea>
                     </div>
                 </div>
                 <div class="row">

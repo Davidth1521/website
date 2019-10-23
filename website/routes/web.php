@@ -27,5 +27,6 @@ Route::middleware('auth')->namespace('index_page')->group(function () {
     Route::resource('/portfolio', 'PortfolioController');
     Route::resource('/portfolioCategory', 'PortfolioCategoryController');
     Route::resource('/customerSay', 'CustomerSayController');
-    Route::resource('/ourTeam', 'OurTeamController');
+    Route::resource('/ourTeam','OurTeamController');
+    Route::resource('/free_advice','FreeAdviceController');
 });
