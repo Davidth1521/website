@@ -45,18 +45,18 @@
                     <div class="form-group col-sm-6">
                         <label for="">عنوان</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="عنوان" name="title">
+                               placeholder="عنوان" name="title" value="{{old('title')}}">
 
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="">زیر عنوان</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="زیر عنوان" name="subTitle">
+                               placeholder="زیر عنوان" name="subTitle" value="{{old('subTitle')}}">
 
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="">توضیح</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description" placeholder="توضیحات"></textarea>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description" placeholder="توضیحات">{{old('description')}}</textarea>
                     </div>
 
                 </div>

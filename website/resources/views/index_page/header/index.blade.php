@@ -44,13 +44,13 @@
                     <div class="form-group col-sm-6">
                         <label for="">عنوان</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="عنوان منو را وارد کنید" name="title">
+                               placeholder="عنوان منو را وارد کنید" name="title" value="{{old('title')}}">
 
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="">لینک</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="لینک منو را وارد کنید" name="link">
+                               placeholder="لینک منو را وارد کنید" name="link" value="{{old('link')}}">
 
                     </div>
                 </div>

@@ -3,7 +3,7 @@
     <!-- begin::page header -->
     <div class="page-header">
         <div>
-            <h3>اسلایدر1</h3>
+            <h3>مقاله ها</h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#">داشبورد</a></li>
@@ -31,8 +31,8 @@
 
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">بخش اسلایدر1</h5>
-            <form action="{{route('slider1.store')}}" method="post" enctype="multipart/form-data">
+            <h5 class="card-title">بخش مقاله ها</h5>
+            <form action="{{route('blog.store')}}" method="post" enctype="multipart/form-data">
                 {{csrf_field()}}
                 <div class="row">
                     <div class="form-group col-sm-5 mr-3">
@@ -43,28 +43,45 @@
                 </div>
                 <div class="row">
                     <div class="form-group col-sm-6">
-                        <label for="">عنوان</label>
+                        <label for="">نام</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="عنوان اسلایدر" name="title" value="{{old('title')}}">
+                               placeholder="نام" name="name" value="{{old('name')}}">
 
                     </div>
                     <div class="form-group col-sm-6">
-                        <label for="">لینک دکمه</label>
+                        <label for="">عنوان</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="لینک دکمه" name="btnLink" value="{{old('btnLink')}}">
+                               placeholder="عنوان" name="title" value="{{old('title')}}">
 
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label for="">دسته بندی</label>
+                        <select class="js-example-basic-single" dir="rtl" name="category_id">
+                            <option value="0">دسته بندی</option>
+                            @foreach($categories as $category)
+                                <option value="{{$category->id}}">{{$category->title}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label for="">تگ ها</label>
+                        <select class="js-example-basic-single" dir="rtl" name="tag_id">
+                            <option value="0">نگ ها</option>
+                            @foreach($tags as $tag)
+                                <option value="{{$tag->id}}">{{$tag->title}}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="">توضیحات</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description" placeholder=" توضیحات اسلایدر">{{old('description')}}</textarea>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description"
+                                  placeholder=" توضیحات اسلایدر">{{old('description')}}</textarea>
                     </div>
                     <div class="form-group col-sm-6">
-                        <label for="">متن دکمه</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="متن دکمه" name="btnTitle" value="{{old('btnTitle')}}">
-
+                        <label for="">متن کوتاه</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="shortText"
+                                  placeholder=" توضیح کوتاه">{{old('shortText')}}</textarea>
                     </div>
-
                 </div>
                 <div class="row">
                     {{--<div class="form-group col-sm-6">

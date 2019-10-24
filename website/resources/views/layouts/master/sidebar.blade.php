@@ -16,6 +16,15 @@
                     </li>
                     <li><a href="{{route('customerSay.create')}}">صحبت مشتری ها</a></li>
                     <li><a href="{{route('ourTeam.create')}}">تیم ما</a></li>
+                    <li><a href="{{route('free_advice.create')}}">مشاوره رایگان</a></li>
+                </ul>
+            </li>
+            <li><a href="{{--{{route('index_front')}}--}}"><i class="icon ti-home"></i> <span>مقاله</span> </a>
+                <ul>
+                    <li><a href="{{route('blog.create')}}">افزودن مقاله</a></li>
+                    <li><a href="{{route('blog.index')}}">لیست مقاله ها</a></li>
+                    <li><a href="/blogCategory">دسته بندی</a></li>
+                    <li><a href="/blogTag">تگ</a></li>
                 </ul>
             </li>
             {{--<li><a href="widgets.html"><i class="icon ti-paint-bucket"></i> <span>ویجت‌ها</span> </a></li>

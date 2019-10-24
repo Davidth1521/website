@@ -38,7 +38,7 @@
                     <div class="form-group col-sm-6">
                         <label for="">عنوان</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="عنوان دسته" name="title">
+                               placeholder="عنوان دسته" name="title" value="{{old('title')}}">
 
                     </div>
                 </div>

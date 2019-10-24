@@ -45,75 +45,75 @@
                     <div class="form-group col-sm-6">
                         <label for="">عنوان</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="عنوان" name="title">
+                               placeholder="عنوان" name="title" value="{{old('title')}}">
 
                     </div>
 
                     <div class="form-group col-sm-6">
                         <label for="">متن تصویر</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="متن تصویر" name="imageDescription">
+                               placeholder="متن تصویر" name="imageDescription" value="{{old('imageDescription')}}">
 
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="">متن دکمه</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="متن دکمه" name="btnTitle">
+                               placeholder="متن دکمه" name="btnTitle" value="{{old('btnTitle')}}">
 
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="">لینک دکمه</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="لینک دکمه" name="btnLink">
+                               placeholder="لینک دکمه" name="btnLink" value="{{old('btnLink')}}">
 
                     </div>
 
                     <div class="form-group col-sm-6">
                         <label for="">لینک لینکدین</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="لینک لینکدین" name="linkedinLink">
+                               placeholder="لینک لینکدین" name="linkedinLink" value="{{old('linkedinLink')}}">
 
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="">آیکون لینکدین</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="آیکون لینکدین" name="linkedinIcon">
+                               placeholder="آیکون لینکدین" name="linkedinIcon" value="{{old('linkedinIcon')}}">
 
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="">لینک گوگل پلاس</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="لینک گوگل پلاس" name="GooglePlusLink">
+                               placeholder="لینک گوگل پلاس" name="GooglePlusLink" value="{{old('GooglePlusLink')}}">
 
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="">آیکون گوگل پلاس</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="آیکون گوگل پلاس" name="GooglePlusIcon">
+                               placeholder="آیکون گوگل پلاس" name="GooglePlusIcon" value="{{old('GooglePlusIcon')}}">
 
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="">لینک توییتر</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="لینک توییتر" name="twitterLink">
+                               placeholder="لینک توییتر" name="twitterLink" value="{{old('twitterLink')}}">
 
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="">آیکون توییتر</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="آیکون توییتر" name="twitterIcon">
+                               placeholder="آیکون توییتر" name="twitterIcon" value="{{old('twitterIcon')}}">
 
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="">لینک فیسبوک</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="لینک فیسبوک" name="facebookLink">
+                               placeholder="لینک فیسبوک" name="facebookLink" value="{{old('facebookLink')}}">
 
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="">آیکون فیسبوک</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="آیکون فیسبوک" name="facebookIcon">
+                               placeholder="آیکون فیسبوک" name="facebookIcon" value="{{old('facebookIcon')}}">
 
                     </div>
                     <div class="form-group col-sm-6">
@@ -129,7 +129,7 @@
                     <div class="form-group col-sm-6">
                         <label for="">توضیحات</label>
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                                  name="detailDescription" placeholder=" توضیحات در صفحه جزئیات "></textarea>
+                                  name="detailDescription" placeholder=" توضیحات در صفحه جزئیات "> {{old('detailDescription')}}</textarea>
                     </div>
 
 

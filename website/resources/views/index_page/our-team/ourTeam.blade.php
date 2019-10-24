@@ -45,57 +45,55 @@
                     <div class="form-group col-sm-6">
                         <label for="">نام</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="نام عضو" name="name">
+                               placeholder="نام عضو" name="name"  value="{{old('name')}}">
 
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="">حیطه</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="حیطه کاری" name="role">
+                               placeholder="حیطه کاری" name="role"  value="{{old('role')}}">
 
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="">لینک فیسبوک</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="لینک فیسبوک" name="facebook_link">
+                               placeholder="لینک فیسبوک" name="facebook_link" value="{{old('facebook_link')}}">
 
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="">آیکون فیسبوک</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="آیکون فیسبوک" name="facebook_icon">
+                               placeholder="آیکون فیسبوک" name="facebook_icon" value="{{old('facebook_icon')}}">
 
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="">لینک لینکدین</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="لینک لینکدین" name="linkedin_link">
+                               placeholder="لینک لینکدین" name="linkedin_link" value="{{old('linkedin_link')}}">
 
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="">آیکون لینکدین</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="آیکون لینکدین" name="linkedin_icon">
+                               placeholder="آیکون لینکدین" name="linkedin_icon" value="{{old('linkedin_icon')}}">
 
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="">لینک توییتر</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="لینک توییتر" name="twitter_link">
+                               placeholder="لینک توییتر" name="twitter_link" value="{{old('twitter_link')}}">
 
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="">آیکون توییتر</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="آیکون توییتر" name="twitter_icon">
+                               placeholder="آیکون توییتر" name="twitter_icon" value="{{old('twitter_icon')}}">
 
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="">توضیحات</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description" placeholder=" توضیحات"></textarea>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description" placeholder=" توضیحات">{{old('description')}}</textarea>
                     </div>
-
-
                 </div>
                 <div class="row">
                     <div class="form-group col-sm-6">

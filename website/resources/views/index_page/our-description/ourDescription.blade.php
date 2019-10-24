@@ -38,19 +38,19 @@
                     <div class="form-group col-sm-6">
                         <label for="">آیکون</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="نام کلاس آیکن" name="icon">
+                               placeholder="نام کلاس آیکن" name="icon" value="{{old('icon')}}">
 
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="">عنوان</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="عنوان اسلایدر" name="title">
+                               placeholder="عنوان اسلایدر" name="title" value="{{old('title')}}">
 
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="">توضیحات</label>
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description"
-                                  placeholder=" توضیحات اسلایدر"></textarea>
+                                  placeholder=" توضیحات اسلایدر">{{old('description')}}</textarea>
                     </div>
 
                 </div>
