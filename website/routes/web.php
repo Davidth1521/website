@@ -30,3 +30,12 @@ Route::middleware('auth')->namespace('index_page')->group(function () {
     Route::resource('/ourTeam','OurTeamController');
     Route::resource('/free_advice','FreeAdviceController');
 });
+Route::middleware('auth')->namespace('blog')->group(function () {
+    Route::resource('/blog','BlogController');
+    Route::get('/blogCategory','BlogController@showCategory');
+    Route::get('/blogTag','BlogController@showTag');
+    Route::post('/blog/addCategory','BlogController@addCategory')->name('addCat');
+    Route::post('/blog/addTag','BlogController@addTag')->name('addTag');
+    Route::post('/blog/removeCategory','BlogController@removeCategory')->name('removeCat');
+    Route::post('/blog/removeTag','BlogController@removeTag')->name('removeTag');
+});

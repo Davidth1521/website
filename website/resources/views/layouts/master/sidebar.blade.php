@@ -19,6 +19,14 @@
                     <li><a href="{{route('free_advice.create')}}">مشاوره رایگان</a></li>
                 </ul>
             </li>
+            <li><a href="{{--{{route('index_front')}}--}}"><i class="icon ti-home"></i> <span>مقاله</span> </a>
+                <ul>
+                    <li><a href="{{route('blog.create')}}">افزودن مقاله</a></li>
+                    <li><a href="{{route('blog.index')}}">لیست مقاله ها</a></li>
+                    <li><a href="/blogCategory">دسته بندی</a></li>
+                    <li><a href="/blogTag">تگ</a></li>
+                </ul>
+            </li>
             {{--<li><a href="widgets.html"><i class="icon ti-paint-bucket"></i> <span>ویجت‌ها</span> </a></li>
             <li><a data-attr="layout-builder-toggle" href="#">
                     <i class="icon ti-layout"></i> <span>طرح ها</span> <span class="badge bg-danger-gradient">8+</span></a>
