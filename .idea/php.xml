@@ -87,6 +87,10 @@
       <path value="$PROJECT_DIR$/website/vendor/phpoption/phpoption" />
       <path value="$PROJECT_DIR$/website/vendor/sebastian/version" />
       <path value="$PROJECT_DIR$/website/vendor/sebastian/diff" />
+      <path value="$PROJECT_DIR$/website/vendor/hekmatinasser/verta" />
+      <path value="$PROJECT_DIR$/website/vendor/hekmatinasser/notowo" />
+      <path value="$PROJECT_DIR$/website/vendor/uxweb/sweet-alert" />
+      <path value="$PROJECT_DIR$/website/vendor/realrashid/sweet-alert" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />

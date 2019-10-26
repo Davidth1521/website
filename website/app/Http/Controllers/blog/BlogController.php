@@ -102,6 +102,7 @@ class BlogController extends MainController
         //
     }
 
+
     /**
      * Remove the specified resource from storage.
      *
