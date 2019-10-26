@@ -3,7 +3,7 @@
     <!-- begin::page header -->
     <div class="page-header">
         <div>
-            <h3>توضیحات ما</h3>
+            <h3>تیم ما</h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#">داشبورد</a></li>
@@ -31,83 +31,70 @@
 
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">بخش توضیحات ما زیر اولین اسلایدر</h5>
-            <form action="{{route('ourDescription.store')}}" method="post" enctype="multipart/form-data">
+            <h5 class="card-title">بخش تیم ما</h5>
+            <form action="{{route('social_media.store')}}" method="post" enctype="multipart/form-data">
                 {{csrf_field()}}
                 <div class="row">
                     <div class="form-group col-sm-6">
-                        <label for="">آیکون 1</label>
+                        <label for="">لینک فیسبوک</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="نام کلاس آیکن 1" name="icon1" value="{{old('icon1')}}">
+                               placeholder="لینک فیسبوک" name="facebook_link" value="{{old('facebook_link')}}">
 
                     </div>
                     <div class="form-group col-sm-6">
-                        <label for="">عنوان 1</label>
+                        <label for="">آیکون فیسبوک</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="عنوان اسلایدر 1" name="title1" value="{{old('title1')}}">
+                                   placeholder="آیکون فیسبوک" name="facebook_icon" value="{{old('facebook_icon')}}">
 
                     </div>
-
-
                     <div class="form-group col-sm-6">
-                        <label for="">آیکون 2</label>
+                        <label for="">لینک لینکدین</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="نام کلاس آیکن 2" name="icon2" value="{{old('icon2')}}">
+                               placeholder="لینک لینکدین" name="linkedin_link" value="{{old('linkedin_link')}}">
 
                     </div>
                     <div class="form-group col-sm-6">
-                        <label for="">عنوان 2</label>
+                        <label for="">آیکون لینکدین</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="عنوان اسلایدر 2" name="title2" value="{{old('title2')}}">
+                               placeholder="آیکون لینکدین" name="linkedin_icon" value="{{old('linkedin_icon')}}">
 
                     </div>
-
-
                     <div class="form-group col-sm-6">
-                        <label for="">آیکون 3</label>
+                        <label for="">لینک توییتر</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="نام کلاس آیکن 3" name="icon3" value="{{old('icon3')}}">
+                               placeholder="لینک توییتر" name="twitter_link" value="{{old('twitter_link')}}">
 
                     </div>
                     <div class="form-group col-sm-6">
-                        <label for="">عنوان 3</label>
+                        <label for="">آیکون توییتر</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="عنوان اسلایدر 3" name="title3" value="{{old('title3')}}">
+                               placeholder="آیکون توییتر" name="twitter_icon" value="{{old('twitter_icon')}}">
 
                     </div>
 
-
                     <div class="form-group col-sm-6">
-                        <label for="">آیکون 4</label>
+                        <label for="">لینک گوگل پلاس</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="نام کلاس آیکن 4" name="icon4" value="{{old('icon4')}}">
+                               placeholder="لینک گوگل پلاس" name="googlePlus_link" value="{{old('googlePlus_link')}}">
 
                     </div>
                     <div class="form-group col-sm-6">
-                        <label for="">عنوان 4</label>
+                        <label for="">آیکون گوگل پلاس</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="عنوان اسلایدر 4" name="title4" value="{{old('title4')}}">
+                               placeholder="آیکون گوگل پلاس" name="googlePlus_icon" value="{{old('googlePlus_icon')}}">
 
                     </div>
                     <div class="form-group col-sm-6">
-                        <label for="">توضیحات 1</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description4"
-                                  placeholder=" توضیحات اسلایدر 1">{{old('description4')}}</textarea>
+                        <label for="">لینک اسکایپ</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                               placeholder="لینک اسکایپ" name="skype_link" value="{{old('skype_link')}}">
+
                     </div>
                     <div class="form-group col-sm-6">
-                        <label for="">توضیحات 2</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description1"
-                                  placeholder=" توضیحات اسلایدر 2">{{old('description1')}}</textarea>
-                    </div>
-                    <div class="form-group col-sm-6">
-                        <label for="">توضیحات 3</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description2"
-                                  placeholder=" توضیحات اسلایدر 3">{{old('description2')}}</textarea>
-                    </div>
-                    <div class="form-group col-sm-6">
-                        <label for="">توضیحات 4</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description3"
-                                  placeholder=" توضیحات اسلایدر 4">{{old('description3')}}</textarea>
+                        <label for="">آیکون اسکایپ</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                               placeholder="آیکون اسکایپ" name="skype_icon" value="{{old('skype_icon')}}">
+
                     </div>
                 </div>
                 <div class="row">

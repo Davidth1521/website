@@ -46,7 +46,7 @@
                         <select class="js-example-basic-single" dir="rtl" name="parent_id">
                             <option value="0">والد</option>
                             @foreach($categories as $category)
-                            <option value="{{$category->id}}">{{$category->title}}</option>
+                                <option value="{{$category->id}}">{{$category->title}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -66,6 +66,37 @@
                     </div>
                 </div>
             </form>
+
+
+            <div class="table-responsive">
+                <table class="table table-bordered mt-4">
+                    <thead>
+                    <tr>
+                        <th scope="col">ردیف</th>
+                        <th scope="col">نام دسته</th>
+                        <th scope="col">والد</th>
+                        <th scope="col">تاریخ ایجاد</th>
+                        <th scope="col">ویرایش</th>
+                        <th scope="col">حذف</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                            $i = 0;
+                    ?>
+                    @foreach($allCategories as $category)
+                        <tr>
+                            <th scope="row"><?= ++$i ?></th>
+                            <td>{{$category->title}}</td>
+                            <td>{{$category->parent_name}}</td>
+                            <td>{{$category->dateTime}}</td>
+                            <td><a href="#"><i class="fa fa-edit font-size-23"></i></a></td>
+                            <td><a href="#"><i class="fa fa-remove font-size-23"></i></a></td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 @endsection

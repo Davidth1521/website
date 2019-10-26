@@ -5,7 +5,7 @@ namespace App\Http\Controllers\index_page;
 use App\Http\Controllers\MainController;
 use App\OurTeam;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class OurTeamController extends MainController
 {
@@ -71,6 +71,7 @@ class OurTeamController extends MainController
             'image'=>$imageAddress,
             'status'=>$status,
         ]);
+        Alert::success('موفقیت', 'آیتم تیم ما ایجاد شد');
         return redirect()->back();
     }
 

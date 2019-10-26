@@ -5,6 +5,7 @@ namespace App\Http\Controllers\index_page;
 use App\PortfolioCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class PortfolioCategoryController extends Controller
 {
@@ -48,6 +49,7 @@ class PortfolioCategoryController extends Controller
             'title'=>$title,
             'status'=>$status
         ]);
+        Alert::success('موفقیت', 'دسته نمونه کار ایجاد شد');
         return redirect()->back();
     }
 

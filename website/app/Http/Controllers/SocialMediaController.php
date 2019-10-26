@@ -1,14 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\index_page;
+namespace App\Http\Controllers;
 
-use App\Header;
-use App\Http\Controllers\MainController;
-use App\Menu;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class PrimaryController extends MainController
+class SocialMediaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +14,7 @@ class PrimaryController extends MainController
      */
     public function index()
     {
-
+        //
     }
 
     /**
@@ -27,9 +24,7 @@ class PrimaryController extends MainController
      */
     public function create()
     {
-//        dd(1);
-        $parent_menus = Menu::all();
-        return view('index_page.header.index', compact('parent_menus'));
+        return view('other.social_media');
     }
 
     /**
@@ -41,33 +36,37 @@ class PrimaryController extends MainController
     public function store(Request $request)
     {
         $data = $request->except('_token');
-        $logo = $request->file('logo');
-        $title = $data['title'];
-        $link = $data['link'];
-        $parent_id = $data['parent_id'];
+        $skype_icon = $data['skype_icon'];
+        $skype_link = $data['skype_link'];
+        $googlePlus_icon = $data['googlePlus_icon'];
+        $googlePlus_link = $data['googlePlus_link'];
+        $twitter_icon = $data['twitter_icon'];
+        $twitter_link = $data['twitter_link'];
+        $linkedin_icon = $data['linkedin_icon'];
+        $linkedin_link = $data['linkedin_link'];
+        $facebook_icon = $data['facebook_icon'];
+        $facebook_link = $data['facebook_link'];
         $status = 0;
         if (isset($data['status'])) {
             $status = 1;
         } else {
             $status = 0;
         }
-        if (isset($title) and isset($link)){
-            Menu::create([
-                'title' => $title,
-                'link' => $link,
-                'parent_id' => $parent_id,
-                'status' => $status,
-            ]);
-        }
-        if (isset($logo)) {
-            $imageAddress = $this->ImageUploader($logo, 'images/', 123, 40);
-            $row = Header::find(1);
-            $row->update([
-                'logo' => $imageAddress
-            ]);
-        }
-        Alert::success('موفقیت', 'تنظیمات هدر بروزرسانی شد');
-        return redirect()->back();
+        /*SocialMedia::create([
+            'skype_icon'=> $skype_icon,
+            'skype_link'=>$skype_link ,
+            'googlePlus_icon'=>$googlePlus_icon ,
+            'googlePlus_link'=> $googlePlus_link,
+            'twitter_icon'=>$twitter_icon ,
+            'twitter_link'=> $twitter_link,
+            'linkedin_icon'=> $linkedin_icon,
+            'linkedin_link'=> $linkedin_link,
+            'facebook_icon'=>$facebook_icon ,
+            'status'=>$status ,
+            'facebook_link'=>$facebook_link ,
+        ]);*/
+        Alert::success('موفقیت', 'فضای مجازی بروزرسانی شد');
+        return redirect(route('social_media.create'));
     }
 
     /**

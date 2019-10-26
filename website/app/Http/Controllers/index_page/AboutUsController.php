@@ -5,6 +5,7 @@ namespace App\Http\Controllers\index_page;
 use App\AboutUs;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AboutUsController extends Controller
 {
@@ -84,6 +85,7 @@ class AboutUsController extends Controller
             'whyUs3Description'=>$whyUs3Description,
             'status'=>$status,
         ]);
+        Alert::success('موفقیت', 'درباره ما بروزرسانی شد');
         return redirect()->back();
     }
 

@@ -6,12 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Blog extends Model
 {
-    public function blogCategory()
+
+    protected $fillable = ['thumbnail','image','status','shortText','description','title','name','author_id'];
+    public function categoryBlog()
     {
-        return $this->belongsToMany(BlogCategory::class);
+        return $this->belongsToMany(categoryBlog::class);
     }
-    public function blogTag()
+    public function tagBlog()
     {
-        return $this->belongsToMany(BlogTag::class);
+        return $this->belongsToMany(tagBlog::class);
     }
 }

@@ -38,4 +38,9 @@ Route::middleware('auth')->namespace('blog')->group(function () {
     Route::post('/blog/addTag','BlogController@addTag')->name('addTag');
     Route::post('/blog/removeCategory','BlogController@removeCategory')->name('removeCat');
     Route::post('/blog/removeTag','BlogController@removeTag')->name('removeTag');
+    Route::post('/blog/search','BlogController@search_blog')->name('search_blog');
+});
+
+Route::middleware('auth')->group(function () {
+   Route::resource('/social_media','SocialMediaController');
 });

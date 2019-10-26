@@ -5,6 +5,7 @@ namespace App\Http\Controllers\index_page;
 use App\OurDescription;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class OurDescriptionController extends Controller
 {
@@ -37,9 +38,22 @@ class OurDescriptionController extends Controller
     public function store(Request $request)
     {
         $data = $request->except('_token');
-        $icon = $data['icon'];
-        $title = $data['title'];
-        $description = $data['description'];
+        $icon1 = $data['icon1'];
+        $title1 = $data['title1'];
+        $description1 = $data['description1'];
+
+        $icon2 = $data['icon2'];
+        $title2 = $data['title2'];
+        $description2 = $data['description2'];
+
+        $icon3 = $data['icon3'];
+        $title3 = $data['title3'];
+        $description3 = $data['description3'];
+
+        $icon4 = $data['icon4'];
+        $title4 = $data['title4'];
+        $description4 = $data['description4'];
+
         $status = 0;
         if (isset($data['status'])) {
             $status = 1;
@@ -47,11 +61,24 @@ class OurDescriptionController extends Controller
             $status = 0;
         }
         OurDescription::create([
-            'icon'=>$icon,
-            'title'=>$title,
-            'description'=>$description,
+            'icon1'=>$icon1,
+            'title1'=>$title1,
+            'description1'=>$description1,
+
+            'icon2'=>$icon2,
+            'title2'=>$title2,
+            'description2'=>$description2,
+
+            'icon3'=>$icon3,
+            'title3'=>$title3,
+            'description3'=>$description3,
+
+            'icon4'=>$icon4,
+            'title4'=>$title4,
+            'description4'=>$description4,
             'status'=>$status,
         ]);
+        Alert::success('موفقیت', 'توضیحات ما بروزرسانی شد');
         return redirect()->back();
     }
 

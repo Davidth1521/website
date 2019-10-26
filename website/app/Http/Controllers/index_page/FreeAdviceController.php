@@ -5,6 +5,7 @@ namespace App\Http\Controllers\index_page;
 use App\FreeAdvice;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class FreeAdviceController extends Controller
 {
@@ -52,6 +53,7 @@ class FreeAdviceController extends Controller
             'status'=>$status,
             'btnTitle'=>$btnTitle,
         ]);
+        Alert::success('موفقیت', 'مشاوره رایگان بروزرسانی شد');
         return redirect()->back();
     }
 

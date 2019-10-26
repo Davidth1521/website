@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class BlogCategory extends Model
+class tagBlog extends Model
 {
-    protected $fillable = ['title','parent_id','status'];
+    protected $fillable = ['title','status'];
 
     public function blog()
     {
