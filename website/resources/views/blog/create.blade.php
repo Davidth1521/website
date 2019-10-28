@@ -35,12 +35,28 @@
             <form action="{{route('blog.store')}}" method="post" enctype="multipart/form-data">
                 {{csrf_field()}}
                 <div class="row">
-                    <div class="form-group col-sm-5 mr-3">
-                        <label for="">انتخاب تصویر</label>
-                        <input type="file" class="form-control custom-file-input" id="customFile" name="image">
-                        <label class="custom-file-label" for="customFile">انتخاب تصویر</label>
+                    <div class="form-group col-sm-3 mr-3">
+                        <label class="custom-file-label" for="customFile" id="image">انتخاب تصویر</label>
+                        <input type="file" class="form-control custom-file-input" id="customFile" name="image"
+                               onchange="showName(this,'image')">
+                    </div>
+
+                    <div class="form-group col-sm-3 mr-3">
+                        <label class="custom-file-label" for="customFile" id="thumbnail">تصویر شاخص</label>
+                        <input type="file" class="form-control custom-file-input" id="customFile" name="thumbnail"
+                               onchange="showName(this,'thumbnail')">
                     </div>
                 </div>
+
+                <script>
+                    function showName(tagName,labelName) {
+                        var tag = $(tagName);
+                        var i = tag.prev('#'+labelName).clone();
+                        var file = tag[0].files[0].name;
+                        tag.prev('#'+labelName).text(file);
+                    }
+
+                </script>
                 <div class="row">
                     <div class="form-group col-sm-6">
                         <label for="">نام</label>
@@ -66,7 +82,7 @@
                     <div class="form-group col-sm-6">
                         <label for="">تگ ها</label>
                         <select class="js-example-basic-single" dir="rtl" name="tag_id">
-                            <option value="0">نگ ها</option>
+                            <option value="0">تگ ها</option>
                             @foreach($tags as $tag)
                                 <option value="{{$tag->id}}">{{$tag->title}}</option>
                             @endforeach

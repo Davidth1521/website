@@ -7,6 +7,7 @@ use App\Portfolio;
 use App\Portfolio_detail;
 use App\PortfolioCategory;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class PortfolioController extends MainController
 {
@@ -87,6 +88,7 @@ class PortfolioController extends MainController
             'category_id' => $category_id,
             'detail_id' => $portfolio_detail->id,
         ]);
+        Alert::success('موفقیت', 'نمونه کار ایجاد شد');
         return redirect()->back();
     }
 

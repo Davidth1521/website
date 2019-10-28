@@ -6,6 +6,7 @@ use App\CustomerSay;
 use App\Http\Controllers\MainController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CustomerSayController extends MainController
 {
@@ -59,6 +60,7 @@ class CustomerSayController extends MainController
             'image'=>$imageAddress,
             'status'=>$status,
         ]);
+        Alert::success('موفقیت', 'مشتریان میگویند بروزرسانی شد');
         return redirect()->back();
     }
 

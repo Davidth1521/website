@@ -5,7 +5,7 @@ namespace App\Http\Controllers\index_page;
 use App\Http\Controllers\MainController;
 use App\Slider1;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class Slider1Controller extends MainController
 {
@@ -61,6 +61,7 @@ class Slider1Controller extends MainController
             'image'=>$imageAddress,
             'status'=>$status,
         ]);
+        Alert::success('موفقیت', 'آیتم اسلایدر ایجاد شد');
         return redirect()->back();
     }
 

@@ -57,6 +57,35 @@
                     </div>
                 </div>
             </form>
+
+
+            <div class="table-responsive">
+                <table class="table table-bordered mt-4">
+                    <thead>
+                    <tr>
+                        <th scope="col">ردیف</th>
+                        <th scope="col">نام دسته</th>
+                        <th scope="col">تاریخ ایجاد</th>
+                        <th scope="col">ویرایش</th>
+                        <th scope="col">حذف</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                    $i = 0;
+                    ?>
+                    @foreach($allTags as $tag)
+                        <tr>
+                            <th scope="row"><?= ++$i ?></th>
+                            <td>{{$tag->title}}</td>
+                            <td>{{$tag->dateTime}}</td>
+                            <td><a href="#"><i class="fa fa-edit font-size-23"></i></a></td>
+                            <td><a href="#"><i class="fa fa-remove font-size-23"></i></a></td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 @endsection
