@@ -1,43 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c4c0c033-43dc-4a9c-b67f-62f67146b330" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/website/public/css/sweetalert2.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/public/js/sweetalert2.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/resources/views/other/social_media.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/main_website.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/main_website.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/app/Blog.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/app/Blog.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/app/BlogCategory.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/app/categoryBlog.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/app/BlogTag.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/app/tagBlog.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/app/Http/Controllers/blog/BlogController.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/app/Http/Controllers/blog/BlogController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/app/Http/Controllers/index_page/AboutUsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/app/Http/Controllers/index_page/AboutUsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/app/Http/Controllers/index_page/CustomerSayController.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/app/Http/Controllers/index_page/CustomerSayController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/app/Http/Controllers/index_page/FreeAdviceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/app/Http/Controllers/index_page/FreeAdviceController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/app/Http/Controllers/index_page/OurDescriptionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/app/Http/Controllers/index_page/OurDescriptionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/app/Http/Controllers/index_page/OurTeamController.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/app/Http/Controllers/index_page/OurTeamController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/app/Http/Controllers/index_page/PortfolioCategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/app/Http/Controllers/index_page/PortfolioCategoryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/app/Http/Controllers/index_page/PortfolioController.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/app/Http/Controllers/index_page/PortfolioController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/app/Http/Controllers/index_page/PrimaryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/app/Http/Controllers/index_page/PrimaryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/app/Http/Controllers/index_page/Slider1Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/app/Http/Controllers/index_page/Slider1Controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/app/OurDescription.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/app/OurDescription.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/website/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/website/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/database/migrations/2019_10_24_200147_create_blog_categories_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/database/migrations/2019_10_24_200147_create_category_blogs_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/database/migrations/2019_10_24_200205_create_blog_tags_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/database/migrations/2019_10_24_200205_create__tag_blogs_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/website/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/resources/views/blog/addCategory.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/blog/addCategory.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/resources/views/blog/addTag.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/blog/addTag.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/resources/views/blog/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/blog/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/resources/views/blog/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/blog/list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/resources/views/index_page/our-description/ourDescription.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/index_page/our-description/ourDescription.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/resources/views/layouts/master/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/layouts/master/footer.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/resources/views/layouts/master/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/layouts/master/header.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/resources/views/layouts/master/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/layouts/master/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/routes/web.php" afterDir="false" />
-    </list>
+    <list default="true" id="c4c0c033-43dc-4a9c-b67f-62f67146b330" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +67,7 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -338,21 +302,10 @@
               <item name="main_website" type="b2602c69:ProjectViewProjectNode" />
               <item name="main_website" type="462c0819:PsiDirectoryNode" />
               <item name="website" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="main_website" type="b2602c69:ProjectViewProjectNode" />
-              <item name="main_website" type="462c0819:PsiDirectoryNode" />
-              <item name="website" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="main_website" type="b2602c69:ProjectViewProjectNode" />
-              <item name="main_website" type="462c0819:PsiDirectoryNode" />
-              <item name="website" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="index_page" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="main_website" type="b2602c69:ProjectViewProjectNode" />
@@ -435,12 +388,12 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="69678000" />
+    <option name="totallyTimeSpent" value="69757000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17643923" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17927383" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -453,7 +406,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.25813448" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.5885246" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -535,34 +488,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/website/resources/views/blog/addCategory.php" />
-    <entry file="file://$PROJECT_DIR$/website/app/tagBlog.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="10" column="24" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/app/categoryBlog.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="10" column="24" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/database/migrations/2019_10_24_200205_create__tag_blogs_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="28" column="30" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/database/migrations/2019_10_24_200147_create_category_blogs_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="6" column="24" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/website/app/tagBlog.php" />
+    <entry file="file://$PROJECT_DIR$/website/app/categoryBlog.php" />
+    <entry file="file://$PROJECT_DIR$/website/database/migrations/2019_10_24_200205_create__tag_blogs_table.php" />
+    <entry file="file://$PROJECT_DIR$/website/database/migrations/2019_10_24_200147_create_category_blogs_table.php" />
     <entry file="file://$PROJECT_DIR$/../gramos theme/Gramos/Theme/tables.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="197">
@@ -608,13 +537,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/website/app/SocialMedia.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="181" selection-start-line="8" selection-start-column="168" selection-end-line="8" selection-end-column="181" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/website/app/SocialMedia.php" />
     <entry file="file://$PROJECT_DIR$/website/public/js/app.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -647,34 +570,13 @@
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/Desktop/files needed/first project/Davidth Khoshkar/laravel/exam/public/admin/assets/js/plugins/pickers/anytime.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/website/public/css/app.css">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/website/public/css/sweetalert2.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="604">
-          <caret line="1364" column="1" selection-start-line="1364" selection-start-column="1" selection-end-line="1364" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/public/js/sweetalert2.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="2915" selection-start-line="2915" selection-end-line="2915" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/website/public/css/sweetalert2.css" />
+    <entry file="file://$PROJECT_DIR$/website/public/js/sweetalert2.js" />
     <entry file="file://$PROJECT_DIR$/website/resources/views/layouts/master/header.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="128">
@@ -710,13 +612,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/website/resources/views/other/social_media.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="524">
-          <caret line="115" column="10" selection-start-line="115" selection-start-column="10" selection-end-line="115" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/website/resources/views/other/social_media.blade.php" />
     <entry file="file://$PROJECT_DIR$/website/resources/views/blog/list.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="419">
@@ -742,9 +638,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
           <caret line="102" column="8" selection-start-line="102" selection-start-column="8" selection-end-line="102" selection-end-column="56" />
-          <folding>
-            <element signature="e#45#58#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -752,9 +645,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="128">
           <caret line="8" column="40" selection-start-line="8" selection-start-column="40" selection-end-line="8" selection-end-column="40" />
-          <folding>
-            <element signature="e#51#71#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -762,9 +652,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="412">
           <caret line="55" column="63" lean-forward="true" selection-start-line="55" selection-start-column="8" selection-end-line="55" selection-end-column="63" />
-          <folding>
-            <element signature="e#51#70#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -786,9 +673,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
           <caret line="62" column="18" selection-start-line="62" selection-start-column="18" selection-end-line="62" selection-end-column="18" />
-          <folding>
-            <element signature="e#51#74#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -810,22 +694,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="9" column="40" selection-start-line="9" selection-start-column="40" selection-end-line="9" selection-end-column="40" />
-          <folding>
-            <element signature="e#51#91#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/website/app/Http/Controllers/SocialMediaController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-212">
-          <caret line="69" column="5" lean-forward="true" selection-start-line="69" selection-start-column="5" selection-end-line="69" selection-end-column="5" />
-          <folding>
-            <element signature="e#40#68#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/website/app/Http/Controllers/SocialMediaController.php" />
     <entry file="file://$PROJECT_DIR$/website/app/Http/Controllers/index_page/AboutUsController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="112">
@@ -837,9 +709,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-320">
           <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
-          <folding>
-            <element signature="e#51#91#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
