@@ -48,7 +48,7 @@
                     <div class="form-group col-sm-6">
                         <label for="">توضیحات</label>
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description"
-                                  placeholder=" توضیحات اسلایدر">value="{{old('description')}}"</textarea>
+                                  placeholder=" توضیحات اسلایدر">{{old('description')}}</textarea>
                     </div>
                 </div>
                 <div class="row">

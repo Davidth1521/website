@@ -43,4 +43,13 @@ Route::middleware('auth')->namespace('blog')->group(function () {
 
 Route::middleware('auth')->group(function () {
    Route::resource('/social_media','SocialMediaController');
+   Route::resource('/setting','SettingController');
+});
+
+Route::middleware('auth')->namespace('service')->group(function () {
+//    Route::resource('/service/','ServiceController');
+//    Route::resource('/service/about-service','ServiceAboutController');
+//    Route::resource('/service/other-info','ServiceOtherInfoController');
+//    Route::resource('/service/result','ServiceResultController');
+//    Route::resource('/service/tariff','ServiceTariffController');
 });
