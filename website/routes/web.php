@@ -43,4 +43,5 @@ Route::middleware('auth')->namespace('blog')->group(function () {
 
 Route::middleware('auth')->group(function () {
    Route::resource('/social_media','SocialMediaController');
+   Route::resource('/setting','SettingController');
 });
