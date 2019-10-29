@@ -22,11 +22,11 @@ class BlogController extends MainController
     {
 //        dd(1);
         $blogs = Blog::where('status',1)->get();
-        foreach ($blogs as $blog){
+        foreach ($blogs as $blog) {
             $categories = $blog->categoryBlog;
             $cat_arr = [];
-            foreach ($categories as $category){
-                array_push($cat_arr,$category->title);
+            foreach ($categories as $category) {
+                array_push($cat_arr, $category->title);
             }
             $blog['categories'] = $cat_arr;
             $date = $blog->created_at;

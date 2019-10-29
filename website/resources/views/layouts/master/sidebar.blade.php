@@ -31,15 +31,14 @@
             <li><a href="{{route('setting.create')}}">تنظیمات</a></li>
             <li><a href="#"><i class="icon ti-home"></i> <span>خدمات</span> </a>
                 <ul>
-                    <li><a href="{{route('blog.create')}}">درباره خدمات</a></li>
-                    <li><a href="{{route('blog.index')}}">نتایج خدمات</a></li>
-                    <li><a href="{{route('blog.index')}}">روند کار</a></li>
-                    <li><a href="{{route('blog.index')}}">اطلاعات اضافی</a></li>
-                    <li><a href="{{route('blog.index')}}">تعرفه</a>
+                    <li><a href="{{route('about-service.create')}}">درباره خدمات</a></li>
+                    <li><a href="{{route('result.create')}}">نتایج خدمات</a></li>
+                    <li><a href="{{route('steps.create')}}">روند کار</a></li>
+                    <li><a href="{{route('other-info.create')}}">اطلاعات اضافی</a></li>
+                    <li><a href="{{route('service-category.create')}}">دسته بندی</a></li>
+                    <li><a href="#">تعرفه</a>
                         <ul>
-                            <li><a href="{{route('blog.create')}}">ایحاد</a></li>
-                            <li><a href="{{route('blog.index')}}">ویرایش</a></li>
-                            <li><a href="{{route('blog.index')}}">دسته بندی</a></li>
+                            <li><a href="{{route('tariff.create')}}">ایجاد</a></li>
                         </ul>
                     </li>
                 </ul>

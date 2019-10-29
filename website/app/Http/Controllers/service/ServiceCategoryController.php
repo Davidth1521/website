@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\service;
 
-use App\ServiceOtherInfo;
+use App\ServiceCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Hekmatinasser\Verta\Verta;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class ServiceOtherInfoController extends Controller
+class ServiceCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,7 +27,23 @@ class ServiceOtherInfoController extends Controller
      */
     public function create()
     {
-        return view('services.other-info.create');
+        $categories = ServiceCategory::where('parent_id',0)->get();
+        $allCategories = ServiceCategory::all();
+        foreach ($allCategories as $category){
+            $date = $category->created_at;
+            $v = new Verta($date);
+            if ($v->day < 10 && $v->month < 10) {
+                $dateFormat = $v->format('Y/0n/0j');
+            } elseif ($v->day < 10 && $v->month > 10) {
+                $dateFormat = $v->format('Y/n/0j');
+            } elseif ($v->day > 10 && $v->month < 10) {
+                $dateFormat = $v->format('Y/0n/j');
+            } else {
+                $dateFormat = $v->format('Y/n/j');
+            }
+            $category['dateTime'] = $dateFormat;
+        }
+        return view('services.category',compact('categories','allCategories'));
     }
 
     /**
@@ -38,33 +55,19 @@ class ServiceOtherInfoController extends Controller
     public function store(Request $request)
     {
         $data = $request->except('_token');
-        $title1 = $data['title1'];
-        $title2 = $data['title2'];
-        $description1 = $data['description1'];
-        $tabTitle1 = $data['tabTitle1'];
-        $tabTitle2 = $data['tabTitle2'];
-        $tabTitle3 = $data['tabTitle3'];
-        $tabDesc1 = $data['tabDesc1'];
-        $tabDesc2 = $data['tabDesc2'];
-        $tabDesc3 = $data['tabDesc3'];
+        $title = $data['title'];
+        $parent_id = $data['parent_id'];
         if (isset($data['status'])) {
             $status = 1;
         } else {
             $status = 0;
         }
-        ServiceOtherInfo::create([
-            'title1' => $title1,
-            'title2' => $title2,
-            'description1' => $description1,
-            'tabTitle1' => $tabTitle1,
-            'tabTitle2' => $tabTitle2,
-            'tabTitle3' => $tabTitle3,
-            'tabDesc1' => $tabDesc1,
-            'tabDesc2' => $tabDesc2,
-            'tabDesc3' => $tabDesc3,
+        ServiceCategory::create([
+            'title' => $title,
+            'parent_id' => $parent_id,
             'status' => $status,
         ]);
-        Alert::success('موفقیت', 'آیتم اطلاعات دیگر خدمات ثبت شد');
+        Alert::success('موفقیت', 'دسته جدید ایجاد شد');
         return redirect()->back();
     }
 
