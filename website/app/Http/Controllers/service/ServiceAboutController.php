@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\service;
 
+use App\ServiceAbout;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ServiceAboutController extends Controller
 {
@@ -24,7 +26,7 @@ class ServiceAboutController extends Controller
      */
     public function create()
     {
-        //
+        return view('services.about-service.create');
     }
 
     /**
@@ -35,7 +37,25 @@ class ServiceAboutController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->except('_token');
+        $title = $data['title'];
+        $icon = $data['icon'];
+        $subTitle = $data['subTitle'];
+        $link = $data['link'];
+        if (isset($data['status'])) {
+            $status = 1;
+        } else {
+            $status = 0;
+        }
+        ServiceAbout::create([
+            'icon' => $icon,
+            'title' => $title,
+            'subTitle' => $subTitle,
+            'link' => $link,
+            'status' => $status,
+        ]);
+        Alert::success('موفقیت', 'آیتم معرفی خدمات ثبت شد');
+        return redirect()->back();
     }
 
     /**

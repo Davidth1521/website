@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\service;
 
+use App\ServiceStep;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ServiceStepController extends Controller
 {
@@ -24,7 +26,7 @@ class ServiceStepController extends Controller
      */
     public function create()
     {
-        //
+        return view('services.steps.create');
     }
 
     /**
@@ -35,7 +37,23 @@ class ServiceStepController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->except('_token');
+        $title = $data['title'];
+        $icon = $data['icon'];
+        $link = $data['link'];
+        if (isset($data['status'])) {
+            $status = 1;
+        } else {
+            $status = 0;
+        }
+        ServiceStep::create([
+            'icon' => $icon,
+            'title' => $title,
+            'status' => $status,
+            'link' => $link,
+        ]);
+        Alert::success('موفقیت', 'آیتم روند کاری خدمات ثبت شد');
+        return redirect()->back();
     }
 
     /**

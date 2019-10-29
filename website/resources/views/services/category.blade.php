@@ -3,7 +3,7 @@
     <!-- begin::page header -->
     <div class="page-header">
         <div>
-            <h3>مقاله ها</h3>
+            <h3>دسته بندی سرویس ها</h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#">داشبورد</a></li>
@@ -31,24 +31,26 @@
 
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">بخش مقاله ها</h5>
-            <form action="{{route('result.store')}}" method="post">
+            <h5 class="card-title">بخش دسته بندی سرویس ها</h5>
+            <form action="{{route('service-category.store')}}" method="post">
                 {{csrf_field()}}
                 <div class="row">
                     <div class="form-group col-sm-6">
                         <label for="">عنوان</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
                                placeholder="عنوان" name="title" value="{{old('title')}}">
+
                     </div>
                     <div class="form-group col-sm-6">
-                        <label for="">آیکون</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="آیکون" name="icon" value="{{old('icon')}}">
-                    </div>
-                    <div class="form-group col-sm-6">
-                        <label for="">تعداد</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="تعداد" name="number" value="{{old('number')}}">
+                        <label for="">والد</label>
+                        <select class="js-example-basic-single" dir="rtl" name="parent_id">
+                            <option value="0">والد</option>
+                            @if(isset($categories))
+                                @foreach($categories as $category)
+                                    <option value="{{$category->id}}">{{$category->title}}</option>
+                                @endforeach
+                            @endif
+                        </select>
                     </div>
                 </div>
                 <div class="row">
@@ -66,6 +68,39 @@
                     </div>
                 </div>
             </form>
+
+
+            <div class="table-responsive">
+                <table class="table table-bordered mt-4">
+                    <thead>
+                    <tr>
+                        <th scope="col">ردیف</th>
+                        <th scope="col">نام دسته</th>
+                        <th scope="col">والد</th>
+                        <th scope="col">تاریخ ایجاد</th>
+                        <th scope="col">ویرایش</th>
+                        <th scope="col">حذف</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                    $i = 0;
+                    ?>
+                    @if(isset($allCategories))
+                        @foreach($allCategories as $category)
+                            <tr>
+                                <th scope="row"><?= ++$i ?></th>
+                                <td>{{$category->title}}</td>
+                                <td>{{$category->parent_name}}</td>
+                                <td>{{$category->dateTime}}</td>
+                                <td><a href="#"><i class="fa fa-edit font-size-23"></i></a></td>
+                                <td><a href="#"><i class="fa fa-remove font-size-23"></i></a></td>
+                            </tr>
+                        @endforeach
+                    @endif
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 @endsection

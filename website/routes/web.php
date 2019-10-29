@@ -46,10 +46,14 @@ Route::middleware('auth')->group(function () {
    Route::resource('/setting','SettingController');
 });
 
-Route::middleware('auth')->namespace('service')->group(function () {
-//    Route::resource('/service/','ServiceController');
-//    Route::resource('/service/about-service','ServiceAboutController');
-//    Route::resource('/service/other-info','ServiceOtherInfoController');
-//    Route::resource('/service/result','ServiceResultController');
-//    Route::resource('/service/tariff','ServiceTariffController');
+Route::middleware('auth')->namespace('service')->prefix('service')->group(function () {
+
+    Route::resource('/','ServiceController');
+    Route::resource('/about-service','ServiceAboutController');
+    Route::resource('/other-info','ServiceOtherInfoController');
+    Route::resource('/steps','ServiceStepController');
+    Route::resource('/result','ServiceResultController');
+    Route::resource('/tariff','ServiceTariffController');
+    Route::resource('/service-category','ServiceCategoryController');
+
 });
