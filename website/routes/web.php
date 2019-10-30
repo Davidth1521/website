@@ -47,13 +47,12 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('auth')->namespace('service')->prefix('service')->group(function () {
-
     Route::resource('/','ServiceController');
     Route::resource('/about-service','ServiceAboutController');
     Route::resource('/other-info','ServiceOtherInfoController');
     Route::resource('/steps','ServiceStepController');
     Route::resource('/result','ServiceResultController');
     Route::resource('/tariff','ServiceTariffController');
+    Route::resource('/tariff_detail','TariffDetailController');
     Route::resource('/service-category','ServiceCategoryController');
-
 });
