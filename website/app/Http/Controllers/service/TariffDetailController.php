@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\service;
 
+use App\ServiceTariff;
+use App\TariffDetail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class TariffDetailController extends Controller
 {
@@ -24,7 +27,8 @@ class TariffDetailController extends Controller
      */
     public function create()
     {
-        //
+        $tariffs = ServiceTariff::where('status',1)->get();
+        return view('services.tariff.tariff_detail',compact('tariffs'));
     }
 
     /**
@@ -35,7 +39,19 @@ class TariffDetailController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->except('_token');
+        if (isset($data['status'])) {
+            $status = 1;
+        } else {
+            $status = 0;
+        }
+        TariffDetail::create([
+            'attribute' => $data['attribute'],
+            'tariff_id' => $data['tariff_id'],
+            'status' => $status,
+        ]);
+        Alert::success('موفقیت', 'جزئیات دسته مورد نظر ایجاد شد');
+        return redirect()->back();
     }
 
     /**

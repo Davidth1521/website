@@ -39,6 +39,7 @@
                     <li><a href="#">تعرفه</a>
                         <ul>
                             <li><a href="{{route('tariff.create')}}">ایجاد</a></li>
+                            <li><a href="{{route('tariff_detail.create')}}">جزئیات تعرفه</a></li>
                         </ul>
                     </li>
                 </ul>
