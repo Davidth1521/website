@@ -18,7 +18,7 @@
     <div class="card">
         <div class="card-body">
             <h5 class="card-title">بخش درباره ما</h5>
-            <form action="{{route('aboutUs.store')}}" method="post" enctype="multipart/form-data">
+            <form action="{{route('aboutUsSkill.store')}}" method="post" enctype="multipart/form-data">
                 {{csrf_field()}}
                 <div class="row">
                     <div class="form-group col-sm-6">

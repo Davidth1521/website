@@ -20,7 +20,6 @@ class BlogController extends MainController
      */
     public function index()
     {
-//        dd(1);
         $blogs = Blog::where('status',1)->get();
         foreach ($blogs as $blog) {
             $categories = $blog->categoryBlog;
