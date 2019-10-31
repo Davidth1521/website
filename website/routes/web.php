@@ -23,7 +23,6 @@ Route::middleware('auth')->namespace('index_page')->group(function () {
     Route::resource('/primary', 'PrimaryController');
     Route::resource('/slider1', 'Slider1Controller');
     Route::resource('/ourDescription', 'OurDescriptionController');
-    Route::resource('/aboutUs', 'AboutUsController');
     Route::resource('/portfolio', 'PortfolioController');
     Route::resource('/portfolioCategory', 'PortfolioCategoryController');
     Route::resource('/customerSay', 'CustomerSayController');
@@ -55,4 +54,9 @@ Route::middleware('auth')->namespace('service')->prefix('service')->group(functi
     Route::resource('/tariff','ServiceTariffController');
     Route::resource('/tariff_detail','TariffDetailController');
     Route::resource('/service-category','ServiceCategoryController');
+});
+
+Route::middleware('auth')->namespace('about_us')->prefix('about_us')->group(function () {
+    Route::resource('/aboutUs','AboutUsController');
+    Route::resource('/aboutUsSkill','AboutUsSkillController');
 });

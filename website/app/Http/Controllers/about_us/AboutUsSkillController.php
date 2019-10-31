@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\index_page;
+namespace App\Http\Controllers\about_us;
 
-use App\AboutUs;
+use App\AboutUsSkill;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class AboutUsController extends Controller
+class AboutUsSkillController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,7 +26,7 @@ class AboutUsController extends Controller
      */
     public function create()
     {
-        return view('index_page.about-us.about-us');
+        return view('about-us.index-page');
     }
 
     /**
@@ -63,7 +63,7 @@ class AboutUsController extends Controller
         } else {
             $status = 0;
         }
-        AboutUs::create([
+        AboutUsSkill::create([
             'leftHeader'=>$leftHeader,
             'rightHeader'=>$rightHeader,
             'whyUs1'=>$whyUs1,
