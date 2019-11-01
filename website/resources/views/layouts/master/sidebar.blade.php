@@ -8,14 +8,7 @@
                     <li><a href="{{route('slider1.create')}}">اسلایدر1</a></li>
                     <li><a href="{{route('ourDescription.create')}}">توضیحات ما</a></li>
                     <li><a href="{{route('aboutUs.create')}}">درباره ما</a></li>
-                    <li><a href="#">نمونه کار</a>
-                        <ul>
-                            <li><a href="{{route('portfolio.create')}}">افزودن</a></li>
-                            <li><a href="{{route('portfolioCategory.create')}}">دسته بندی</a></li>
-                        </ul>
-                    </li>
                     <li><a href="{{route('customerSay.create')}}">صحبت مشتری ها</a></li>
-                    <li><a href="{{route('ourTeam.create')}}">تیم ما</a></li>
                     <li><a href="{{route('free_advice.create')}}">مشاوره رایگان</a></li>
                 </ul>
             </li>
@@ -48,13 +41,20 @@
                 <ul>
                     <li><a href="{{route('aboutUs.create')}}">ایجاد</a></li>
                     <li><a href="{{route('aboutUsSkill.create')}}">مهارت های ما</a></li>
-                    {{--<li><a href="{{route('service-category.create')}}">دسته بندی</a></li>--}}
-                    {{--<li><a href="#">تعرفه</a>
-                        <ul>
-                            <li><a href="{{route('tariff.create')}}">ایجاد</a></li>
-                            <li><a href="{{route('tariff_detail.create')}}">جزئیات تعرفه</a></li>
-                        </ul>
-                    </li>--}}
+                    <li><a href="{{route('ourTeam.create')}}">تیم ما</a></li>
+                    <li><a href="{{route('partners.create')}}">شرکای ما</a></li>
+                </ul>
+            </li>
+            <li><a href="#"><i class="icon ti-home"></i> <span>نمونه کار</span></a>
+                <ul>
+                    <li><a href="{{route('portfolio.create')}}">افزودن</a></li>
+                    <li><a href="{{route('portfolioCategory.create')}}">دسته بندی</a></li>
+                </ul>
+            </li>
+            <li><a href="#"><i class="icon ti-home"></i><span>تماس با ما</span></a>
+                <ul>
+                    <li><a href="{{route('info.create')}}">اطلاعات و جزئیات</a></li>
+                    <li><a href="{{route('message.create')}}">پیام ها</a></li>
                 </ul>
             </li>
             {{--<li><a href="widgets.html"><i class="icon ti-paint-bucket"></i> <span>ویجت‌ها</span> </a></li>

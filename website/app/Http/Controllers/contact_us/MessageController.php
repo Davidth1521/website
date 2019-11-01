@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\index_page;
+namespace App\Http\Controllers\contact_us;
 
-use App\PortfolioCategory;
+use App\Message;
+use Hekmatinasser\Verta\Verta;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use RealRashid\SweetAlert\Facades\Alert;
 
-class PortfolioCategoryController extends Controller
+class MessageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,7 +26,23 @@ class PortfolioCategoryController extends Controller
      */
     public function create()
     {
-        return view('index_page.portfolio.portfolioCategory');
+        $messages = Message::all();
+        foreach ($messages as $message){
+            $date = $message->created_at;
+            $v = new Verta($date);
+            if ($v->day < 10 && $v->month < 10) {
+                $dateFormat = $v->format('Y/0n/0j');
+            } elseif ($v->day < 10 && $v->month > 10) {
+                $dateFormat = $v->format('Y/n/0j');
+            } elseif ($v->day > 10 && $v->month < 10) {
+                $dateFormat = $v->format('Y/0n/j');
+            } else {
+                $dateFormat = $v->format('Y/n/j');
+            }
+            $message['dateTime'] = $dateFormat;
+        }
+
+        return view('contact-us.message',compact('messages'));
     }
 
     /**
@@ -37,20 +53,7 @@ class PortfolioCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->except('_token');
-        $title = $data['title'];
-        $status = 0;
-        if (isset($data['status'])) {
-            $status = 1;
-        } else {
-            $status = 0;
-        }
-        PortfolioCategory::create([
-            'title'=>$title,
-            'status'=>$status
-        ]);
-        Alert::success('موفقیت', 'دسته نمونه کار ایجاد شد');
-        return redirect()->back();
+        //
     }
 
     /**
@@ -72,7 +75,8 @@ class PortfolioCategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $message = Message::find($id);
+        return view('contact-us.edit_message',compact('id','message'));
     }
 
     /**
@@ -96,5 +100,16 @@ class PortfolioCategoryController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function message_search(Request $request)
+    {
+        $data = $request->except('_token');
+        $data = $data['search'];
+        if (filter_var($data, FILTER_VALIDATE_EMAIL)) {
+            dd('is email');
+        }else{
+            dd('not email');
+        }
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\index_page;
+namespace App\Http\Controllers\portfolio;
 
 use App\Http\Controllers\MainController;
 use App\Portfolio;
@@ -29,7 +29,7 @@ class PortfolioController extends MainController
     public function create()
     {
         $portfolioCategories = PortfolioCategory::all();
-        return view('index_page.portfolio.portfolio', compact('portfolioCategories'));
+        return view('portfolio.portfolio', compact('portfolioCategories'));
     }
 
     /**
