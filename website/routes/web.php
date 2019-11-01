@@ -26,8 +26,9 @@ Route::middleware('auth')->namespace('index_page')->group(function () {
     Route::resource('/customerSay', 'CustomerSayController');
     Route::resource('/free_advice','FreeAdviceController');
 });
-Route::middleware('auth')->namespace('blog')->group(function () {
+Route::middleware('auth')->namespace('blog')->prefix('blog')->group(function () {
     Route::resource('/blog','BlogController');
+    Route::resource('/blog_message','BlogCommentController');
     Route::get('/blogCategory','BlogController@showCategory');
     Route::get('/blogTag','BlogController@showTag');
     Route::post('/blog/addCategory','BlogController@addCategory')->name('addCat');
