@@ -16,6 +16,7 @@
                 <ul>
                     <li><a href="{{route('blog.create')}}">افزودن مقاله</a></li>
                     <li><a href="{{route('blog.index')}}">لیست مقاله ها</a></li>
+                    <li><a href="{{route('blog_message.create')}}">لیست پیام ها</a></li>
                     <li><a href="/blogCategory">دسته بندی</a></li>
                     <li><a href="/blogTag">تگ</a></li>
                 </ul>

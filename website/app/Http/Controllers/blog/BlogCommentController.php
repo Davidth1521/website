@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\contact_us;
+namespace App\Http\Controllers\blog;
 
-use App\Message;
+use App\BlogComment;
 use Hekmatinasser\Verta\Verta;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class MessageController extends Controller
+class BlogCommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +27,7 @@ class MessageController extends Controller
      */
     public function create()
     {
-        $messages = Message::all();
+        $messages = BlogComment::all();
         foreach ($messages as $message){
             $date = $message->created_at;
             $v = new Verta($date);
@@ -43,7 +43,7 @@ class MessageController extends Controller
             $message['dateTime'] = $dateFormat;
         }
 
-        return view('contact-us.message',compact('messages'));
+        return view('blog.message',compact('messages'));
     }
 
     /**
@@ -55,11 +55,12 @@ class MessageController extends Controller
     public function store(Request $request)
     {
         $data = $request->except('_token');
-        Message::create([
-            'title'=>$data['title'],
-            'status'=>$data['status'],
-            'fullName'=>$data['fullName'],
+        BlogComment::create([
+            'name'=>$data['name'],
+            'blog_id'=>$data['blog_id'],
+            'parent_id'=>$data['parent_id'],
             'email'=>$data['email'],
+            'website'=>$data['website'],
             'message'=>$data['message'],
         ]);
         Alert::success('موفقیت', 'پیام شما ارسال شد');
@@ -85,8 +86,7 @@ class MessageController extends Controller
      */
     public function edit($id)
     {
-        $message = Message::find($id);
-        return view('contact-us.edit_message',compact('id','message'));
+        //
     }
 
     /**
@@ -99,15 +99,16 @@ class MessageController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->except('_token');
-        $message = Message::find($id);
+        $message = BlogComment::find($id);
         $message->update([
-            'title'=>$data['title'],
-            'status'=>$data['status'],
-            'fullName'=>$data['fullName'],
+            'name'=>$data['name'],
+            'blog_id'=>$data['blog_id'],
+            'parent_id'=>$data['parent_id'],
             'email'=>$data['email'],
+            'website'=>$data['website'],
             'message'=>$data['message'],
         ]);
-        Alert::success('موفقیت', 'پیام بروز شد');
+        Alert::success('موفقیت', 'پیام ویرایش شد');
         return redirect()->back();
     }
 
@@ -120,16 +121,5 @@ class MessageController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function message_search(Request $request)
-    {
-        $data = $request->except('_token');
-        $data = $data['search'];
-        if (filter_var($data, FILTER_VALIDATE_EMAIL)) {
-            dd('is email');
-        }else{
-            dd('not email');
-        }
     }
 }
