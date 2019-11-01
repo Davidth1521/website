@@ -6,6 +6,7 @@ use App\Message;
 use Hekmatinasser\Verta\Verta;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class MessageController extends Controller
 {
@@ -53,7 +54,16 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->except('_token');
+        Message::create([
+            'title'=>$data['title'],
+            'status'=>$data['status'],
+            'fullName'=>$data['fullName'],
+            'email'=>$data['email'],
+            'message'=>$data['message'],
+        ]);
+        Alert::success('موفقیت', 'مقاله جدید ایجاد شد');
+        return redirect()->back();
     }
 
     /**
