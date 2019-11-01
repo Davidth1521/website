@@ -57,7 +57,6 @@ class AboutUsSkillController extends Controller
         $whyUs1Description = $data['whyUs1Description'];
         $whyUs2Description = $data['whyUs2Description'];
         $whyUs3Description = $data['whyUs3Description'];
-        $status = 0;
         if (isset($data['status'])) {
             $status = 1;
         } else {

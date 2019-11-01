@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\index_page;
+namespace App\Http\Controllers\portfolio;
 
-use App\Http\Controllers\MainController;
-use App\OurTeam;
+use App\PortfolioCategory;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class OurTeamController extends MainController
+class PortfolioCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,7 +26,7 @@ class OurTeamController extends MainController
      */
     public function create()
     {
-        return view('index_page.our-team.ourTeam');
+        return view('portfolio.portfolioCategory');
     }
 
     /**
@@ -38,40 +38,17 @@ class OurTeamController extends MainController
     public function store(Request $request)
     {
         $data = $request->except('_token');
-        $file = $request->file('image');
-        $name = $data['name'];
-        $role = $data['role'];
-        $facebook_link = $data['facebook_link'];
-        $facebook_icon = $data['facebook_icon'];
-        $twitter_link = $data['twitter_link'];
-        $twitter_icon = $data['twitter_icon'];
-        $linkedin_link = $data['linkedin_link'];
-        $linkedin_icon = $data['linkedin_icon'];
-        $description = $data['description'];
-        $imageAddress = '';
-        if (isset($file)) {
-            $imageAddress = $this->ImageUploader($file, 'images/ourTeam/', 100, 100);
-        }
-        $status = 0;
+        $title = $data['title'];
         if (isset($data['status'])) {
             $status = 1;
         } else {
             $status = 0;
         }
-        OurTeam::create([
-            'name'=>$name,
-            'role'=>$role,
-            'facebook_link'=>$facebook_link,
-            'facebook_icon'=>$facebook_icon,
-            'twitter_link'=>$twitter_link,
-            'twitter_icon'=>$twitter_icon,
-            'linkedin_link'=>$linkedin_link,
-            'linkedin_icon'=>$linkedin_icon,
-            'description'=>$description,
-            'image'=>$imageAddress,
-            'status'=>$status,
+        PortfolioCategory::create([
+            'title'=>$title,
+            'status'=>$status
         ]);
-        Alert::success('موفقیت', 'آیتم تیم ما ایجاد شد');
+        Alert::success('موفقیت', 'دسته نمونه کار ایجاد شد');
         return redirect()->back();
     }
 
