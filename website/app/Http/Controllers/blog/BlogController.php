@@ -68,39 +68,31 @@ class BlogController extends MainController
         $data = $request->except('_token');
         $file = $request->file('image');
         $thumbnail = $request->file('thumbnail');
-        $title = $data['title'];
-        $name = $data['name'];
-        $description = $data['description'];
-        $category_id = $data['category_id'];
-        $tag_id = $data['tag_id'];
-        $shortText = $data['shortText'];
         $imageAddress = '';
         if (isset($file)) {
-            $imageAddress = $this->ImageUploader($file, 'images/', 1170, 501);
+            $imageAddress = $this->ImageUploader($file, 'images/blog/', 1170, 501);
         }
         if (isset($thumbnail)) {
-            $thumbnail = $this->ImageUploader($thumbnail, 'images/thumbnail/', 150, 150);
+            $thumbnail = $this->ImageUploader($thumbnail, 'images/blog/thumbnail/', 150, 150);
         }
-        $status = 0;
         if (isset($data['status'])) {
             $status = 1;
         } else {
             $status = 0;
         }
         $blog = Blog::create([
-            'name' => $name,
-            'title' => $title,
-            'description' => $description,
-            'shortText' => $shortText,
+            'name' => $data['name'],
+            'title' => $data['title'],
+            'description' => $data['description'],
+            'shortText' => $data['shortText'],
             'status' => $status,
             'image' => $imageAddress,
             'thumbnail' => $thumbnail,
             'author_id' => $user_id,
         ]);
-        $blog->categoryBlog()->sync([$category_id]);
-        $blog->tagBlog()->sync([$tag_id]);
+        $blog->categoryBlog()->sync([$data['category_id']]);
+        $blog->tagBlog()->sync([$data['tag_id']]);
         Alert::success('موفقیت', 'مقاله جدید ایجاد شد');
-//        return redirect(route('social_media.create'));
         return redirect()->back();
     }
 
@@ -123,7 +115,16 @@ class BlogController extends MainController
      */
     public function edit($id)
     {
-        //
+        $blog = Blog::find($id);
+        $categories = categoryBlog::where('status', '=', 1)->get();
+        $tags = tagBlog::where('status', 1)->get();
+        foreach ($blog->categoryBlog as $cat){
+            $blog['cat'] = $cat->id;
+        }
+        foreach ($blog->tagBlog as $tag){
+            $blog['tag'] = $tag->id;
+        }
+        return view('blog.edit',compact('blog','categories','tags'));
     }
 
     /**
@@ -135,7 +136,51 @@ class BlogController extends MainController
      */
     public function update(Request $request, $id)
     {
-        //
+        $blog = Blog::find($id);
+        $data = $request->except('_token');
+        $file = $request->file('image');
+        $thumbnail = $request->file('thumbnail');
+        if (isset($data['status'])) {
+            $status = 1;
+        } else {
+            $status = 0;
+        }
+        if (isset($file)) {
+            $imageAddress = $this->ImageUploader($file, 'images/blog/', 1170, 501);
+            if (isset($thumbnail)) {
+                $thumbnail = $this->ImageUploader($thumbnail, 'images/blog/thumbnail/', 150, 150);
+                $blog->update([
+                    'name' => $data['name'],
+                    'title' => $data['title'],
+                    'description' => $data['description'],
+                    'shortText' => $data['shortText'],
+                    'status' => $status,
+                    'thumbnail' => $thumbnail,
+                    'image' => $imageAddress,
+                ]);
+            }else{
+                $blog->update([
+                    'name' => $data['name'],
+                    'title' => $data['title'],
+                    'description' => $data['description'],
+                    'shortText' => $data['shortText'],
+                    'status' => $status,
+                    'image' => $imageAddress,
+                ]);
+            }
+        }else{
+            $blog->update([
+                'name' => $data['name'],
+                'title' => $data['title'],
+                'description' => $data['description'],
+                'shortText' => $data['shortText'],
+                'status' => $status,
+            ]);
+        }
+        $blog->categoryBlog()->sync([$data['category_id']]);
+        $blog->tagBlog()->sync([$data['tag_id']]);
+        Alert::success('موفقیت', 'مقاله ویرایش ایجاد شد');
+        return redirect()->back();
     }
 
 
@@ -198,6 +243,56 @@ class BlogController extends MainController
         }
         return view('blog.addTag', compact('allTags'));
     }
+
+    public function showCategoryEdit($id)
+    {
+        $cat = categoryBlog::find($id);
+        $categories = categoryBlog::all();
+        return view('blog.editCategory',compact('cat','categories'));
+    }
+    public function showTagEdit($id)
+    {
+        $tag = tagBlog::find($id);
+        return view('blog.editTag',compact('tag'));
+    }
+
+    public function editCategory(Request $request,$id)
+    {
+        $cat = categoryBlog::find($id);
+        $data = $request->except('_token');
+        if (isset($data['status'])) {
+            $status = 1;
+        } else {
+            $status = 0;
+        }
+        $cat->update([
+            'title'=>$data['title'],
+            'parent_id'=>$data['parent_id'],
+            'status'=>$status,
+        ]);
+        Alert::success('موفقیت', 'دسته بروز شد');
+        return redirect()->back();
+    }
+
+    public function editTag(Request $request,$id)
+    {
+        $tag = tagBlog::find($id);
+        $data = $request->except('_token');
+        if (isset($data['status'])) {
+            $status = 1;
+        } else {
+            $status = 0;
+        }
+        $tag->update([
+            'title'=>$data['title'],
+            'status'=>$status,
+        ]);
+        Alert::success('موفقیت', 'تگ بروز شد');
+        return redirect()->back();
+
+    }
+
+
 
     public function addCategory(Request $request)
     {

@@ -3,7 +3,7 @@
     <!-- begin::page header -->
     <div class="page-header">
         <div>
-            <h3>اسلایدر1</h3>
+            <h3>ویرایش منو</h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#">داشبورد</a></li>
@@ -31,60 +31,45 @@
 
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">بخش اسلایدر1</h5>
-            <form action="{{route('slider1.store')}}" method="post" enctype="multipart/form-data">
+            <h5 class="card-title">منو</h5>
+            <form action="{{route('primary.update',['id'=>$menu->id])}}" method="post">
                 {{csrf_field()}}
-                <div class="row">
-                    <div class="form-group col-sm-5 mr-3">
-                        <label for="">انتخاب تصویر</label>
-                        <input type="file" class="form-control custom-file-input" id="customFile" name="image">
-                        <label class="custom-file-label" for="customFile">انتخاب تصویر</label>
-                    </div>
-                </div>
+                {{method_field('PATCH')}}
                 <div class="row">
                     <div class="form-group col-sm-6">
                         <label for="">عنوان</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="عنوان اسلایدر" name="title" value="{{old('title')}}">
+                               placeholder="عنوان منو را وارد کنید" name="title" value="{{$menu->title}}">
 
                     </div>
                     <div class="form-group col-sm-6">
-                        <label for="">لینک دکمه</label>
+                        <label for="">لینک</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="لینک دکمه" name="btnLink" value="{{old('btnLink')}}">
+                               placeholder="لینک منو را وارد کنید" name="link" value="{{$menu->link}}">
 
                     </div>
-                    <div class="form-group col-sm-6">
-                        <label for="">توضیحات</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description" placeholder=" توضیحات اسلایدر">{{old('description')}}</textarea>
-                    </div>
-                    <div class="form-group col-sm-6">
-                        <label for="">متن دکمه</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="متن دکمه" name="btnTitle" value="{{old('btnTitle')}}">
-
-                    </div>
-
                 </div>
                 <div class="row">
-                    {{--<div class="form-group col-sm-6">
+                    <div class="form-group col-sm-6">
+                        <label for="">والد</label>
                         <select class="js-example-basic-single" dir="rtl" name="parent_id">
                             <option value="0">والد منو</option>
-                            @foreach($parent_menus as $menu)
-                                <option value="{{$menu->id}}">{{$menu->title}}</option>
+                            @foreach($parent_menus as $m)
+                                <option value="{{$m->id}}" @if($m->id == $menu->parent_id) selected @endif>{{$m->title}}</option>
                             @endforeach
                         </select>
-                    </div>--}}
+                    </div>
                     <div class="form-group col-sm-6">
                         <label for="">وضعیت نمایش</label>
                         <div class="custom-control custom-checkbox custom-checkbox-success">
-                            <input type="checkbox" class="custom-control-input" id="customCheck2" name="status" checked>
+                            <input type="checkbox" class="custom-control-input" id="customCheck2" name="status" @if($menu->status == 1) checked @endif>
                             <label class="custom-control-label" for="customCheck2">وضعیت نمایش</label>
                         </div>
                     </div>
                 </div>
                 <div class="row d-block ml-1">
                     <div class="form-group">
+                        <a href="/index/primary" type="submit" class="btn btn-danger float-right mr-3" >بازگشت</a>
                         <button type="submit" class="btn btn-success float-right">ارسال</button>
                     </div>
                 </div>

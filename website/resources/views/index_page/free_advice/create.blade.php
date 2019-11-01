@@ -3,7 +3,7 @@
     <!-- begin::page header -->
     <div class="page-header">
         <div>
-            <h3>هدر و منو</h3>
+            <h3>مشاوره رایگان</h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#">داشبورد</a></li>
@@ -31,43 +31,32 @@
 
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">بخش هدر و منو</h5>
-            <form action="{{route('primary.store')}}" method="post" enctype="multipart/form-data">
+            <h5 class="card-title">بخش مشاوره رایگان</h5>
+            <form action="{{route('free_advice.update',['id'=>1])}}" method="post" enctype="multipart/form-data">
                 {{csrf_field()}}
+                {{method_field('PATCH')}}
                 <div class="row">
-                    <div class="form-group col-sm-5 mr-3">
-                        <input type="file" class="form-control custom-file-input" id="customFile" name="logo">
-                        <label class="custom-file-label" for="customFile">انتخاب لوگو</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group col-sm-6">
-                        <label for="">عنوان</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="عنوان منو را وارد کنید" name="title" value="{{old('title')}}">
-
-                    </div>
                     <div class="form-group col-sm-6">
                         <label for="">لینک</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="لینک منو را وارد کنید" name="link" value="{{old('link')}}">
-
+                        <input type="text" class="form-control" id=""
+                               placeholder="لینک مشاوره رایگان" name="link" value="@if(isset($item)) {{$item->link}} @endif">
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label for="">متن دکمه</label>
+                        <input type="text" class="form-control"
+                               placeholder="عنوان دکمه" name="btnTitle" value="@if(isset($item)) {{$item->btnTitle}} @endif">
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label for="">توضیحات</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description"
+                                  placeholder=" توضیحات اسلایدر">@if(isset($item)) {{$item->description}} @endif</textarea>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="form-group col-sm-6">
-                        <label for="">والد</label>
-                        <select class="js-example-basic-single" dir="rtl" name="parent_id">
-                            <option value="0">والد منو</option>
-                            @foreach($parent_menus as $menu)
-                                <option value="{{$menu->id}}">{{$menu->title}}</option>
-                            @endforeach
-                        </select>
-                    </div>
                     <div class="form-group col-sm-6">
                         <label for="">وضعیت نمایش</label>
                         <div class="custom-control custom-checkbox custom-checkbox-success">
-                            <input type="checkbox" class="custom-control-input" id="customCheck2" name="status" checked>
+                            <input type="checkbox" class="custom-control-input" id="customCheck2" name="status" @if(isset($item)) @if($item->status == 1) checked @endif @endif>
                             <label class="custom-control-label" for="customCheck2">وضعیت نمایش</label>
                         </div>
                     </div>

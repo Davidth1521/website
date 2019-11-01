@@ -32,65 +32,52 @@
     <div class="card">
         <div class="card-body">
             <h5 class="card-title">بخش مقاله ها</h5>
-            <form action="{{route('addCat')}}" method="post">
+            {{--<form action="{{route('search_blog')}}" method="post">
                 {{csrf_field()}}
                 <div class="row">
-                    <div class="form-group col-sm-6">
-                        <label for="">عنوان</label>
+                    <div class="form-group col-sm-4">
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="عنوان اسلایدر" name="title" value="{{old('title')}}">
+                               placeholder="جستجو مقاله" name="title">
 
                     </div>
-                    <div class="form-group col-sm-6">
-                        <label for="">والد</label>
-                        <select class="js-example-basic-single" dir="rtl" name="parent_id">
-                            <option value="0">والد</option>
-                            @foreach($categories as $category)
-                                <option value="{{$category->id}}">{{$category->title}}</option>
-                            @endforeach
-                        </select>
+                    <div class="form-group col-sm-2">
+                        <button type="submit" class="btn btn-primary float-left">جستجو</button>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="form-group col-sm-6">
-                        <label for="">وضعیت نمایش</label>
-                        <div class="custom-control custom-checkbox custom-checkbox-success">
-                            <input type="checkbox" class="custom-control-input" id="customCheck2" name="status" checked>
-                            <label class="custom-control-label" for="customCheck2">وضعیت نمایش</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="row d-block ml-1">
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-success float-right">ارسال</button>
-                    </div>
-                </div>
-            </form>
-
+            </form>--}}
+            <style>
+                .table td,.table th{
+                    vertical-align: middle;
+                }
+            </style>
 
             <div class="table-responsive">
-                <table class="table table-bordered mt-4">
+                <table class="table table-bordered mt-4 text-center">
                     <thead>
                     <tr>
                         <th scope="col">ردیف</th>
-                        <th scope="col">نام دسته</th>
-                        <th scope="col">والد</th>
-                        <th scope="col">تاریخ ایجاد</th>
+                        <th scope="col">تصویر</th>
+                        <th scope="col">عنوان</th>
+                        <th scope="col">توضیحات</th>
+                        <th scope="col">وضعیت</th>
+                        <th scope="col">تاریخ</th>
                         <th scope="col">ویرایش</th>
                         <th scope="col">حذف</th>
                     </tr>
                     </thead>
                     <tbody>
                     <?php
-                            $i = 0;
+                    $i = 0;
                     ?>
-                    @foreach($allCategories as $category)
+                    @foreach($sliders as $slider)
                         <tr>
                             <th scope="row"><?= ++$i ?></th>
-                            <td>{{$category->title}}</td>
-                            <td>{{$category->parent_name}}</td>
-                            <td>{{$category->dateTime}}</td>
-                            <td><a href="{{route('showCat',['id'=>$category->id])}}"><i class="fa fa-edit font-size-23"></i></a></td>
+                            <td><a href="/{{$slider->image}}"><img src="/{{$slider->image}}" alt="{{$slider->title}}"  width="150" height="100"></a></td>
+                            <td>{{$slider->title}}</td>
+                            <td>{{$slider->description}}</td>
+                            <td>@if($slider->status == 1) <span class="badge badge-success">فعال</span> @else <span class="badge badge-danger">غیر فعال</span>@endif</td>
+                            <td>{{$slider->dateTime}}</td>
+                            <td><a href="{{route('slider1.edit',['id'=>$slider->id])}}"><i class="fa fa-edit font-size-23"></i></a></td>
                             <td><a href="#"><i class="fa fa-remove font-size-23"></i></a></td>
                         </tr>
                     @endforeach

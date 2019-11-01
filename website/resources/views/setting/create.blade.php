@@ -37,8 +37,8 @@
                 {{method_field('PATCH')}}
                 <div class="row">
                     <div class="form-group col-sm-4 mr-3">
-                        <label class="custom-file-label" for="customFile" id="image">انتخاب تصویر</label>
-                        <input type="file" class="form-control custom-file-input" id="customFile" name="image"
+                        <label class="custom-file-label" for="customFile" id="image">انتخاب لوگو</label>
+                        <input type="file" class="form-control custom-file-input" id="customFile" name="logo"
                                onchange="showName(this,'image')">
                     </div>
                 </div>

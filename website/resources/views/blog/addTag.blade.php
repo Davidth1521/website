@@ -79,7 +79,7 @@
                             <th scope="row"><?= ++$i ?></th>
                             <td>{{$tag->title}}</td>
                             <td>{{$tag->dateTime}}</td>
-                            <td><a href="#"><i class="fa fa-edit font-size-23"></i></a></td>
+                            <td><a href="{{route('showTag',['id'=>$tag->id])}}"><i class="fa fa-edit font-size-23"></i></a></td>
                             <td><a href="#"><i class="fa fa-remove font-size-23"></i></a></td>
                         </tr>
                     @endforeach

@@ -4,21 +4,35 @@
             <li class="side-menu-divider">فهرست</li>
             <li><a href="{{--{{route('index_front')}}--}}"><i class="icon ti-home"></i> <span>صفحه اصلی</span> </a>
                 <ul>
-                    <li><a href="{{route('primary.create')}}">هدر و منو</a></li>
-                    <li><a href="{{route('slider1.create')}}">اسلایدر1</a></li>
+                    <li><a href="#">منو</a>
+                        <ul>
+                            <li><a href="{{route('primary.create')}}">ایجاد</a></li>
+                            <li><a href="{{route('primary.index')}}">لیست</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">اسلایدر</a>
+                        <ul>
+                            <li><a href="{{route('slider1.create')}}">ایجاد</a></li>
+                            <li><a href="{{route('slider1.index')}}">لیست</a></li>
+                        </ul>
+                    </li>
                     <li><a href="{{route('ourDescription.create')}}">توضیحات ما</a></li>
-                    <li><a href="{{route('aboutUs.create')}}">درباره ما</a></li>
-                    <li><a href="{{route('customerSay.create')}}">صحبت مشتری ها</a></li>
+                    <li><a href="#">صحبت مشتری ها</a>
+                        <ul>
+                            <li><a href="{{route('customerSay.create')}}">ایجاد</a></li>
+                            <li><a href="{{route('customerSay.index')}}">لیست</a></li>
+                        </ul>
+                    </li>
                     <li><a href="{{route('free_advice.create')}}">مشاوره رایگان</a></li>
                 </ul>
             </li>
-            <li><a href="{{--{{route('index_front')}}--}}"><i class="icon ti-home"></i> <span>مقاله</span> </a>
+            <li><a href="{{--{{route('index_front')}}--}}"><i class="icon ti-book"></i> <span>مقاله</span> </a>
                 <ul>
                     <li><a href="{{route('blog.create')}}">افزودن مقاله</a></li>
                     <li><a href="{{route('blog.index')}}">لیست مقاله ها</a></li>
                     <li><a href="{{route('blog_message.create')}}">لیست پیام ها</a></li>
-                    <li><a href="/blogCategory">دسته بندی</a></li>
-                    <li><a href="/blogTag">تگ</a></li>
+                    <li><a href="/blog/blogCategory">دسته بندی</a></li>
+                    <li><a href="/blog/blogTag">تگ</a></li>
                 </ul>
             </li>
             <li><a href="{{route('social_media.create')}}">فضای مجازی</a></li>

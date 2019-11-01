@@ -19,7 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::middleware('auth')->namespace('index_page')->group(function () {
+Route::middleware('auth')->namespace('index_page')->prefix('index')->group(function () {
     Route::resource('/primary', 'PrimaryController');
     Route::resource('/slider1', 'Slider1Controller');
     Route::resource('/ourDescription', 'OurDescriptionController');
@@ -33,6 +33,10 @@ Route::middleware('auth')->namespace('blog')->prefix('blog')->group(function () 
     Route::get('/blogTag','BlogController@showTag');
     Route::post('/blog/addCategory','BlogController@addCategory')->name('addCat');
     Route::post('/blog/addTag','BlogController@addTag')->name('addTag');
+    Route::get('/blog/showTag/{id}','BlogController@showTagEdit')->name('showTag');
+        Route::get('/blog/showCategory/{id}','BlogController@showCategoryEdit')->name('showCat');
+    Route::post('/blog/editCategory/{id}','BlogController@editCategory')->name('editCat');
+    Route::post('/blog/editTag/{id}','BlogController@editTag')->name('editTag');
     Route::post('/blog/removeCategory','BlogController@removeCategory')->name('removeCat');
     Route::post('/blog/removeTag','BlogController@removeTag')->name('removeTag');
     Route::post('/blog/search','BlogController@search_blog')->name('search_blog');
