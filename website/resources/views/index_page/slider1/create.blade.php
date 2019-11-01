@@ -1,9 +1,8 @@
 @extends('layouts.master.master')
 @section('content')
-    <!-- begin::page header -->
     <div class="page-header">
         <div>
-            <h3>سخن مشتریان</h3>
+            <h3>اسلایدر1</h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#">داشبورد</a></li>
@@ -13,50 +12,46 @@
                 </ol>
             </nav>
         </div>
-        {{--
-          قعلا مورد نیاز نیست.
-
-        <div class="btn-group" role="group">
-             <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                 اقدامات
-             </button>
-             <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                 <a class="dropdown-item" href="#">عمل</a>
-                 <a class="dropdown-item" href="#">عمل دیگر</a>
-                 <a class="dropdown-item" href="#">یک عمل دیگر</a>
-             </div>
-         </div>
-         --}}
     </div>
 
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">بخش سخن مشتریان</h5>
-            <form action="{{route('customerSay.store')}}" method="post" enctype="multipart/form-data">
+            <h5 class="card-title">بخش اسلایدر1</h5>
+            <form action="{{route('slider1.store')}}" method="post" enctype="multipart/form-data">
                 {{csrf_field()}}
                 <div class="row">
                     <div class="form-group col-sm-5 mr-3">
-                        <label for="">انتخاب تصویر</label>
-                        <input type="file" class="form-control custom-file-input" id="customFile" name="image">
-                        <label class="custom-file-label" for="customFile">انتخاب تصویر</label>
+                        <label class="custom-file-label" for="customFile" id="image">انتخاب تصویر</label>
+                        <input type="file" class="form-control custom-file-input" id="customFile" name="image" onchange="showName(this,'image')">
                     </div>
+                    <script>
+                        function showName(tagName,labelName) {
+                            var tag = $(tagName);
+                            var i = tag.prev('#'+labelName).clone();
+                            var file = tag[0].files[0].name;
+                            tag.prev('#'+labelName).text(file);
+                        }
+                    </script>
                 </div>
                 <div class="row">
                     <div class="form-group col-sm-6">
                         <label for="">عنوان</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="عنوان" name="title" value="{{old('title')}}">
-
+                               placeholder="عنوان اسلایدر" name="title" value="{{old('title')}}">
                     </div>
                     <div class="form-group col-sm-6">
-                        <label for="">زیر عنوان</label>
+                        <label for="">لینک دکمه</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="زیر عنوان" name="subTitle" value="{{old('subTitle')}}">
-
+                               placeholder="لینک دکمه" name="btnLink" value="{{old('btnLink')}}">
                     </div>
                     <div class="form-group col-sm-6">
-                        <label for="">توضیح</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description" placeholder="توضیحات">{{old('description')}}</textarea>
+                        <label for="">توضیحات</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description" placeholder=" توضیحات اسلایدر">{{old('description')}}</textarea>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label for="">متن دکمه</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                               placeholder="متن دکمه" name="btnTitle" value="{{old('btnTitle')}}">
                     </div>
 
                 </div>

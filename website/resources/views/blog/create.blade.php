@@ -55,7 +55,6 @@
                         var file = tag[0].files[0].name;
                         tag.prev('#'+labelName).text(file);
                     }
-
                 </script>
                 <div class="row">
                     <div class="form-group col-sm-6">

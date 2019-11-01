@@ -32,19 +32,20 @@
     <div class="card">
         <div class="card-body">
             <h5 class="card-title">بخش توضیحات ما زیر اولین اسلایدر</h5>
-            <form action="{{route('ourDescription.store')}}" method="post" enctype="multipart/form-data">
+            <form action="{{route('ourDescription.update',['id'=>1])}}" method="post" enctype="multipart/form-data">
                 {{csrf_field()}}
+                {{method_field('PATCH')}}
                 <div class="row">
                     <div class="form-group col-sm-6">
                         <label for="">آیکون 1</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="نام کلاس آیکن 1" name="icon1" value="{{old('icon1')}}">
+                               placeholder="نام کلاس آیکن 1" name="icon1" value="@if(isset($item)) {{$item->icon1}} @endif">
 
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="">عنوان 1</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="عنوان اسلایدر 1" name="title1" value="{{old('title1')}}">
+                               placeholder="عنوان اسلایدر 1" name="title1" value="@if(isset($item)) {{$item->title1}} @endif">
 
                     </div>
 
@@ -52,13 +53,13 @@
                     <div class="form-group col-sm-6">
                         <label for="">آیکون 2</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="نام کلاس آیکن 2" name="icon2" value="{{old('icon2')}}">
+                               placeholder="نام کلاس آیکن 2" name="icon2" value="@if(isset($item)) {{$item->icon2}} @endif">
 
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="">عنوان 2</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="عنوان اسلایدر 2" name="title2" value="{{old('title2')}}">
+                               placeholder="عنوان اسلایدر 2" name="title2" value="@if(isset($item)) {{$item->title2}} @endif">
 
                     </div>
 
@@ -66,13 +67,13 @@
                     <div class="form-group col-sm-6">
                         <label for="">آیکون 3</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="نام کلاس آیکن 3" name="icon3" value="{{old('icon3')}}">
+                               placeholder="نام کلاس آیکن 3" name="icon3" value="@if(isset($item)) {{$item->icon3}} @endif">
 
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="">عنوان 3</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="عنوان اسلایدر 3" name="title3" value="{{old('title3')}}">
+                               placeholder="عنوان اسلایدر 3" name="title3" value="@if(isset($item)) {{$item->title3}} @endif">
 
                     </div>
 
@@ -80,41 +81,41 @@
                     <div class="form-group col-sm-6">
                         <label for="">آیکون 4</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="نام کلاس آیکن 4" name="icon4" value="{{old('icon4')}}">
+                               placeholder="نام کلاس آیکن 4" name="icon4" value="@if(isset($item)) {{$item->icon4}} @endif">
 
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="">عنوان 4</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="عنوان اسلایدر 4" name="title4" value="{{old('title4')}}">
+                               placeholder="عنوان اسلایدر 4" name="title4" value="@if(isset($item)) {{$item->title4}} @endif">
 
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="">توضیحات 1</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description4"
-                                  placeholder=" توضیحات اسلایدر 1">{{old('description4')}}</textarea>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description1"
+                                  placeholder=" توضیحات اسلایدر 1">@if(isset($item)) {{$item->description1}} @endif</textarea>
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="">توضیحات 2</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description1"
-                                  placeholder=" توضیحات اسلایدر 2">{{old('description1')}}</textarea>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description2"
+                                  placeholder=" توضیحات اسلایدر 2">@if(isset($item)) {{$item->description2}} @endif</textarea>
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="">توضیحات 3</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description2"
-                                  placeholder=" توضیحات اسلایدر 3">{{old('description2')}}</textarea>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description3"
+                                  placeholder=" توضیحات اسلایدر 3">@if(isset($item)) {{$item->description3}} @endif</textarea>
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="">توضیحات 4</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description3"
-                                  placeholder=" توضیحات اسلایدر 4">{{old('description3')}}</textarea>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description4"
+                                  placeholder=" توضیحات اسلایدر 4">@if(isset($item)) {{$item->description4}} @endif</textarea>
                     </div>
                 </div>
                 <div class="row">
                     <div class="form-group col-sm-6">
                         <label for="">وضعیت نمایش</label>
                         <div class="custom-control custom-checkbox custom-checkbox-success">
-                            <input type="checkbox" class="custom-control-input" id="customCheck2" name="status" checked>
+                            <input type="checkbox" class="custom-control-input" id="customCheck2" name="status" @if(isset($item)) @if($item->status == 1) checked @endif @endif>
                             <label class="custom-control-label" for="customCheck2">وضعیت نمایش</label>
                         </div>
                     </div>

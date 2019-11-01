@@ -72,7 +72,7 @@
                     @foreach($blogs as $blog)
                         <tr>
                             <th scope="row"><?= ++$i ?></th>
-                            <td><a href="/{{$blog->thumbnail}}"><img src="/{{$blog->thumbnail}}" alt="{{$blog->name}}"></a></td>
+                            <td><a href="/{{$blog->thumbnail}}"><img src="/{{$blog->thumbnail}}" alt="{{$blog->name}}" width="150" style="height: 100px"></a></td>
                             <td>{{$blog->name}}</td>
                             <td>
                                 @foreach($blog->categories as $category)
@@ -81,7 +81,7 @@
                             </td>
                             <td>نویسنده</td>
                             <td>{{$blog->dateTime}}</td>
-                            <td><a href="#"><i class="fa fa-edit font-size-23"></i></a></td>
+                            <td><a href="{{route('blog.edit',['id'=>$blog->id])}}"><i class="fa fa-edit font-size-23"></i></a></td>
                             <td><a href="#"><i class="fa fa-remove font-size-23"></i></a></td>
                         </tr>
                     @endforeach
