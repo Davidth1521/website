@@ -26,7 +26,7 @@ class FreeAdviceController extends Controller
      */
     public function create()
     {
-        $item = FreeAdvice::where('id', 1)->get()->first();
+        $item = FreeAdvice::where('id', 1)->first();
         if (isset($item)){
             return view('index_page.free_advice.create', compact('item'));
         }else{
@@ -93,16 +93,16 @@ class FreeAdviceController extends Controller
                 'status'=>$status,
                 'btnTitle'=>$btnTitle,
             ]);
-            Alert::success('موفقیت', 'مشاوره رایگان بروزرسانی شد');
         }else{
             FreeAdvice::create([
+                'id'=>$id,
                 'description'=>$description,
                 'link'=>$link,
                 'status'=>$status,
                 'btnTitle'=>$btnTitle,
             ]);
-            Alert::success('موفقیت', 'مشاوره رایگان ایجاد شد');
         }
+        Alert::success('موفقیت', 'مشاوره رایگان بروزرسانی شد');
         return redirect()->back();
     }
 

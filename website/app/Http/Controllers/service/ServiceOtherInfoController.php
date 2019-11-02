@@ -26,7 +26,12 @@ class ServiceOtherInfoController extends Controller
      */
     public function create()
     {
-        return view('services.other-info.create');
+        $item = ServiceOtherInfo::where('id',1)->first();
+        if (isset($item)){
+            return view('services.other-info.create',compact('item'));
+        }else{
+            return view('services.other-info.create');
+        }
     }
 
     /**
@@ -37,35 +42,7 @@ class ServiceOtherInfoController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->except('_token');
-        $title1 = $data['title1'];
-        $title2 = $data['title2'];
-        $description1 = $data['description1'];
-        $tabTitle1 = $data['tabTitle1'];
-        $tabTitle2 = $data['tabTitle2'];
-        $tabTitle3 = $data['tabTitle3'];
-        $tabDesc1 = $data['tabDesc1'];
-        $tabDesc2 = $data['tabDesc2'];
-        $tabDesc3 = $data['tabDesc3'];
-        if (isset($data['status'])) {
-            $status = 1;
-        } else {
-            $status = 0;
-        }
-        ServiceOtherInfo::create([
-            'title1' => $title1,
-            'title2' => $title2,
-            'description1' => $description1,
-            'tabTitle1' => $tabTitle1,
-            'tabTitle2' => $tabTitle2,
-            'tabTitle3' => $tabTitle3,
-            'tabDesc1' => $tabDesc1,
-            'tabDesc2' => $tabDesc2,
-            'tabDesc3' => $tabDesc3,
-            'status' => $status,
-        ]);
-        Alert::success('موفقیت', 'آیتم اطلاعات دیگر خدمات ثبت شد');
-        return redirect()->back();
+       //
     }
 
     /**
@@ -99,7 +76,44 @@ class ServiceOtherInfoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->except('_token');
+        $item = ServiceOtherInfo::where('id',$id)->first();
+        if (isset($data['status'])) {
+            $status = 1;
+        } else {
+            $status = 0;
+        }
+        if (isset($item)){
+            $item->update([
+                'title1' => $data['title1'],
+                'title2' => $data['title2'],
+                'description1' => $data['description1'],
+                'tabTitle1' => $data['tabTitle1'],
+                'tabTitle2' => $data['tabTitle2'],
+                'tabTitle3' => $data['tabTitle3'],
+                'tabDesc1' => $data['tabDesc1'],
+                'tabDesc2' => $data['tabDesc2'],
+                'tabDesc3' => $data['tabDesc3'],
+                'status' => $status,
+            ]);
+        }else{
+            ServiceOtherInfo::create([
+                'id'=>$id,
+                'title1' => $data['title1'],
+                'title2' => $data['title2'],
+                'description1' => $data['description1'],
+                'tabTitle1' => $data['tabTitle1'],
+                'tabTitle2' => $data['tabTitle2'],
+                'tabTitle3' => $data['tabTitle3'],
+                'tabDesc1' => $data['tabDesc1'],
+                'tabDesc2' => $data['tabDesc2'],
+                'tabDesc3' => $data['tabDesc3'],
+                'status' => $status,
+            ]);
+        }
+
+        Alert::success('موفقیت', 'بخش اطلاعات دیگر خدمات ویرایش شد');
+        return redirect()->back();
     }
 
     /**

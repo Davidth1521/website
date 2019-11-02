@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\SocialMedia;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -24,7 +25,13 @@ class SocialMediaController extends Controller
      */
     public function create()
     {
-        return view('other.social_media');
+        $item = SocialMedia::where('id',1)->first();
+        if (isset($item)){
+            return view('other.social_media',compact('item'));
+        }else{
+            return view('other.social_media');
+        }
+
     }
 
     /**
@@ -35,38 +42,7 @@ class SocialMediaController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->except('_token');
-        $skype_icon = $data['skype_icon'];
-        $skype_link = $data['skype_link'];
-        $googlePlus_icon = $data['googlePlus_icon'];
-        $googlePlus_link = $data['googlePlus_link'];
-        $twitter_icon = $data['twitter_icon'];
-        $twitter_link = $data['twitter_link'];
-        $linkedin_icon = $data['linkedin_icon'];
-        $linkedin_link = $data['linkedin_link'];
-        $facebook_icon = $data['facebook_icon'];
-        $facebook_link = $data['facebook_link'];
-        $status = 0;
-        if (isset($data['status'])) {
-            $status = 1;
-        } else {
-            $status = 0;
-        }
-        /*SocialMedia::create([
-            'skype_icon'=> $skype_icon,
-            'skype_link'=>$skype_link ,
-            'googlePlus_icon'=>$googlePlus_icon ,
-            'googlePlus_link'=> $googlePlus_link,
-            'twitter_icon'=>$twitter_icon ,
-            'twitter_link'=> $twitter_link,
-            'linkedin_icon'=> $linkedin_icon,
-            'linkedin_link'=> $linkedin_link,
-            'facebook_icon'=>$facebook_icon ,
-            'status'=>$status ,
-            'facebook_link'=>$facebook_link ,
-        ]);*/
-        Alert::success('موفقیت', 'فضای مجازی بروزرسانی شد');
-        return redirect(route('social_media.create'));
+        //
     }
 
     /**
@@ -100,7 +76,58 @@ class SocialMediaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->except('_token');
+        if (isset($data['status'])) {
+            $status = 1;
+        } else {
+            $status = 0;
+        }
+        $item = SocialMedia::where('id',$id)->first();
+        if (isset($item)){
+            $item->update([
+                'skype_icon'=> $data['skype_icon'],
+                'skype_link'=>$data['skype_link'] ,
+                'googlePlus_icon'=>$data['googlePlus_icon'] ,
+                'googlePlus_link'=> $data['googlePlus_link'],
+                'twitter_icon'=>$data['twitter_icon'] ,
+                'twitter_link'=> $data['twitter_link'],
+                'linkedin_icon'=> $data['linkedin_icon'],
+                'linkedin_link'=> $data['linkedin_link'],
+                'facebook_icon'=>$data['facebook_icon'] ,
+                'facebook_link'=>$data['facebook_link'] ,
+                'rss_link'=>$data['rss_link'] ,
+                'rss_icon'=>$data['rss_icon'] ,
+                'vimo_link'=>$data['vimo_link'] ,
+                'vimo_icon'=>$data['vimo_icon'] ,
+                'youtube_link'=>$data['youtube_link'] ,
+                'youtube_icon'=>$data['youtube_icon'] ,
+                'status'=>$status ,
+            ]);
+        }else{
+            SocialMedia::create([
+                'id'=>1,
+                'skype_icon'=> $data['skype_icon'],
+                'skype_link'=>$data['skype_link'] ,
+                'googlePlus_icon'=>$data['googlePlus_icon'] ,
+                'googlePlus_link'=> $data['googlePlus_link'],
+                'twitter_icon'=>$data['twitter_icon'] ,
+                'twitter_link'=> $data['twitter_link'],
+                'linkedin_icon'=> $data['linkedin_icon'],
+                'linkedin_link'=> $data['linkedin_link'],
+                'facebook_icon'=>$data['facebook_icon'] ,
+                'facebook_link'=>$data['facebook_link'] ,
+                'rss_link'=>$data['rss_link'] ,
+                'rss_icon'=>$data['rss_icon'] ,
+                'vimo_link'=>$data['vimo_link'] ,
+                'vimo_icon'=>$data['vimo_icon'] ,
+                'youtube_link'=>$data['youtube_link'] ,
+                'youtube_icon'=>$data['youtube_icon'] ,
+                'status'=>$status ,
+            ]);
+        }
+
+        Alert::success('موفقیت', 'فضای مجازی بروزرسانی شد');
+        return redirect(route('social_media.create'));
     }
 
     /**
