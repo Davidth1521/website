@@ -41,6 +41,10 @@
                         <input type="file" class="form-control custom-file-input" id="customFile" name="logo"
                                onchange="showName(this,'image')">
                     </div>
+
+                    <div class="col-sm-2 m-b-15 offset-md-5">
+                        <img src="/@if(isset($item)){{$item->logo}} @endif" alt="@if(isset($item)){{$item->title}} @endif" class="img-thumbnail" width="150" style="height: 100px;">
+                    </div>
                 </div>
 
                 <script>
@@ -56,23 +60,15 @@
                     <div class="form-group col-sm-6">
                         <label for="">حریم شخصی</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="حریم شخصی" name="privacy" value="{{old('privacy')}}">
+                               placeholder="حریم شخصی" name="privacy" value="@if(isset($item)) {{$item->privacy}} @endif">
 
                     </div>
                 </div>
                 <div class="row">
-                    {{--<div class="form-group col-sm-6">
-                        <select class="js-example-basic-single" dir="rtl" name="parent_id">
-                            <option value="0">والد منو</option>
-                            @foreach($parent_menus as $menu)
-                                <option value="{{$menu->id}}">{{$menu->title}}</option>
-                            @endforeach
-                        </select>
-                    </div>--}}
                     <div class="form-group col-sm-6">
                         <label for="">وضعیت نمایش</label>
                         <div class="custom-control custom-checkbox custom-checkbox-success">
-                            <input type="checkbox" class="custom-control-input" id="customCheck2" name="status" checked>
+                            <input type="checkbox" class="custom-control-input" id="customCheck2" name="status" @if(isset($item)) @if($item->status == 1) checked @endif @endif>
                             <label class="custom-control-label" for="customCheck2">وضعیت نمایش</label>
                         </div>
                     </div>

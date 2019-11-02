@@ -25,7 +25,19 @@ class SettingController extends MainController
      */
     public function create()
     {
-        return view('setting.create');
+        $item = Setting::where('id',1)->first();
+        if (isset($item)){
+            if (!is_null($item->image) and ($item->image != "")){
+                $item['image'] = $item->image;
+            }else{
+                $item['image'] = 'fake_images/index.jpg';
+            }
+            return view('setting.create',compact('item'));
+        }else{
+            return view('setting.create');
+        }
+
+
     }
 
     /**

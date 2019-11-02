@@ -78,46 +78,47 @@ class OurDescriptionController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->except('_token');
-        $item = OurDescription::find($id);
-        $icon1 = $data['icon1'];
-        $title1 = $data['title1'];
-        $description1 = $data['description1'];
-
-        $icon2 = $data['icon2'];
-        $title2 = $data['title2'];
-        $description2 = $data['description2'];
-
-        $icon3 = $data['icon3'];
-        $title3 = $data['title3'];
-        $description3 = $data['description3'];
-
-        $icon4 = $data['icon4'];
-        $title4 = $data['title4'];
-        $description4 = $data['description4'];
-
+        $item = OurDescription::where('id',$id)->first();
         if (isset($data['status'])) {
             $status = 1;
         } else {
             $status = 0;
         }
-        $item->update([
-            'icon1' => $icon1,
-            'title1' => $title1,
-            'description1' => $description1,
+        if (isset($item)){
+            $item->update([
+                'icon1' => $data['icon1'],
+                'title1' => $data['title1'],
+                'description1' => $data['description1'],
+                'icon2' => $data['icon2'],
+                'title2' => $data['title2'],
+                'description2' => $data['description2'],
+                'icon3' => $data['icon3'],
+                'title3' => $data['title3'],
+                'description3' => $data['description3'],
+                'icon4' => $data['icon4'],
+                'title4' => $data['title4'],
+                'description4' => $data['description4'],
+                'status' => $status,
+            ]);
+        }else{
+            OurDescription::create([
+                'id'=>$id,
+                'icon1' => $data['icon1'],
+                'title1' => $data['title1'],
+                'description1' => $data['description1'],
+                'icon2' => $data['icon2'],
+                'title2' => $data['title2'],
+                'description2' => $data['description2'],
+                'icon3' => $data['icon3'],
+                'title3' => $data['title3'],
+                'description3' => $data['description3'],
+                'icon4' => $data['icon4'],
+                'title4' => $data['title4'],
+                'description4' => $data['description4'],
+                'status' => $status,
+            ]);
+        }
 
-            'icon2' => $icon2,
-            'title2' => $title2,
-            'description2' => $description2,
-
-            'icon3' => $icon3,
-            'title3' => $title3,
-            'description3' => $description3,
-
-            'icon4' => $icon4,
-            'title4' => $title4,
-            'description4' => $description4,
-            'status' => $status,
-        ]);
         Alert::success('موفقیت', 'توضیحات ما بروزرسانی شد');
         return redirect()->back();
     }

@@ -3,7 +3,7 @@
     <!-- begin::page header -->
     <div class="page-header">
         <div>
-            <h3>مقاله ها</h3>
+            <h3>نتایج سرویس</h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#">داشبورد</a></li>
@@ -13,25 +13,11 @@
                 </ol>
             </nav>
         </div>
-        {{--
-          قعلا مورد نیاز نیست.
-
-        <div class="btn-group" role="group">
-             <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                 اقدامات
-             </button>
-             <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                 <a class="dropdown-item" href="#">عمل</a>
-                 <a class="dropdown-item" href="#">عمل دیگر</a>
-                 <a class="dropdown-item" href="#">یک عمل دیگر</a>
-             </div>
-         </div>
-         --}}
     </div>
 
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">بخش مقاله ها</h5>
+            <h5 class="card-title">بخش نتایج</h5>
             <form action="{{route('result.store')}}" method="post">
                 {{csrf_field()}}
                 <div class="row">

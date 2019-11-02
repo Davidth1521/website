@@ -32,13 +32,14 @@
     <div class="card">
         <div class="card-body">
             <h5 class="card-title">بخش دسته بندی سرویس ها</h5>
-            <form action="{{route('service-category.store')}}" method="post">
+            <form action="{{route('service-category.update',['id'=>$item->id])}}" method="post">
                 {{csrf_field()}}
+                {{method_field('PATCH')}}
                 <div class="row">
                     <div class="form-group col-sm-6">
                         <label for="">عنوان</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="عنوان" name="title" value="{{old('title')}}">
+                               placeholder="عنوان" name="title" value="{{$item->title}}">
 
                     </div>
                     <div class="form-group col-sm-6">
@@ -47,7 +48,7 @@
                             <option value="0">والد</option>
                             @if(isset($categories))
                                 @foreach($categories as $category)
-                                    <option value="{{$category->id}}">{{$category->title}}</option>
+                                    <option value="{{$category->id}}" @if($item->parent_id == $category->id) selected @endif>{{$category->title}}</option>
                                 @endforeach
                             @endif
                         </select>
@@ -57,7 +58,7 @@
                     <div class="form-group col-sm-6">
                         <label for="">وضعیت نمایش</label>
                         <div class="custom-control custom-checkbox custom-checkbox-success">
-                            <input type="checkbox" class="custom-control-input" id="customCheck2" name="status" checked>
+                            <input type="checkbox" class="custom-control-input" id="customCheck2" name="status" @if($item->status == 1) checked @endif>
                             <label class="custom-control-label" for="customCheck2">وضعیت نمایش</label>
                         </div>
                     </div>
@@ -68,39 +69,6 @@
                     </div>
                 </div>
             </form>
-
-
-            <div class="table-responsive">
-                <table class="table table-bordered mt-4">
-                    <thead>
-                    <tr>
-                        <th scope="col">ردیف</th>
-                        <th scope="col">نام دسته</th>
-                        <th scope="col">والد</th>
-                        <th scope="col">تاریخ ایجاد</th>
-                        <th scope="col">ویرایش</th>
-                        <th scope="col">حذف</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <?php
-                    $i = 0;
-                    ?>
-                    @if(isset($allCategories))
-                        @foreach($allCategories as $category)
-                            <tr>
-                                <th scope="row"><?= ++$i ?></th>
-                                <td>{{$category->title}}</td>
-                                <td>{{$category->parent_name}}</td>
-                                <td>{{$category->dateTime}}</td>
-                                <td><a href="#"><i class="fa fa-edit font-size-23"></i></a></td>
-                                <td><a href="#"><i class="fa fa-remove font-size-23"></i></a></td>
-                            </tr>
-                        @endforeach
-                    @endif
-                    </tbody>
-                </table>
-            </div>
         </div>
     </div>
 @endsection

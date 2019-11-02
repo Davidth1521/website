@@ -35,13 +35,28 @@
                     <li><a href="/blog/blogTag">تگ</a></li>
                 </ul>
             </li>
-            <li><a href="{{route('social_media.create')}}">فضای مجازی</a></li>
-            <li><a href="{{route('setting.create')}}">تنظیمات</a></li>
-            <li><a href="#"><i class="icon ti-home"></i> <span>خدمات</span> </a>
+            <li><a href="{{route('social_media.create')}}"><i class="icon ti-cloud"></i><span>فضای مجازی</span></a></li>
+            <li><a href="{{route('setting.create')}}"><i class="icon ti-settings"></i><span>تنظیمات</span></a></li>
+            <li><a href="#"><i class="icon ti-briefcase"></i> <span>خدمات</span> </a>
                 <ul>
-                    <li><a href="{{route('about-service.create')}}">درباره خدمات</a></li>
-                    <li><a href="{{route('result.create')}}">نتایج خدمات</a></li>
-                    <li><a href="{{route('steps.create')}}">روند کار</a></li>
+                    <li><a href="#">درباره خدمات</a>
+                        <ul>
+                            <li><a href="{{route('about-service.create')}}">افزودن</a></li>
+                            <li><a href="{{route('about-service.index')}}">لیست</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">نتایج خدمات</a>
+                        <ul>
+                            <li><a href="{{route('result.create')}}">افزودن</a></li>
+                            <li><a href="{{route('result.index')}}">لیست</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">روند کار</a>
+                        <ul>
+                            <li><a href="{{route('steps.create')}}">افزودن</a></li>
+                            <li><a href="{{route('steps.index')}}">لیست</a></li>
+                        </ul>
+                    </li>
                     <li><a href="{{route('other-info.create')}}">اطلاعات اضافی</a></li>
                     <li><a href="{{route('service-category.create')}}">دسته بندی</a></li>
                     <li><a href="#">تعرفه</a>
@@ -52,7 +67,7 @@
                     </li>
                 </ul>
             </li>
-            <li><a href="#"><i class="icon ti-home"></i> <span>درباره ما</span> </a>
+            <li><a href="#"><i class="icon ti-user"></i> <span>درباره ما</span> </a>
                 <ul>
                     <li><a href="{{route('aboutUs.create')}}">ایجاد</a></li>
                     <li><a href="{{route('aboutUsSkill.create')}}">مهارت های ما</a></li>
@@ -60,13 +75,13 @@
                     <li><a href="{{route('partners.create')}}">شرکای ما</a></li>
                 </ul>
             </li>
-            <li><a href="#"><i class="icon ti-home"></i> <span>نمونه کار</span></a>
+            <li><a href="#"><i class="icon ti-bag"></i> <span>نمونه کار</span></a>
                 <ul>
                     <li><a href="{{route('portfolio.create')}}">افزودن</a></li>
                     <li><a href="{{route('portfolioCategory.create')}}">دسته بندی</a></li>
                 </ul>
             </li>
-            <li><a href="#"><i class="icon ti-home"></i><span>تماس با ما</span></a>
+            <li><a href="#"><i class="icon ti-mobile"></i><span>تماس با ما</span></a>
                 <ul>
                     <li><a href="{{route('info.create')}}">اطلاعات و جزئیات</a></li>
                     <li><a href="{{route('message.create')}}">پیام ها</a></li>

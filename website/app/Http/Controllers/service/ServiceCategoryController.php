@@ -43,7 +43,7 @@ class ServiceCategoryController extends Controller
             }
             $category['dateTime'] = $dateFormat;
         }
-        return view('services.category',compact('categories','allCategories'));
+        return view('services.category.create',compact('categories','allCategories'));
     }
 
     /**
@@ -55,16 +55,14 @@ class ServiceCategoryController extends Controller
     public function store(Request $request)
     {
         $data = $request->except('_token');
-        $title = $data['title'];
-        $parent_id = $data['parent_id'];
         if (isset($data['status'])) {
             $status = 1;
         } else {
             $status = 0;
         }
         ServiceCategory::create([
-            'title' => $title,
-            'parent_id' => $parent_id,
+            'title' => $data['title'],
+            'parent_id' => $data['parent_id'],
             'status' => $status,
         ]);
         Alert::success('موفقیت', 'دسته جدید ایجاد شد');
@@ -90,7 +88,8 @@ class ServiceCategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $item = ServiceCategory::find($id);
+        return view('services.category.edit',compact('item'));
     }
 
     /**
@@ -102,7 +101,20 @@ class ServiceCategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->except('_token');
+        if (isset($data['status'])) {
+            $status = 1;
+        } else {
+            $status = 0;
+        }
+        $item = ServiceCategory::find($id);
+        $item->update([
+            'title' => $data['title'],
+            'parent_id' => $data['parent_id'],
+            'status' => $status,
+        ]);
+        Alert::success('موفقیت', 'دسته ویرایش شد');
+        return redirect()->back();
     }
 
     /**

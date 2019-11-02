@@ -124,6 +124,11 @@ class BlogController extends MainController
         foreach ($blog->tagBlog as $tag){
             $blog['tag'] = $tag->id;
         }
+        if (!is_null($blog->image) and ($blog->image != "")){
+            $blog['image'] = $blog->image;
+        }else{
+            $blog['image'] = 'fake_images/index.jpg';
+        }
         return view('blog.edit',compact('blog','categories','tags'));
     }
 
@@ -292,14 +297,11 @@ class BlogController extends MainController
 
     }
 
-
-
     public function addCategory(Request $request)
     {
         $data = $request->except('_token');
         $title = $data['title'];
         $parent_id = $data['parent_id'];
-        $status = 0;
         if (isset($data['status'])) {
             $status = 1;
         } else {

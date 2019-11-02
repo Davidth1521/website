@@ -122,6 +122,7 @@
                 </div>
                 <div class="row d-block ml-1">
                     <div class="form-group">
+                        <a href="/blog/blog" type="submit" class="btn btn-danger float-right mr-3" >بازگشت</a>
                         <button type="submit" class="btn btn-success float-right">ارسال</button>
                     </div>
                 </div>
