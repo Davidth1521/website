@@ -35,7 +35,7 @@
                     hideDuration: 200
                 };
 
-                toastr.success('به قالب مدیریتی Gramos خوش آمدید!');
+                toastr.success('به پنل مدیریت سایت خوش آمدید!');
             }, 1000);
 
         });

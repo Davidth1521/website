@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\index_page;
 
-use App\Header;
 use App\Http\Controllers\MainController;
-//use App\Menu;
 use App\Menu;
+use Hekmatinasser\Verta\Verta;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class PrimaryController extends MainController
 {
@@ -17,7 +17,30 @@ class PrimaryController extends MainController
      */
     public function index()
     {
+        $menus = Menu::all();
 
+        foreach ($menus as $menu) {
+            $date = $menu->created_at;
+            $parent_id = $menu->parent_id;
+            $v = new Verta($date);
+            if ($v->day < 10 && $v->month < 10) {
+                $dateFormat = $v->format('Y/0n/0j');
+            } elseif ($v->day < 10 && $v->month > 10) {
+                $dateFormat = $v->format('Y/n/0j');
+            } elseif ($v->day > 10 && $v->month < 10) {
+                $dateFormat = $v->format('Y/0n/j');
+            } else {
+                $dateFormat = $v->format('Y/n/j');
+            }
+            $menu['dateTime'] = $dateFormat;
+            $parent = Menu::find($parent_id);
+            if (isset($parent)) {
+                $menu['parent'] = $parent->title;
+            }else{
+                $menu['parent'] = 'والد';
+            }
+        }
+        return view('index_page.menu.list', compact('menus'));
     }
 
     /**
@@ -29,7 +52,7 @@ class PrimaryController extends MainController
     {
 //        dd(1);
         $parent_menus = Menu::all();
-        return view('index_page.header.index', compact('parent_menus'));
+        return view('index_page.menu.create', compact('parent_menus'));
     }
 
     /**
@@ -41,31 +64,18 @@ class PrimaryController extends MainController
     public function store(Request $request)
     {
         $data = $request->except('_token');
-        $logo = $request->file('logo');
-        $title = $data['title'];
-        $link = $data['link'];
-        $parent_id = $data['parent_id'];
-        $status = 0;
         if (isset($data['status'])) {
             $status = 1;
         } else {
             $status = 0;
         }
-        if (isset($title) and isset($link)){
-            Menu::create([
-                'title' => $title,
-                'link' => $link,
-                'parent_id' => $parent_id,
-                'status' => $status,
-            ]);
-        }
-        if (isset($logo)) {
-            $imageAddress = $this->ImageUploader($logo, 'images/', 123, 40);
-            $row = Header::find(1);
-            $row->update([
-                'logo' => $imageAddress
-            ]);
-        }
+        Menu::create([
+            'title' => $data['title'],
+            'link' => $data['link'],
+            'parent_id' => $data['parent_id'],
+            'status' => $status,
+        ]);
+        Alert::success('موفقیت', 'آیتم جدید منو ایجاد شد');
         return redirect()->back();
     }
 
@@ -88,7 +98,9 @@ class PrimaryController extends MainController
      */
     public function edit($id)
     {
-        //
+        $menu = Menu::find($id);
+        $parent_menus = Menu::all();
+        return view('index_page.menu.edit', compact('menu','parent_menus'));
     }
 
     /**
@@ -100,7 +112,22 @@ class PrimaryController extends MainController
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->except('_token');
+        $menu = Menu::find($id);
+        if (isset($data['status'])) {
+            $status = 1;
+        } else {
+            $status = 0;
+        }
+        $menu->update([
+            'title' => $data['title'],
+            'link' => $data['link'],
+            'parent_id' => $data['parent_id'],
+            'status' => $status,
+        ]);
+
+        Alert::success('موفقیت', 'منو بروزرسانی شد');
+        return redirect()->back();
     }
 
     /**

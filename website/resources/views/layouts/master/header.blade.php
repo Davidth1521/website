@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>وبسایت داوود خوشکار</title>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.min.css">
+
     <!-- begin::global styles -->
     <link rel="stylesheet" href="/assets/vendors/bundle.css" type="text/css">
     <!-- end::global styles -->
@@ -13,6 +15,8 @@
     <!-- begin::select2 -->
     <link rel="stylesheet" href="/assets/vendors/select2/css/select2.min.css" type="text/css">
     <!-- end::select2 -->
+
+    {{--<link rel="stylesheet" href="/css/sweetalert2.css">--}}
 
     <!-- begin::custom styles -->
     <link rel="stylesheet" href="/assets/css/app.css" type="text/css">

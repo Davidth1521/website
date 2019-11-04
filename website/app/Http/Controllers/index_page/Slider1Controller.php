@@ -4,8 +4,9 @@ namespace App\Http\Controllers\index_page;
 
 use App\Http\Controllers\MainController;
 use App\Slider1;
+use Hekmatinasser\Verta\Verta;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class Slider1Controller extends MainController
 {
@@ -16,7 +17,27 @@ class Slider1Controller extends MainController
      */
     public function index()
     {
-        //
+        $sliders = Slider1::all();
+        foreach ($sliders as $slider) {
+            $date = $slider->created_at;
+            $v = new Verta($date);
+            if ($v->day < 10 && $v->month < 10) {
+                $dateFormat = $v->format('Y/0n/0j');
+            } elseif ($v->day < 10 && $v->month > 10) {
+                $dateFormat = $v->format('Y/n/0j');
+            } elseif ($v->day > 10 && $v->month < 10) {
+                $dateFormat = $v->format('Y/0n/j');
+            } else {
+                $dateFormat = $v->format('Y/n/j');
+            }
+            $slider['dateTime'] = $dateFormat;
+            if (!is_null($slider->image) and ($slider->image != "")){
+                $slider['image'] = $slider->image;
+            }else{
+                $slider['image'] = 'fake_images/index.jpg';
+            }
+        }
+            return view('index_page.slider1.list',compact('sliders'));
     }
 
     /**
@@ -26,7 +47,7 @@ class Slider1Controller extends MainController
      */
     public function create()
     {
-        return view('index_page.slider1.slider1');
+        return view('index_page.slider1.create');
     }
 
     /**
@@ -39,28 +60,24 @@ class Slider1Controller extends MainController
     {
         $data = $request->except('_token');
         $file = $request->file('image');
-        $title = $data['title'];
-        $btnTitle = $data['btnTitle'];
-        $btnLink = $data['btnLink'];
-        $description = $data['description'];
         $imageAddress = '';
         if (isset($file)) {
             $imageAddress = $this->ImageUploader($file, 'images/slider1/', 1315, 455);
         }
-        $status = 0;
         if (isset($data['status'])) {
             $status = 1;
         } else {
             $status = 0;
         }
         Slider1::create([
-            'title'=>$title,
-            'btnTitle'=>$btnTitle,
-            'btnLink'=>$btnLink,
-            'description'=>$description,
+            'title'=>$data['title'],
+            'btnTitle'=>$data['btnTitle'],
+            'btnLink'=>$data['btnLink'],
+            'description'=>$data['description'],
             'image'=>$imageAddress,
             'status'=>$status,
         ]);
+        Alert::success('موفقیت', 'اسلایدر ایجاد شد');
         return redirect()->back();
     }
 
@@ -83,7 +100,14 @@ class Slider1Controller extends MainController
      */
     public function edit($id)
     {
-        //
+        $slider = Slider1::find($id);
+        if (!is_null($slider->image) and ($slider->image != "")){
+            $slider['image'] = $slider->image;
+        }else{
+            $slider['image'] = 'fake_images/index.jpg';
+        }
+
+        return view('index_page.slider1.edit',compact('slider'));
     }
 
     /**
@@ -95,7 +119,35 @@ class Slider1Controller extends MainController
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->except('_token');
+        $file = $request->file('image');
+        $slider = Slider1::find($id);
+        if (isset($data['status'])) {
+            $status = 1;
+        } else {
+            $status = 0;
+        }
+        if (isset($file)) {
+            $imageAddress = $this->ImageUploader($file, 'images/slider1/', 1315, 455);
+            $slider->update([
+                'title'=>$data['title'],
+                'btnTitle'=>$data['btnTitle'],
+                'btnLink'=>$data['btnLink'],
+                'description'=>$data['description'],
+                'image'=>$imageAddress,
+                'status'=>$status,
+            ]);
+        }else{
+            $slider->update([
+                'title'=>$data['title'],
+                'btnTitle'=>$data['btnTitle'],
+                'btnLink'=>$data['btnLink'],
+                'description'=>$data['description'],
+                'status'=>$status,
+            ]);
+        }
+        Alert::success('موفقیت', 'اسلایدر ویرایش شد');
+        return redirect()->back();
     }
 
     /**
