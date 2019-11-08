@@ -51,6 +51,38 @@
                     </div>
                 </div>
             </form>
+
+            <div class="table-responsive">
+                <table class="table table-bordered mt-4">
+                    <thead>
+                    <tr>
+                        <th scope="col">ردیف</th>
+                        <th scope="col">عنوان ویژگی</th>
+                        <th scope="col">تاریخ ایجاد</th>
+                        <th scope="col">تعرفه</th>
+                        <th scope="col">ویرایش</th>
+                        <th scope="col">حذف</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                    $i = 0;
+                    ?>
+                    @if(isset($tariffDetails))
+                        @foreach($tariffDetails as $tariffDetail)
+                            <tr>
+                                <th scope="row"><?= ++$i ?></th>
+                                <td>{{$tariffDetail->attribute}}</td>
+                                <td>{{$tariffDetail->dateTime}}</td>
+                                <td>{{$tariffDetail->parentName}}</td>
+                                <td><a href="{{route('tariff_detail.edit',['id'=>$tariffDetail->id])}}"><i class="fa fa-edit font-size-23"></i></a></td>
+                                <td><a href="#"><i class="fa fa-remove font-size-23"></i></a></td>
+                            </tr>
+                        @endforeach
+                    @endif
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 @endsection

@@ -12,6 +12,11 @@
 <script src="/assets/js/examples/select2.js"></script>
 <!-- end::select2 -->
 
+<!-- begin::dropzone -->
+<script src="/assets/vendors/dropzone/dropzone.js"></script>
+<script src="/assets/js/examples/dropzone.js"></script>
+<!-- end::dropzone -->
+/
 <!-- begin::custom scripts -->
 <script src="/assets/js/custom.js"></script>
 <script src="/assets/js/app.js"></script>

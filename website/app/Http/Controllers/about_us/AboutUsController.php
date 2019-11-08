@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\about_us;
 
 use App\AboutUs;
+use App\File;
 use App\Http\Controllers\MainController;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -29,50 +30,59 @@ class AboutUsController extends MainController
         return view('about-us.create');
     }
 
+    public function postImage(Request $request)
+    {
+        $file = $request->file('file');
+        $address = $this->ImageUploader($file, 'images/about-us/', 548, 365);
+         File::create([
+            'address' => $address,
+        ]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $data = $request->except('_token');
-        $image1 = $request->file('image1');
-        $image2 = $request->file('image2');
-        $image3 = $request->file('image3');
+//        $image1 = $request->file('image1');
+//        $image2 = $request->file('image2');
+//        $image3 = $request->file('image3');
         $title = $data['title'];
         $description = $data['description'];
-        if (isset($image1)) {
-            $imageAddress1 = $this->ImageUploader($image1, '/about-us/images/', 548, 365);
-        }
-        if (isset($image2)) {
-            $imageAddress2 = $this->ImageUploader($image2, '/about-us/images/', 548, 365);
-        }
-        if (isset($image3)) {
-            $imageAddress3 = $this->ImageUploader($image3, '/about-us/images/', 548, 365);
-        }
+        /* if (isset($image1)) {
+             $imageAddress1 = $this->ImageUploader($image1, '/about-us/images/', 548, 365);
+         }
+         if (isset($image2)) {
+             $imageAddress2 = $this->ImageUploader($image2, '/about-us/images/', 548, 365);
+         }
+         if (isset($image3)) {
+             $imageAddress3 = $this->ImageUploader($image3, '/about-us/images/', 548, 365);
+         }*/
         if (isset($data['status'])) {
             $status = 1;
         } else {
             $status = 0;
         }
-        $about_us = AboutUs::where('id',1)->get();
-        if (count($about_us) > 0){
+        $about_us = AboutUs::where('id', 1)->get();
+        if (count($about_us) > 0) {
             $about_us->update([
-                'image1' => $imageAddress1,
-                'image2' => $imageAddress2,
-                'image3' => $imageAddress3,
+//                'image1' => $imageAddress1,
+//                'image2' => $imageAddress2,
+//                'image3' => $imageAddress3,
                 'title' => $title,
                 'description' => $description,
                 'status' => $status,
             ]);
             Alert::success('موفقیت', 'آیتم درباره ما ویرایش شد');
-        }else{
+        } else {
             AboutUs::create([
-                'image1' => $imageAddress1,
-                'image2' => $imageAddress2,
-                'image3' => $imageAddress3,
+//                'image1' => $imageAddress1,
+//                'image2' => $imageAddress2,
+//                'image3' => $imageAddress3,
                 'title' => $title,
                 'description' => $description,
                 'status' => $status,
@@ -85,7 +95,7 @@ class AboutUsController extends MainController
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -96,7 +106,7 @@ class AboutUsController extends MainController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -107,8 +117,8 @@ class AboutUsController extends MainController
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -119,7 +129,7 @@ class AboutUsController extends MainController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

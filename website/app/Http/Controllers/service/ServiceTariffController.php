@@ -17,7 +17,22 @@ class ServiceTariffController extends Controller
      */
     public function index()
     {
-        //
+        $tariffs = ServiceTariff::all();
+        foreach ($tariffs as $tariff) {
+            $date = $tariff->created_at;
+            $v = new Verta($date);
+            if ($v->day < 10 && $v->month < 10) {
+                $dateFormat = $v->format('Y/0n/0j');
+            } elseif ($v->day < 10 && $v->month > 10) {
+                $dateFormat = $v->format('Y/n/0j');
+            } elseif ($v->day > 10 && $v->month < 10) {
+                $dateFormat = $v->format('Y/0n/j');
+            } else {
+                $dateFormat = $v->format('Y/n/j');
+            }
+            $tariff['dateTime'] = $dateFormat;
+        }
+        return view('services.tariff.list',compact('tariffs'));
     }
 
     /**
@@ -62,7 +77,7 @@ class ServiceTariffController extends Controller
         }
         ServiceTariff::create([
             'title' => $data['title'],
-            'price' => $data['price '],
+            'price' => $data['price'],
             'linkTitle' => $data['linkTitle'],
             'link' => $data['link'],
             'per' => $data['per'],
@@ -92,7 +107,8 @@ class ServiceTariffController extends Controller
      */
     public function edit($id)
     {
-        //
+        $tariff = ServiceTariff::find($id);
+        return view('services.tariff.edit',compact('tariff'));
     }
 
     /**
@@ -104,7 +120,25 @@ class ServiceTariffController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->except('_token');
+//        dd($data);
+        if (isset($data['status'])) {
+            $status = 1;
+        } else {
+            $status = 0;
+        }
+        $tariff = ServiceTariff::find($id);
+        $tariff->update([
+            'title' => $data['title'],
+            'price' => $data['price'],
+            'linkTitle' => $data['linkTitle'],
+            'link' => $data['link'],
+            'per' => $data['per'],
+            'unit' => $data['unit'],
+            'status' => $status,
+        ]);
+        Alert::success('موفقیت', 'تعرفه ویرایش شد');
+        return redirect()->back();
     }
 
     /**

@@ -85,7 +85,8 @@ class MainController extends Controller
     }
 
     public function ImageUploader($file,$target,$width,$height)
-    {        $filename =Str::lower(time() . "-" . $file->getClientOriginalName());
+    {
+        $filename =Str::lower(time() . "-" . $file->getClientOriginalName());
         $path =public_path($target);
         $files = $file->move($path, $filename);
         $img = Image::make($files->getRealPath());

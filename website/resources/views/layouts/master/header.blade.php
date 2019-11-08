@@ -16,12 +16,17 @@
     <link rel="stylesheet" href="/assets/vendors/select2/css/select2.min.css" type="text/css">
     <!-- end::select2 -->
 
+    <!-- begin::dropzone -->
+    <link rel="stylesheet" href="/assets/vendors/dropzone/dropzone.css" type="text/css">
+    <!-- begin::dropzone -->
+
     {{--<link rel="stylesheet" href="/css/sweetalert2.css">--}}
 
     <!-- begin::custom styles -->
     <link rel="stylesheet" href="/assets/css/app.css" type="text/css">
     <link rel="stylesheet" href="/assets/css/custom.css" type="text/css">
     <!-- end::custom styles -->
+
 
     <!-- begin::favicon -->
     <link rel="shortcut icon" href="/assets/media/image/favicon.png">

@@ -1,6 +1,5 @@
 @extends('layouts.master.master')
 @section('content')
-    <!-- begin::page header -->
     <div class="page-header">
         <div>
             <h3>دسته بندی سرویس ها</h3>
@@ -13,20 +12,6 @@
                 </ol>
             </nav>
         </div>
-        {{--
-          قعلا مورد نیاز نیست.
-
-        <div class="btn-group" role="group">
-             <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                 اقدامات
-             </button>
-             <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                 <a class="dropdown-item" href="#">عمل</a>
-                 <a class="dropdown-item" href="#">عمل دیگر</a>
-                 <a class="dropdown-item" href="#">یک عمل دیگر</a>
-             </div>
-         </div>
-         --}}
     </div>
 
     <div class="card">
@@ -65,6 +50,7 @@
                 </div>
                 <div class="row d-block ml-1">
                     <div class="form-group">
+                        <a href="/service/service-category/create" type="submit" class="btn btn-danger float-right mr-3">بازگشت</a>
                         <button type="submit" class="btn btn-success float-right">ارسال</button>
                     </div>
                 </div>
