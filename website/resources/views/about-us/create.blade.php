@@ -13,53 +13,26 @@
                 </ol>
             </nav>
         </div>
-        {{--
-          قعلا مورد نیاز نیست.
-
-        <div class="btn-group" role="group">
-             <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                 اقدامات
-             </button>
-             <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                 <a class="dropdown-item" href="#">عمل</a>
-                 <a class="dropdown-item" href="#">عمل دیگر</a>
-                 <a class="dropdown-item" href="#">یک عمل دیگر</a>
-             </div>
-         </div>
-         --}}
     </div>
 
     <div class="card">
         <div class="card-body">
+            <div class="card-title">دموی پایه</div>
+            {{--<form action="/about_us/images" class="dropzone" id="my-awesome-dropzone" method="post"
+                  enctype="multipart/form-data">
+                {{csrf_field()}}
+            </form>--}}
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
             <h5 class="card-title">بخش درباره ها</h5>
+            <form action="/about_us/images/" class="dropzone mb-3" id="my-awesome-dropzone" method="post"
+                  enctype="multipart/form-data">
+                {{csrf_field()}}
+            </form>
             <form action="{{route('aboutUs.store')}}" method="post" enctype="multipart/form-data">
                 {{csrf_field()}}
-                <div class="row">
-                    <div class="form-group col-sm-3 mr-3">
-                        <label class="custom-file-label" for="customFile" id="image1">تصویر 1</label>
-                        <input type="file" class="form-control custom-file-input" id="customFile1" name="image1"
-                               onchange="showName(this,'image1')">
-                    </div>
-                    <div class="form-group col-sm-3 mr-3">
-                        <label class="custom-file-label" for="customFile" id="image2">تصویر 2</label>
-                        <input type="file" class="form-control custom-file-input" id="customFile2" name="image2"
-                               onchange="showName(this,'image2')">
-                    </div>
-                    <div class="form-group col-sm-3 mr-3">
-                        <label class="custom-file-label" for="customFile" id="image3">تصویر 3</label>
-                        <input type="file" class="form-control custom-file-input" id="customFile3" name="image3"
-                               onchange="showName(this,'image3')">
-                    </div>
-                </div>
-                <script>
-                    function showName(tagName,labelName) {
-                        var tag = $(tagName);
-                        var i = tag.prev('#'+labelName).clone();
-                        var file = tag[0].files[0].name;
-                        tag.prev('#'+labelName).text(file);
-                    }
-
-                </script>
                 <div class="row">
                     <div class="form-group col-sm-6">
                         <label for="">عنوان</label>
@@ -87,6 +60,7 @@
                     </div>
                 </div>
             </form>
+
         </div>
     </div>
 @endsection

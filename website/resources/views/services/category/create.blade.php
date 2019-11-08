@@ -91,7 +91,7 @@
                             <tr>
                                 <th scope="row"><?= ++$i ?></th>
                                 <td>{{$category->title}}</td>
-                                <td>{{$category->parent_name}}</td>
+                                <td>{{$category->parentName}} </td>
                                 <td>{{$category->dateTime}}</td>
                                 <td><a href="{{route('service-category.edit',['id'=>$category->id])}}"><i class="fa fa-edit font-size-23"></i></a></td>
                                 <td><a href="#"><i class="fa fa-remove font-size-23"></i></a></td>

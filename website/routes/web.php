@@ -24,45 +24,46 @@ Route::middleware('auth')->namespace('index_page')->prefix('index')->group(funct
     Route::resource('/slider1', 'Slider1Controller');
     Route::resource('/ourDescription', 'OurDescriptionController');
     Route::resource('/customerSay', 'CustomerSayController');
-    Route::resource('/free_advice','FreeAdviceController');
+    Route::resource('/free_advice', 'FreeAdviceController');
 });
 Route::middleware('auth')->namespace('blog')->prefix('blog')->group(function () {
-    Route::resource('/blog','BlogController');
-    Route::resource('/blog_message','BlogCommentController');
-    Route::get('/blogCategory','BlogController@showCategory');
-    Route::get('/blogTag','BlogController@showTag');
-    Route::post('/blog/addCategory','BlogController@addCategory')->name('addCat');
-    Route::post('/blog/addTag','BlogController@addTag')->name('addTag');
-    Route::get('/blog/showTag/{id}','BlogController@showTagEdit')->name('showTag');
-        Route::get('/blog/showCategory/{id}','BlogController@showCategoryEdit')->name('showCat');
-    Route::post('/blog/editCategory/{id}','BlogController@editCategory')->name('editCat');
-    Route::post('/blog/editTag/{id}','BlogController@editTag')->name('editTag');
-    Route::post('/blog/removeCategory','BlogController@removeCategory')->name('removeCat');
-    Route::post('/blog/removeTag','BlogController@removeTag')->name('removeTag');
-    Route::post('/blog/search','BlogController@search_blog')->name('search_blog');
+    Route::resource('/blog', 'BlogController');
+    Route::resource('/blog_message', 'BlogCommentController');
+    Route::get('/blogCategory', 'BlogController@showCategory');
+    Route::get('/blogTag', 'BlogController@showTag');
+    Route::post('/blog/addCategory', 'BlogController@addCategory')->name('addCat');
+    Route::post('/blog/addTag', 'BlogController@addTag')->name('addTag');
+    Route::get('/blog/showTag/{id}', 'BlogController@showTagEdit')->name('showTag');
+    Route::get('/blog/showCategory/{id}', 'BlogController@showCategoryEdit')->name('showCat');
+    Route::post('/blog/editCategory/{id}', 'BlogController@editCategory')->name('editCat');
+    Route::post('/blog/editTag/{id}', 'BlogController@editTag')->name('editTag');
+    Route::post('/blog/removeCategory', 'BlogController@removeCategory')->name('removeCat');
+    Route::post('/blog/removeTag', 'BlogController@removeTag')->name('removeTag');
+    Route::post('/blog/search', 'BlogController@search_blog')->name('search_blog');
 });
 
 Route::middleware('auth')->group(function () {
-   Route::resource('/social_media','SocialMediaController');
-   Route::resource('/setting','SettingController');
+    Route::resource('/social_media', 'SocialMediaController');
+    Route::resource('/setting', 'SettingController');
 });
 
 Route::middleware('auth')->namespace('service')->prefix('service')->group(function () {
-    Route::resource('/','ServiceController');
-    Route::resource('/about-service','ServiceAboutController');
-    Route::resource('/other-info','ServiceOtherInfoController');
-    Route::resource('/steps','ServiceStepController');
-    Route::resource('/result','ServiceResultController');
-    Route::resource('/tariff','ServiceTariffController');
-    Route::resource('/tariff_detail','TariffDetailController');
-    Route::resource('/service-category','ServiceCategoryController');
+    Route::resource('/', 'ServiceController');
+    Route::resource('/about-service', 'ServiceAboutController');
+    Route::resource('/other-info', 'ServiceOtherInfoController');
+    Route::resource('/steps', 'ServiceStepController');
+    Route::resource('/result', 'ServiceResultController');
+    Route::resource('/tariff', 'ServiceTariffController');
+    Route::resource('/tariff_detail', 'TariffDetailController');
+    Route::resource('/service-category', 'ServiceCategoryController');
 });
 
 Route::middleware('auth')->namespace('about_us')->prefix('about_us')->group(function () {
-    Route::resource('/aboutUs','AboutUsController');
-    Route::resource('/aboutUsSkill','AboutUsSkillController');
-    Route::resource('/ourTeam','OurTeamController');
-    Route::resource('/partners','PartnerController');
+    Route::resource('/aboutUs', 'AboutUsController');
+    Route::resource('/aboutUsSkill', 'AboutUsSkillController');
+    Route::resource('/ourTeam', 'OurTeamController');
+    Route::resource('/partners', 'PartnerController');
+    Route::post('/images/', 'AboutUsController@postImage');
 });
 
 Route::middleware('auth')->namespace('portfolio')->prefix('portfolio')->group(function () {

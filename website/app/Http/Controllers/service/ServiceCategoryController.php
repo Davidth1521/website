@@ -29,6 +29,7 @@ class ServiceCategoryController extends Controller
     {
         $categories = ServiceCategory::where('parent_id',0)->get();
         $allCategories = ServiceCategory::all();
+//        dd($categories);
         foreach ($allCategories as $category){
             $date = $category->created_at;
             $v = new Verta($date);
@@ -42,6 +43,12 @@ class ServiceCategoryController extends Controller
                 $dateFormat = $v->format('Y/n/j');
             }
             $category['dateTime'] = $dateFormat;
+            if ($category->parent_id == 0){
+                $category['parentName'] =  'والد';
+            }else{
+                $categoryParent = ServiceCategory::where('id',$category->parent_id)->first();
+                $category['parentName'] =  $categoryParent->title;
+            }
         }
         return view('services.category.create',compact('categories','allCategories'));
     }
@@ -89,7 +96,8 @@ class ServiceCategoryController extends Controller
     public function edit($id)
     {
         $item = ServiceCategory::find($id);
-        return view('services.category.edit',compact('item'));
+        $categories = ServiceCategory::where('parent_id',0)->get();
+        return view('services.category.edit',compact('item','categories'));
     }
 
     /**
