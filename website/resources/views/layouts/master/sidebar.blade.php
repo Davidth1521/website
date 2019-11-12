@@ -72,14 +72,25 @@
                 <ul>
                     <li><a href="{{route('aboutUs.create')}}">ایجاد</a></li>
                     <li><a href="{{route('aboutUsSkill.create')}}">مهارت های ما</a></li>
-                    <li><a href="{{route('ourTeam.create')}}">تیم ما</a></li>
-                    <li><a href="{{route('partners.create')}}">شرکای ما</a></li>
+                    <li><a href="{{route('ourTeam.create')}}">تیم ما</a>
+                        <ul>
+                            <li><a href="{{route('ourTeam.create')}}">ایجاد</a></li>
+                            <li><a href="{{route('ourTeam.index')}}">لیست</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="{{route('partners.create')}}">شرکای ما</a>
+                        <ul>
+                            <li><a href="{{route('partners.create')}}">ایجاد</a></li>
+                            <li><a href="{{route('partners.index')}}">لیست</a></li>
+                        </ul></li>
                 </ul>
             </li>
-            <li><a href="#"><i class="icon ti-bag"></i> <span>نمونه کار</span></a>
+            <li><a href="#"><i class="icon ti-bag"></i><span>نمونه کار</span></a>
                 <ul>
                     <li><a href="{{route('portfolio.create')}}">افزودن</a></li>
+                    <li><a href="{{route('portfolio.index')}}">لیست</a></li>
                     <li><a href="{{route('portfolioCategory.create')}}">دسته بندی</a></li>
+                    <li><a href="{{route('portfolioCategory.index')}}">لیست دسته بندی</a></li>
                 </ul>
             </li>
             <li><a href="#"><i class="icon ti-mobile"></i><span>تماس با ما</span></a>

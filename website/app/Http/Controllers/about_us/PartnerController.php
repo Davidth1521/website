@@ -4,6 +4,7 @@ namespace App\Http\Controllers\about_us;
 
 use App\Http\Controllers\MainController;
 use App\Partner;
+use Hekmatinasser\Verta\Verta;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -16,7 +17,22 @@ class PartnerController extends MainController
      */
     public function index()
     {
-        //
+        $partners = Partner::where('status',1)->get();
+        foreach ($partners as $item) {
+            $date = $item->created_at;
+            $v = new Verta($date);
+            if ($v->day < 10 && $v->month < 10) {
+                $dateFormat = $v->format('Y/0n/0j');
+            } elseif ($v->day < 10 && $v->month > 10) {
+                $dateFormat = $v->format('Y/n/0j');
+            } elseif ($v->day > 10 && $v->month < 10) {
+                $dateFormat = $v->format('Y/0n/j');
+            } else {
+                $dateFormat = $v->format('Y/n/j');
+            }
+            $item['dateTime'] = $dateFormat;
+        }
+        return view('about-us.partner.index',compact('partners'));
     }
 
     /**
@@ -26,13 +42,13 @@ class PartnerController extends MainController
      */
     public function create()
     {
-        return view('about-us.partners');
+        return view('about-us.partner.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -49,8 +65,10 @@ class PartnerController extends MainController
             $status = 0;
         }
         Partner::create([
-            'image'=>$imageAddress,
-            'status'=>$status,
+            'image' => $imageAddress,
+            'title' => $data['title'],
+            'link' => $data['link'],
+            'status' => $status,
         ]);
         Alert::success('موفقیت', 'شریک جدید ایجاد شد');
         return redirect()->back();
@@ -59,7 +77,7 @@ class PartnerController extends MainController
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -70,30 +88,52 @@ class PartnerController extends MainController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        //
+        $partner = Partner::find($id);
+        return view('about-us.partner.edit', compact('partner'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->except('_token');
+        $file = $request->file('image');
+        $partner = Partner::find($id);
+        if (isset($file)) {
+            $imageAddress = $this->ImageUploader($file, 'images/partners/', 170, 100);
+            $partner->update([
+                'image' => $imageAddress,
+            ]);
+        }
+        if (isset($data['status'])) {
+            $status = 1;
+        } else {
+            $status = 0;
+        }
+
+        $partner->update([
+            'title' => $data['title'],
+            'link' => $data['link'],
+            'status' => $status,
+        ]);
+        Alert::success('موفقیت', 'شریک ویرایش شد');
+        return redirect()->back();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

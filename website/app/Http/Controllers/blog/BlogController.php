@@ -20,7 +20,7 @@ class BlogController extends MainController
      */
     public function index()
     {
-        $blogs = Blog::where('status',1)->get();
+        $blogs = Blog::where('status', 1)->get();
         foreach ($blogs as $blog) {
             $categories = $blog->categoryBlog;
             $cat_arr = [];
@@ -41,7 +41,7 @@ class BlogController extends MainController
             }
             $blog['dateTime'] = $dateFormat;
         }
-        return view('blog.list',compact('blogs'));
+        return view('blog.list', compact('blogs'));
     }
 
     /**
@@ -118,18 +118,18 @@ class BlogController extends MainController
         $blog = Blog::find($id);
         $categories = categoryBlog::where('status', '=', 1)->get();
         $tags = tagBlog::where('status', 1)->get();
-        foreach ($blog->categoryBlog as $cat){
+        foreach ($blog->categoryBlog as $cat) {
             $blog['cat'] = $cat->id;
         }
-        foreach ($blog->tagBlog as $tag){
+        foreach ($blog->tagBlog as $tag) {
             $blog['tag'] = $tag->id;
         }
-        if (!is_null($blog->image) and ($blog->image != "")){
+        if (!is_null($blog->image) and ($blog->image != "")) {
             $blog['image'] = $blog->image;
-        }else{
+        } else {
             $blog['image'] = 'fake_images/index.jpg';
         }
-        return view('blog.edit',compact('blog','categories','tags'));
+        return view('blog.edit', compact('blog', 'categories', 'tags'));
     }
 
     /**
@@ -163,7 +163,7 @@ class BlogController extends MainController
                     'thumbnail' => $thumbnail,
                     'image' => $imageAddress,
                 ]);
-            }else{
+            } else {
                 $blog->update([
                     'name' => $data['name'],
                     'title' => $data['title'],
@@ -173,7 +173,7 @@ class BlogController extends MainController
                     'image' => $imageAddress,
                 ]);
             }
-        }else{
+        } else {
             $blog->update([
                 'name' => $data['name'],
                 'title' => $data['title'],
@@ -218,10 +218,10 @@ class BlogController extends MainController
             }
             $category['dateTime'] = $dateFormat;
             $parent_id = $category->parent_id;
-            if ($parent_id != 0){
-                $parent = categoryBlog::where('id',$parent_id)->first();
+            if ($parent_id != 0) {
+                $parent = categoryBlog::where('id', $parent_id)->first();
                 $parent_name = $parent->title;
-            }else{
+            } else {
                 $parent_name = 'والد';
             }
             $category['parent_name'] = $parent_name;
@@ -253,15 +253,16 @@ class BlogController extends MainController
     {
         $cat = categoryBlog::find($id);
         $categories = categoryBlog::all();
-        return view('blog.editCategory',compact('cat','categories'));
+        return view('blog.editCategory', compact('cat', 'categories'));
     }
+
     public function showTagEdit($id)
     {
         $tag = tagBlog::find($id);
-        return view('blog.editTag',compact('tag'));
+        return view('blog.editTag', compact('tag'));
     }
 
-    public function editCategory(Request $request,$id)
+    public function editCategory(Request $request, $id)
     {
         $cat = categoryBlog::find($id);
         $data = $request->except('_token');
@@ -271,15 +272,15 @@ class BlogController extends MainController
             $status = 0;
         }
         $cat->update([
-            'title'=>$data['title'],
-            'parent_id'=>$data['parent_id'],
-            'status'=>$status,
+            'title' => $data['title'],
+            'parent_id' => $data['parent_id'],
+            'status' => $status,
         ]);
         Alert::success('موفقیت', 'دسته بروز شد');
         return redirect()->back();
     }
 
-    public function editTag(Request $request,$id)
+    public function editTag(Request $request, $id)
     {
         $tag = tagBlog::find($id);
         $data = $request->except('_token');
@@ -289,8 +290,8 @@ class BlogController extends MainController
             $status = 0;
         }
         $tag->update([
-            'title'=>$data['title'],
-            'status'=>$status,
+            'title' => $data['title'],
+            'status' => $status,
         ]);
         Alert::success('موفقیت', 'تگ بروز شد');
         return redirect()->back();
