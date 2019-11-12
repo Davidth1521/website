@@ -3,7 +3,7 @@
     <!-- begin::page header -->
     <div class="page-header">
         <div>
-            <h3>نمونه کار</h3>
+            <h3>ایجاد دسته</h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#">داشبورد</a></li>
@@ -18,7 +18,7 @@
 
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">بخش نمونه کار</h5>
+            <h5 class="card-title">بخش ایجاد دسته</h5>
             <form action="{{route('portfolioCategory.store')}}" method="post" enctype="multipart/form-data">
                 {{csrf_field()}}
                 <div class="row">

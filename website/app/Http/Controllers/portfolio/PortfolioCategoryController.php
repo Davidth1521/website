@@ -16,7 +16,8 @@ class PortfolioCategoryController extends Controller
      */
     public function index()
     {
-        //
+        $portfolioCategories = PortfolioCategory::all();
+        return view('portfolio.category.index',compact('portfolioCategories'));
     }
 
     /**
@@ -26,7 +27,7 @@ class PortfolioCategoryController extends Controller
      */
     public function create()
     {
-        return view('portfolio.portfolioCategory');
+        return view('portfolio.category.create');
     }
 
     /**
@@ -71,7 +72,8 @@ class PortfolioCategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $portfolioCategory = PortfolioCategory::find($id);
+        return view('portfolio.category.edit',compact('portfolioCategory'));
     }
 
     /**
@@ -83,7 +85,20 @@ class PortfolioCategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->except('_token');
+        $title = $data['title'];
+        if (isset($data['status'])) {
+            $status = 1;
+        } else {
+            $status = 0;
+        }
+        $portfolioCategory = PortfolioCategory::find($id);
+        $portfolioCategory->update([
+            'title'=>$title,
+            'status'=>$status
+        ]);
+        Alert::success('موفقیت', 'دسته نمونه کار ویرایش شد');
+        return redirect()->back();
     }
 
     /**

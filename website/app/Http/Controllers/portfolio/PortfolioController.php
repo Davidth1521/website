@@ -18,7 +18,12 @@ class PortfolioController extends MainController
      */
     public function index()
     {
-        //
+        $portfolioes  = Portfolio_detail::all();
+        foreach ($portfolioes  as $item){
+            $portfolio = Portfolio::where('detail_id',$item->id)->first();
+            $item['category'] = PortfolioCategory::find($portfolio->category_id);
+        }
+        return view('portfolio.portfolio.index', compact('portfolioes'));
     }
 
     /**
@@ -29,7 +34,7 @@ class PortfolioController extends MainController
     public function create()
     {
         $portfolioCategories = PortfolioCategory::all();
-        return view('portfolio.portfolio', compact('portfolioCategories'));
+        return view('portfolio.portfolio.create', compact('portfolioCategories'));
     }
 
     /**
@@ -41,51 +46,28 @@ class PortfolioController extends MainController
     public function store(Request $request)
     {
         $data = $request->except('_token');
-        $title = $data['title'];
-        $imageDescription = $data['imageDescription'];
-        $btnTitle = $data['btnTitle'];
-        $btnLink = $data['btnLink'];
-        $linkedinLink = $data['linkedinLink'];
-        $linkedinIcon = $data['linkedinIcon'];
-        $GooglePlusLink = $data['GooglePlusLink'];
-        $GooglePlusIcon = $data['GooglePlusIcon'];
-        $twitterLink = $data['twitterLink'];
-        $twitterIcon = $data['twitterIcon'];
-        $facebookLink = $data['facebookLink'];
-        $facebookIcon = $data['facebookIcon'];
-        $detailDescription = $data['detailDescription'];
-        $category_id = $data['category_id'];
         $file = $request->file('image');
         $imageAddress = '';
         if (isset($file)) {
-            $imageAddress = $this->ImageUploader($file, 'images/', 770, 619);
+            $imageAddress = $this->ImageUploader($file, 'images/portfolio', 770, 619);
         }
-        $status = 0;
         if (isset($data['status'])) {
             $status = 1;
         } else {
             $status = 0;
         }
         $portfolio_detail = Portfolio_detail::create([
-            'title' => $title,
-            'imageDescription' => $imageDescription,
-            'btnTitle' => $btnTitle,
-            'btnLink' => $btnLink,
-            'linkedinLink' => $linkedinLink,
-            'linkedinIcon' => $linkedinIcon,
-            'GooglePlusLink' => $GooglePlusLink,
-            'GooglePlusIcon' => $GooglePlusIcon,
-            'twitterLink' => $twitterLink,
-            'twitterIcon' => $twitterIcon,
-            'facebookLink' => $facebookLink,
-            'facebookIcon' => $facebookIcon,
-            'detailDescription' => $detailDescription,
+            'title' => $data['title'],
+            'imageDescription' => $data['imageDescription'],
+            'btnTitle' => $data['btnTitle'],
+            'btnLink' => $data['btnLink'],
+            'detailDescription' => $data['detailDescription'],
             'status' => $status,
             'image' => $imageAddress,
         ]);
         Portfolio::create([
             'status' => $status,
-            'category_id' => $category_id,
+            'category_id' => $data['category_id'],
             'detail_id' => $portfolio_detail->id,
         ]);
         Alert::success('موفقیت', 'نمونه کار ایجاد شد');
@@ -111,19 +93,51 @@ class PortfolioController extends MainController
      */
     public function edit($id)
     {
-        //
+        $portfolio = Portfolio_detail::find($id);
+        $portfolioCategories = PortfolioCategory::all();
+        $portfolio_main = Portfolio::where('detail_id',$portfolio->id)->first();
+        $portfolio['category'] = PortfolioCategory::find($portfolio_main->category_id);
+        return view('portfolio.portfolio.edit', compact('portfolioCategories','portfolio'));
     }
 
     /**
-     * Update the specified resource in storage.
-     *
+     * Update the specified resource in storage
      * @param  \Illuminate\Http\Request $request
      * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @return void
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->except('_token');
+        $file = $request->file('image');
+        $portfolio_detail = Portfolio_detail::find($id);
+        if (isset($file)) {
+            $imageAddress = $this->ImageUploader($file, 'images/portfolio', 770, 619);
+            $portfolio_detail->update([
+                'image'=>$imageAddress,
+            ]);
+        }
+        if (isset($data['status'])) {
+            $status = 1;
+        } else {
+            $status = 0;
+        }
+        $portfolio_detail->update([
+            'title' => $data['title'],
+            'imageDescription' => $data['imageDescription'],
+            'btnTitle' => $data['btnTitle'],
+            'btnLink' => $data['btnLink'],
+            'detailDescription' => $data['detailDescription'],
+            'status' => $status,
+        ]);
+        $portfolio = Portfolio::where('detail_id',$portfolio_detail->id)->first();
+        $portfolio->update([
+            'status' => $status,
+            'category_id' => $data['category_id'],
+            'detail_id' => $portfolio_detail->id,
+        ]);
+        Alert::success('موفقیت', 'نمونه کار ویرایش شد');
+        return redirect()->back();
     }
 
     /**
