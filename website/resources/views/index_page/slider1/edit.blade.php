@@ -2,13 +2,12 @@
 @section('content')
     <div class="page-header">
         <div>
-            <h3>اسلایدر</h3>
+            <h3>ویرایش اسلایدر</h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">داشبورد</a></li>
-                    <li class="breadcrumb-item"><a href="#">رابط کاربری</a></li>
-                    <li class="breadcrumb-item"><a href="#">کارت ها</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">سایر کارت ها</li>
+                    <li class="breadcrumb-item">صفحه اصلی</li>
+                    <li class="breadcrumb-item"><a href="/admin/index/slider1">اسلایدر</a></li>
+                    <li class="breadcrumb-item">ویرایش</li>
                 </ol>
             </nav>
         </div>
@@ -16,7 +15,7 @@
 
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">بخش اسلایدر</h5>
+            <h5 class="card-title">بخش ویرایش اسلایدر</h5>
             <form action="{{route('slider1.update',['id'=>$slider->id])}}" method="post" enctype="multipart/form-data">
                 {{csrf_field()}}
                 {{method_field('PATCH')}}

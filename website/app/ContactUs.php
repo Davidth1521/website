@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class ContactUs extends Model
 {
-    protected $fillable = ['title','subTitle','detailTitle','emailIcon','emailTitle','addressIcon','addressTitle','websiteIcon','websiteTitle','phoneIcon','phoneTitle','faxIcon','faxTitle','status'];
+    protected $fillable = ['image','address','site','email','tel','mobile','telegram','instagram','twitter','linkedin','facebook','start_time','end_time','status'];
 }

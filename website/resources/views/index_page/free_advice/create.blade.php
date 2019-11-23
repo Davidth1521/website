@@ -6,10 +6,8 @@
             <h3>مشاوره رایگان</h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">داشبورد</a></li>
-                    <li class="breadcrumb-item"><a href="#">رابط کاربری</a></li>
-                    <li class="breadcrumb-item"><a href="#">کارت ها</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">سایر کارت ها</li>
+                    <li class="breadcrumb-item">صفحه اصلی</li>
+                    <li class="breadcrumb-item"><a href="/admin/index/free_advice/create">مشاوره رایگان</a></li>
                 </ol>
             </nav>
         </div>

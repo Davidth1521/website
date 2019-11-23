@@ -120,6 +120,11 @@ class BlogCommentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $item = BlogComment::find($id);
+        $item->delete();
+        Alert::success('موفقیت', 'پیام مورد نظر حذف شد');
+        return redirect()->back();
     }
+
+
 }

@@ -148,6 +148,11 @@ class PortfolioController extends MainController
      */
     public function destroy($id)
     {
-        //
+        $item = Portfolio_detail::find($id);
+        $portfolio = Portfolio::where('detail_id',$item->id)->first();
+        $item->delete();
+        $portfolio->delete();
+        Alert::success('موفقیت', 'آیتم مورد نظر حذف شد');
+        return redirect()->back();
     }
 }

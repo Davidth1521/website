@@ -6,10 +6,9 @@
             <h3>پیام ها</h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">داشبورد</a></li>
-                    <li class="breadcrumb-item"><a href="#">رابط کاربری</a></li>
-                    <li class="breadcrumb-item"><a href="#">کارت ها</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">سایر کارت ها</li>
+                    <li class="breadcrumb-item"><a href="/admin/blog">مقاله</a></li>
+                    <li class="breadcrumb-item"><a href="/admin/blog_message">پیام ها</a></li>
+                    <li class="breadcrumb-item">پیام مقاله</li>
                 </ol>
             </nav>
         </div>
@@ -76,11 +75,24 @@
                             <td>{{$message->message}}</td>
                             <td>{{$message->dateTime}}</td>
                             <td><a href="{{route('message.edit',['id'=>$message->id])}}"><i class="fa fa-edit font-size-23"></i></a></td>
-                            <td><a href="#"><i class="fa fa-remove font-size-23"></i></a></td>
+                            <td>
+                                <form action="{{route('blog_message.destroy',['id'=>$message->id])}}" method="post" id="remove">
+                                    {{csrf_field()  }}
+                                    {{method_field('delete')}}
+                                    <a onclick="remove(this)" style="cursor: pointer"><i class="fa fa-remove font-size-23" style="color: #ff0000;"></i></a>
+                                </form>
+                            </td>
                         </tr>
                     @endforeach
                     </tbody>
                 </table>
+                <script>
+                    function remove(variable) {
+                        var tag = $(variable);
+                        var form = tag.parents('#remove');
+                        form.submit();
+                    }
+                </script>
             </div>
         </div>
     </div>

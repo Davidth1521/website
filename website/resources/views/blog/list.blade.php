@@ -3,13 +3,11 @@
     <!-- begin::page header -->
     <div class="page-header">
         <div>
-            <h3>مقاله ها</h3>
+            <h3>لیست مقاله ها</h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">داشبورد</a></li>
-                    <li class="breadcrumb-item"><a href="#">رابط کاربری</a></li>
-                    <li class="breadcrumb-item"><a href="#">کارت ها</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">سایر کارت ها</li>
+                    <li class="breadcrumb-item"><a href="/admin/blog">مقاله</a></li>
+                    <li class="breadcrumb-item">لیست</li>
                 </ol>
             </nav>
         </div>
@@ -31,7 +29,7 @@
 
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">بخش مقاله ها</h5>
+            <h5 class="card-title">بخش لیست مقاله ها</h5>
             <form action="{{route('search_blog')}}" method="post">
                 {{csrf_field()}}
                 <div class="row">
@@ -81,12 +79,25 @@
                             </td>
                             <td>نویسنده</td>
                             <td>{{$blog->dateTime}}</td>
-                            <td><a href="{{route('blog.edit',['id'=>$blog->id])}}"><i class="fa fa-edit font-size-23"></i></a></td>
-                            <td><a href="#"><i class="fa fa-remove font-size-23"></i></a></td>
+                            <td><a href="/admin/blog/{{$blog->id}}/edit"><i class="fa fa-edit font-size-23"></i></a></td>
+                            <td>
+                                <form action="/admin/blog/{{$blog->id}}" method="post" id="remove">
+                                    {{csrf_field()  }}
+                                    {{method_field('delete')}}
+                                    <a onclick="remove(this)" style="cursor: pointer"><i class="fa fa-remove font-size-23" style="color: #ff0000;"></i></a>
+                                </form>
+                            </td>
                         </tr>
                     @endforeach
                     </tbody>
                 </table>
+                <script>
+                    function remove(variable) {
+                        var tag = $(variable);
+                        var form = tag.parents('#remove');
+                        form.submit();
+                    }
+                </script>
             </div>
         </div>
     </div>

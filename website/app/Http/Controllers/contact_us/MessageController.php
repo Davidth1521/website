@@ -119,7 +119,10 @@ class MessageController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $item = Message::find($id);
+        $item->delete();
+        Alert::success('موفقیت', 'آیتم مورد نظر حذف شد');
+        return redirect()->back();
     }
 
     public function message_search(Request $request)

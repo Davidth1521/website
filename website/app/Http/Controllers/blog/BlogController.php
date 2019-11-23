@@ -51,6 +51,7 @@ class BlogController extends MainController
      */
     public function create()
     {
+//        dd(1);
         $categories = categoryBlog::where('status', '=', 1)->get();
         $tags = tagBlog::where('status', 1)->get();
         return view('blog.create', compact('categories', 'tags'));
@@ -197,36 +198,22 @@ class BlogController extends MainController
      */
     public function destroy($id)
     {
-        //
-    }
-
-    public function showCategory()
-    {
-        $categories = categoryBlog::where('status', '=', 1)->where('parent_id', 0)->get();
-        $allCategories = categoryBlog::all(); // for list of categories in this page
-        foreach ($allCategories as $category) {
-            $date = $category->created_at;
-            $v = new Verta($date);
-            if ($v->day < 10 && $v->month < 10) {
-                $dateFormat = $v->format('Y/0n/0j');
-            } elseif ($v->day < 10 && $v->month > 10) {
-                $dateFormat = $v->format('Y/n/0j');
-            } elseif ($v->day > 10 && $v->month < 10) {
-                $dateFormat = $v->format('Y/0n/j');
-            } else {
-                $dateFormat = $v->format('Y/n/j');
+        $item = Blog::find($id);
+        $categories = $item->categoryBlog()->get();
+        if (count($categories) > 0){
+            foreach ($categories as $category){
+                $item->categoryBlog()->wherePivot('category_blog_id','=',$category->id)->detach();
             }
-            $category['dateTime'] = $dateFormat;
-            $parent_id = $category->parent_id;
-            if ($parent_id != 0) {
-                $parent = categoryBlog::where('id', $parent_id)->first();
-                $parent_name = $parent->title;
-            } else {
-                $parent_name = 'والد';
-            }
-            $category['parent_name'] = $parent_name;
         }
-        return view('blog.addCategory', compact('categories', 'allCategories'));
+        $tags = $item->tagBlog()->get();
+        if (count($tags) > 0){
+            foreach ($tags as $tag){
+                $item->tagBlog()->wherePivot('tag_blog_id','=',$tag->id)->detach();
+            }
+        }
+        $item->delete();
+        Alert::success('موفقیت', 'مقاله مورد نظر حذف شد');
+        return redirect()->back();
     }
 
     public function showTag()
@@ -335,14 +322,85 @@ class BlogController extends MainController
         return redirect()->back();
     }
 
+    public function showCategory()
+    {
+        $categories = categoryBlog::where('status', '=', 1)->where('parent_id', 0)->get();
+//        dd($categories);
+        $allCategories = categoryBlog::all(); // for list of categories in this page
+        foreach ($allCategories as $category) {
+            $date = $category->created_at;
+            $v = new Verta($date);
+            if ($v->day < 10 && $v->month < 10) {
+                $dateFormat = $v->format('Y/0n/0j');
+            } elseif ($v->day < 10 && $v->month > 10) {
+                $dateFormat = $v->format('Y/n/0j');
+            } elseif ($v->day > 10 && $v->month < 10) {
+                $dateFormat = $v->format('Y/0n/j');
+            } else {
+                $dateFormat = $v->format('Y/n/j');
+            }
+            $category['dateTime'] = $dateFormat;
+
+            $parent_id = $category->parent_id;
+//            dd($parent_id);
+            if ($parent_id != 0) {
+//                dd(1);
+                $parent = categoryBlog::where('id', $parent_id)->first();
+                if (isset($parent)) {
+                    $parent_name = $parent->title;
+                }else{
+                    $parent_name = 'والد';
+                }
+            } else {
+//                dd(2);
+                $parent_name = 'والد';
+            }
+            $category['parent_name'] = $parent_name;
+//            dd($category);
+        }
+        return view('blog.addCategory', compact('categories', 'allCategories'));
+    }
+
     public function removeCategory(Request $request, $id)
     {
+        $category = categoryBlog::find($id);
+        $blogs = $category->blog->all();
+        if (count($blogs)) {
+            foreach ($blogs as $blog) {
+                $blog = Blog::find($blog->id);
+                $blog->categoryBlog()->wherePivot('category_blog_id', '=', $category->id)->detach();
+            }
+        }
+            $children = categoryBlog::where('parent_id','=', $category->id)->get();
+            if (count($children) > 0) {
+                foreach ($children as $child) {
+                    $child = categoryBlog::find($child['id']);
+                    $child->update([
+                        'parent_id' => 0,
+//                        'status' => 0
+                    ]);
+                }
+            }
+            $category->delete();
 
+        Alert::success('موفقیت', 'دسته حذف شد');
+        return redirect()->back();
     }
 
     public function removeTag(Request $request, $id)
     {
+        $tag = tagBlog::find($id);
+        $blogs = $tag->blog->all();
+        if (count($blogs) > 0) {
+            foreach ($blogs as $blog) {
+                $blog = Blog::find($blog->id);
+                $blog->tagBlog()->wherePivot('tag_blog_id', '=', $tag->id)->detach();
+            }
+        }
+        $tag->delete();
 
+        Alert::success('موفقیت', 'برچسب حذف شد');
+        return redirect()->back();
     }
 
     public function search_blog(Request $request)

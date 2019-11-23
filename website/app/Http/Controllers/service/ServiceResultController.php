@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\service;
 
+use App\Portfolio;
+use App\PortfolioCategory;
+use App\ServiceAbout;
 use App\ServiceResult;
 use Hekmatinasser\Verta\Verta;
 use Illuminate\Http\Request;
@@ -129,6 +132,17 @@ class ServiceResultController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $item = PortfolioCategory::find($id);
+        $portfolios = Portfolio::where('category_id',$item->id)->get();
+        if (count($portfolios) > 0){
+            foreach ($portfolios as $portfolio){
+                $portfolio->update([
+                    'category_id'=>0
+                ]);
+            }
+        }
+        $item->delete();
+        Alert::success('موفقیت', 'آیتم مورد نظر حذف شد');
+        return redirect()->back();
     }
 }

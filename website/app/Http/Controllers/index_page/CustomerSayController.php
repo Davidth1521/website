@@ -4,6 +4,7 @@ namespace App\Http\Controllers\index_page;
 
 use App\CustomerSay;
 use App\Http\Controllers\MainController;
+use App\OurDescription;
 use Hekmatinasser\Verta\Verta;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -150,6 +151,9 @@ class CustomerSayController extends MainController
      */
     public function destroy($id)
     {
-        //
+        $item = CustomerSay::find($id);
+        $item->delete();
+        Alert::success('موفقیت', 'مورد نظر حذف شد');
+        return redirect()->back();
     }
 }

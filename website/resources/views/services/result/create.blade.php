@@ -6,10 +6,9 @@
             <h3>نتایج سرویس</h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">داشبورد</a></li>
-                    <li class="breadcrumb-item"><a href="#">رابط کاربری</a></li>
-                    <li class="breadcrumb-item"><a href="#">کارت ها</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">سایر کارت ها</li>
+                    <li class="breadcrumb-item">خدمات</li>
+                    <li class="breadcrumb-item"><a href="/admin/service/result">نتایج خدمات</a></li>
+                    <li class="breadcrumb-item">افزودن</li>
                 </ol>
             </nav>
         </div>
@@ -17,7 +16,7 @@
 
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">بخش نتایج</h5>
+            <h5 class="card-title">بخش نتایج سرویس</h5>
             <form action="{{route('result.store')}}" method="post">
                 {{csrf_field()}}
                 <div class="row">

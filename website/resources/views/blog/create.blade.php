@@ -3,13 +3,11 @@
     <!-- begin::page header -->
     <div class="page-header">
         <div>
-            <h3>مقاله ها</h3>
+            <h3>افزودن مقاله</h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">داشبورد</a></li>
-                    <li class="breadcrumb-item"><a href="#">رابط کاربری</a></li>
-                    <li class="breadcrumb-item"><a href="#">کارت ها</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">سایر کارت ها</li>
+                    <li class="breadcrumb-item"><a href="/admin/blog">مقاله</a></li>
+                    <li class="breadcrumb-item">افزودن</li>
                 </ol>
             </nav>
         </div>
@@ -31,7 +29,7 @@
 
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">بخش مقاله ها</h5>
+            <h5 class="card-title">بخش افزودن مقاله</h5>
             <form action="{{route('blog.store')}}" method="post" enctype="multipart/form-data">
                 {{csrf_field()}}
                 <div class="row">

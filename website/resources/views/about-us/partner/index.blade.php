@@ -3,13 +3,12 @@
     <!-- begin::page header -->
     <div class="page-header">
         <div>
-            <h3>تیم ها</h3>
+            <h3>لیست شریک</h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">داشبورد</a></li>
-                    <li class="breadcrumb-item"><a href="#">رابط کاربری</a></li>
-                    <li class="breadcrumb-item"><a href="#">کارت ها</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">سایر کارت ها</li>
+                    <li class="breadcrumb-item">درباره ما</li>
+                    <li class="breadcrumb-item"><a href="/admin/about_us/partners">شرکا</a></li>
+                    <li class="breadcrumb-item">لیست</li>
                 </ol>
             </nav>
         </div>
@@ -17,7 +16,7 @@
 
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">بخش تیم ها</h5>
+            <h5 class="card-title">لیست شریک</h5>
 
             <style>
                 .table td,.table th{
@@ -52,11 +51,24 @@
                             </td>
                             <td>{{$partner->dateTime}}</td>
                             <td><a href="{{route('partners.edit',['id'=>$partner->id])}}"><i class="fa fa-edit font-size-23"></i></a></td>
-                            <td><a href="#"><i class="fa fa-remove font-size-23"></i></a></td>
+                            <td>
+                                <form action="{{route('partners.destroy',['id'=>$partner->id])}}" method="post" id="remove">
+                                    {{csrf_field()  }}
+                                    {{method_field('delete')}}
+                                    <a onclick="remove(this)" style="cursor: pointer"><i class="fa fa-remove font-size-23" style="color: #ff0000;"></i></a>
+                                </form>
+                            </td>
                         </tr>
                     @endforeach
                     </tbody>
                 </table>
+                <script>
+                    function remove(variable) {
+                        var tag = $(variable);
+                        var form = tag.parents('#remove');
+                        form.submit();
+                    }
+                </script>
             </div>
         </div>
     </div>

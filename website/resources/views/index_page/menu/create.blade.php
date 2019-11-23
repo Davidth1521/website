@@ -3,13 +3,13 @@
     <!-- begin::page header -->
     <div class="page-header">
         <div>
-            <h3>منو</h3>
+            <h3>ایجاد منو</h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">داشبورد</a></li>
-                    <li class="breadcrumb-item"><a href="#">رابط کاربری</a></li>
-                    <li class="breadcrumb-item"><a href="#">کارت ها</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">سایر کارت ها</li>
+                    <li class="breadcrumb-item">صفحه اصلی</li>
+                    <li class="breadcrumb-item"><a href="/admin/index/primary">منو</a></li>
+                    <li class="breadcrumb-item">ایجاد</li>
+                    {{--<li class="breadcrumb-item active" aria-current="page">سایر کارت ها</li>--}}
                 </ol>
             </nav>
         </div>
@@ -31,7 +31,7 @@
 
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">بخش منو</h5>
+            <h5 class="card-title">بخش ایجاد منو</h5>
             <form action="{{route('primary.store')}}" method="post">
                 {{csrf_field()}}
                 <div class="row">

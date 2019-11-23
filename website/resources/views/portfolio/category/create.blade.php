@@ -3,13 +3,12 @@
     <!-- begin::page header -->
     <div class="page-header">
         <div>
-            <h3>ایجاد دسته</h3>
+            <h3>ایجاد دسته بندی</h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">داشبورد</a></li>
-                    <li class="breadcrumb-item"><a href="#">رابط کاربری</a></li>
-                    <li class="breadcrumb-item"><a href="#">کارت ها</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">سایر کارت ها</li>
+                    <li class="breadcrumb-item">نمونه کار</li>
+                    <li class="breadcrumb-item"><a href="/admin/portfolioCategory">دسته بندی</a></li>
+                    <li class="breadcrumb-item">افزودن</li>
                 </ol>
             </nav>
         </div>
@@ -18,7 +17,7 @@
 
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">بخش ایجاد دسته</h5>
+            <h5 class="card-title">بخش ایجاد دسته بندی</h5>
             <form action="{{route('portfolioCategory.store')}}" method="post" enctype="multipart/form-data">
                 {{csrf_field()}}
                 <div class="row">

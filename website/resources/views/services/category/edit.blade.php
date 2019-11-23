@@ -2,13 +2,12 @@
 @section('content')
     <div class="page-header">
         <div>
-            <h3>دسته بندی سرویس ها</h3>
+            <h3>ویرایش دسته بندی سرویس ها</h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">داشبورد</a></li>
-                    <li class="breadcrumb-item"><a href="#">رابط کاربری</a></li>
-                    <li class="breadcrumb-item"><a href="#">کارت ها</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">سایر کارت ها</li>
+                    <li class="breadcrumb-item">خدمات</li>
+                    <li class="breadcrumb-item"><a href="/admin/service/service-category">دسته بندی</a></li>
+                    <li class="breadcrumb-item">ویرایش</li>
                 </ol>
             </nav>
         </div>
@@ -16,7 +15,7 @@
 
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">بخش دسته بندی سرویس ها</h5>
+            <h5 class="card-title">بخش ویرایش دسته بندی سرویس ها</h5>
             <form action="{{route('service-category.update',['id'=>$item->id])}}" method="post">
                 {{csrf_field()}}
                 {{method_field('PATCH')}}

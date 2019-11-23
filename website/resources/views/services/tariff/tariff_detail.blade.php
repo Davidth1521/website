@@ -3,13 +3,12 @@
     <!-- begin::page header -->
     <div class="page-header">
         <div>
-            <h3>تعرفه</h3>
+            <h3>جزئیات تعرفه</h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">داشبورد</a></li>
-                    <li class="breadcrumb-item"><a href="#">رابط کاربری</a></li>
-                    <li class="breadcrumb-item"><a href="#">کارت ها</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">سایر کارت ها</li>
+                    <li class="breadcrumb-item">خدمات</li>
+                    <li class="breadcrumb-item"><a href="/admin/service/tariff">تعرفه</a></li>
+                    <li class="breadcrumb-item">جزئیات تعرفه</li>
                 </ol>
             </nav>
         </div>
@@ -17,7 +16,7 @@
 
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">بخش تعرفه</h5>
+            <h5 class="card-title">بخش جزئیات تعرفه</h5>
             <form action="{{route('tariff_detail.store')}}" method="post">
                 {{csrf_field()}}
                 <div class="row">

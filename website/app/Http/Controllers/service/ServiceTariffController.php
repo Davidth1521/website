@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\service;
 
 use App\ServiceTariff;
+use App\TariffDetail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -149,6 +150,15 @@ class ServiceTariffController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $item = ServiceTariff::find($id);
+        $details = TariffDetail::where('tariff_id',$item->id)->get();
+        if (count($details) > 0){
+            foreach ($details as $detail){
+                $detail->delete();
+            }
+        }
+        $item->delete();
+        Alert::success('موفقیت', 'آیتم مورد نظر حذف شد');
+        return redirect()->back();
     }
 }

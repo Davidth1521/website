@@ -3,13 +3,12 @@
     <!-- begin::page header -->
     <div class="page-header">
         <div>
-            <h3>روند کاری</h3>
+            <h3>لیست روند کاری</h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">داشبورد</a></li>
-                    <li class="breadcrumb-item"><a href="#">رابط کاربری</a></li>
-                    <li class="breadcrumb-item"><a href="#">کارت ها</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">سایر کارت ها</li>
+                    <li class="breadcrumb-item">خدمات</li>
+                    <li class="breadcrumb-item"><a href="/admin/service/steps">روند کاری</a></li>
+                    <li class="breadcrumb-item">لیست</li>
                 </ol>
             </nav>
         </div>
@@ -17,7 +16,7 @@
 
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">بخش روند کاری</h5>
+            <h5 class="card-title">بخش لیست روند کاری</h5>
             <style>
                 .table td, .table th {
                     vertical-align: middle;
@@ -49,11 +48,24 @@
                             <td>@if($item->status == 1) <span class="badge badge-success">فعال</span> @else <span class="badge badge-danger">غیر فعال</span>@endif</td>
                             <td>{{$item->dateTime}}</td>
                             <td><a href="{{route('steps.edit',['id'=>$item->id])}}"><i class="fa fa-edit font-size-23"></i></a></td>
-                            <td><a href="#"><i class="fa fa-remove font-size-23"></i></a></td>
+                            <td>
+                                <form action="{{route('steps.destroy',['id'=>$item->id])}}" method="post" id="remove">
+                                    {{csrf_field()  }}
+                                    {{method_field('delete')}}
+                                    <a onclick="remove(this)" style="cursor: pointer"><i class="fa fa-remove font-size-23" style="color: #ff0000;"></i></a>
+                                </form>
+                            </td>
                         </tr>
                     @endforeach
                     </tbody>
                 </table>
+                <script>
+                    function remove(variable) {
+                        var tag = $(variable);
+                        var form = tag.parents('#remove');
+                        form.submit();
+                    }
+                </script>
             </div>
         </div>
     </div>
