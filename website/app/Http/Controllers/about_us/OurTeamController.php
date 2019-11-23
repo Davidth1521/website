@@ -170,6 +170,9 @@ class OurTeamController extends MainController
      */
     public function destroy($id)
     {
-        //
+        $item = OurTeam::find($id);
+        $item->delete();
+        Alert::success('موفقیت', 'آیتم مورد نظر حذف شد');
+        return redirect()->back();
     }
 }

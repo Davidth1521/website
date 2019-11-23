@@ -3,13 +3,12 @@
     <!-- begin::page header -->
     <div class="page-header">
         <div>
-            <h3>مقاله ها</h3>
+            <h3>لیست اسلایدر</h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">داشبورد</a></li>
-                    <li class="breadcrumb-item"><a href="#">رابط کاربری</a></li>
-                    <li class="breadcrumb-item"><a href="#">کارت ها</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">سایر کارت ها</li>
+                    <li class="breadcrumb-item">صفحه اصلی</li>
+                    <li class="breadcrumb-item"><a href="/admin/index/slider1">اسلایدر</a></li>
+                    <li class="breadcrumb-item">لیست</li>
                 </ol>
             </nav>
         </div>
@@ -31,7 +30,7 @@
 
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">بخش مقاله ها</h5>
+            <h5 class="card-title">بخش لیست اسلایدر</h5>
             {{--<form action="{{route('search_blog')}}" method="post">
                 {{csrf_field()}}
                 <div class="row">
@@ -78,11 +77,24 @@
                             <td>@if($slider->status == 1) <span class="badge badge-success">فعال</span> @else <span class="badge badge-danger">غیر فعال</span>@endif</td>
                             <td>{{$slider->dateTime}}</td>
                             <td><a href="{{route('slider1.edit',['id'=>$slider->id])}}"><i class="fa fa-edit font-size-23"></i></a></td>
-                            <td><a href="#"><i class="fa fa-remove font-size-23"></i></a></td>
+                            <td>
+                                <form action="{{route('slider1.destroy',['id'=>$slider->id])}}" method="post" id="remove">
+                                    {{csrf_field()  }}
+                                    {{method_field('delete')}}
+                                    <a onclick="remove(this)" style="cursor: pointer"><i class="fa fa-remove font-size-23" style="color: #ff0000;"></i></a>
+                                </form>
+                            </td>
                         </tr>
                     @endforeach
                     </tbody>
                 </table>
+                <script>
+                    function remove(variable) {
+                        var tag = $(variable);
+                        var form = tag.parents('#remove');
+                        form.submit();
+                    }
+                </script>
             </div>
         </div>
     </div>

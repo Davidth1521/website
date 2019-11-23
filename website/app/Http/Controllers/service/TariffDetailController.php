@@ -135,6 +135,17 @@ class TariffDetailController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $item = TariffDetail::find($id);
+        $tariff = ServiceTariff::find($item->tariff_id);
+        $item->delete();
+        $details = TariffDetail::where('tariff_id',$tariff->id)->get();
+        if (count($details) > 0){
+            foreach ($details as $detail){
+                $detail->delete();
+            }
+        }
+        $tariff->delete();
+        Alert::success('موفقیت', 'آیتم مورد نظر حذف شد');
+        return redirect()->back();
     }
 }

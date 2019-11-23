@@ -3,13 +3,12 @@
     <!-- begin::page header -->
     <div class="page-header">
         <div>
-            <h3>تیم ما</h3>
+            <h3>ایجاد عضو تیم</h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">داشبورد</a></li>
-                    <li class="breadcrumb-item"><a href="#">رابط کاربری</a></li>
-                    <li class="breadcrumb-item"><a href="#">کارت ها</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">سایر کارت ها</li>
+                    <li class="breadcrumb-item">درباره ما</li>
+                    <li class="breadcrumb-item"><a href="/admin/about_us/ourTeam">تیم ما</a></li>
+                    <li class="breadcrumb-item">افزودن</li>
                 </ol>
             </nav>
         </div>
@@ -17,7 +16,7 @@
 
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">بخش تیم ما</h5>
+            <h5 class="card-title">بخش ایجاد عضو تیم</h5>
             <form action="{{route('ourTeam.store')}}" method="post" enctype="multipart/form-data">
                 {{csrf_field()}}
                 <div class="row">

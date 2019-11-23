@@ -158,6 +158,9 @@ class Slider1Controller extends MainController
      */
     public function destroy($id)
     {
-        //
+        $item = Slider1::find($id);
+        $item->delete();
+        Alert::success('موفقیت', 'اسلایدر مورد نظر حذف شد');
+        return redirect()->back();
     }
 }

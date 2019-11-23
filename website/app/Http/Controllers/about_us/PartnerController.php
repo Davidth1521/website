@@ -138,6 +138,9 @@ class PartnerController extends MainController
      */
     public function destroy($id)
     {
-        //
+        $item = Partner::find($id);
+        $item->delete();
+        Alert::success('موفقیت', 'آیتم مورد نظر حذف شد');
+        return redirect()->back();
     }
 }

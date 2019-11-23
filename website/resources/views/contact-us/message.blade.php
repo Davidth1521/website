@@ -6,27 +6,11 @@
             <h3>پیام ها</h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">داشبورد</a></li>
-                    <li class="breadcrumb-item"><a href="#">رابط کاربری</a></li>
-                    <li class="breadcrumb-item"><a href="#">کارت ها</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">سایر کارت ها</li>
+                    <li class="breadcrumb-item">تماس با ما</li>
+                    <li class="breadcrumb-item"><a href="/admin/contact-us/message/create">پیام ها</a></li>
                 </ol>
             </nav>
         </div>
-        {{--
-          قعلا مورد نیاز نیست.
-
-        <div class="btn-group" role="group">
-             <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                 اقدامات
-             </button>
-             <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                 <a class="dropdown-item" href="#">عمل</a>
-                 <a class="dropdown-item" href="#">عمل دیگر</a>
-                 <a class="dropdown-item" href="#">یک عمل دیگر</a>
-             </div>
-         </div>
-         --}}
     </div>
 
     <div class="card">
@@ -76,11 +60,24 @@
                             <td>{{$message->message}}</td>
                             <td>{{$message->dateTime}}</td>
                             <td><a href="{{route('message.edit',['id'=>$message->id])}}"><i class="fa fa-edit font-size-23"></i></a></td>
-                            <td><a href="#"><i class="fa fa-remove font-size-23"></i></a></td>
+                            <td>
+                                <form action="{{route('message.destroy',['id'=>$message->id])}}" method="post" id="remove">
+                                    {{csrf_field()  }}
+                                    {{method_field('delete')}}
+                                    <a onclick="remove(this)" style="cursor: pointer"><i class="fa fa-remove font-size-23" style="color: #ff0000;"></i></a>
+                                </form>
+                            </td>
                         </tr>
                     @endforeach
                     </tbody>
                 </table>
+                <script>
+                    function remove(variable) {
+                        var tag = $(variable);
+                        var form = tag.parents('#remove');
+                        form.submit();
+                    }
+                </script>
             </div>
         </div>
     </div>

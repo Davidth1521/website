@@ -2,13 +2,11 @@
 @section('content')
     <div class="page-header">
         <div>
-            <h3>ویرایش تگ</h3>
+            <h3>ویرایش تگ مقاله</h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">داشبورد</a></li>
-                    <li class="breadcrumb-item"><a href="#">رابط کاربری</a></li>
-                    <li class="breadcrumb-item"><a href="#">کارت ها</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">سایر کارت ها</li>
+                    <li class="breadcrumb-item"><a href="/admin/blog">مقاله</a></li>
+                    <li class="breadcrumb-item">ویرایش تگ</li>
                 </ol>
             </nav>
         </div>
@@ -16,7 +14,7 @@
 
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">بخش ویرایش تگ</h5>
+            <h5 class="card-title">بخش ویرایش تگ مقاله</h5>
             <form action="{{route('editTag',['id'=>$tag->id])}}" method="post">
                 {{csrf_field()}}
                 <div class="row">

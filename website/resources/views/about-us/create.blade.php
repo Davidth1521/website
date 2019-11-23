@@ -6,22 +6,10 @@
             <h3>درباره ها</h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">داشبورد</a></li>
-                    <li class="breadcrumb-item"><a href="#">رابط کاربری</a></li>
-                    <li class="breadcrumb-item"><a href="#">کارت ها</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">سایر کارت ها</li>
+                    <li class="breadcrumb-item">درباره ما</li>
+                    <li class="breadcrumb-item"><a href="/admin/about_us/aboutUs/create">افزودن</a></li>
                 </ol>
             </nav>
-        </div>
-    </div>
-
-    <div class="card">
-        <div class="card-body">
-            <div class="card-title">دموی پایه</div>
-            {{--<form action="/about_us/images" class="dropzone" id="my-awesome-dropzone" method="post"
-                  enctype="multipart/form-data">
-                {{csrf_field()}}
-            </form>--}}
         </div>
     </div>
     <div class="card">

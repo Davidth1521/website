@@ -3,13 +3,12 @@
     <!-- begin::page header -->
     <div class="page-header">
         <div>
-            <h3>شرکای ما</h3>
+            <h3>ویرایش شریک</h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">داشبورد</a></li>
-                    <li class="breadcrumb-item"><a href="#">رابط کاربری</a></li>
-                    <li class="breadcrumb-item"><a href="#">کارت ها</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">سایر کارت ها</li>
+                    <li class="breadcrumb-item">درباره ما</li>
+                    <li class="breadcrumb-item"><a href="/admin/about_us/partners">شرکا</a></li>
+                    <li class="breadcrumb-item">ویرایش</li>
                 </ol>
             </nav>
         </div>
@@ -31,7 +30,7 @@
 
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">بخش شرکای ما</h5>
+            <h5 class="card-title">ویرایش شریک</h5>
             <form action="{{route('partners.update',['id'=>$partner->id])}}" method="post" enctype="multipart/form-data">
                 {{csrf_field()}}
                 {{method_field('PATCH')}}

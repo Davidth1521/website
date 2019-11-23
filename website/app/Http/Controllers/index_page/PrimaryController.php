@@ -138,6 +138,9 @@ class PrimaryController extends MainController
      */
     public function destroy($id)
     {
-        //
+        $item = Menu::find($id);
+        $item->delete();
+        Alert::success('موفقیت', 'منو مورد نظر حذف شد');
+        return redirect()->back();
     }
 }

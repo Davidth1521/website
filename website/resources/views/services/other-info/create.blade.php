@@ -6,10 +6,8 @@
             <h3>دیگر اطلاعات سرویس</h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">داشبورد</a></li>
-                    <li class="breadcrumb-item"><a href="#">رابط کاربری</a></li>
-                    <li class="breadcrumb-item"><a href="#">کارت ها</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">سایر کارت ها</li>
+                    <li class="breadcrumb-item">خدمات</li>
+                    <li class="breadcrumb-item"><a href="/admin/service/other-info/create">سایر موارد</a></li>
                 </ol>
             </nav>
         </div>
@@ -17,7 +15,7 @@
 
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">بخش دیگر اطلاعات</h5>
+            <h5 class="card-title">بخش دیگر اطلاعات سرویس</h5>
             <form action="{{route('other-info.update',['id'=>1])}}" method="post">
                 {{csrf_field()}}
                 {{method_field('PATCH')}}

@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\contact_us;
 
 use App\ContactUs;
+use App\Http\Controllers\MainController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class ContactUsController extends Controller
+class ContactUsController extends MainController
 {
     /**
      * Display a listing of the resource.
@@ -26,7 +27,8 @@ class ContactUsController extends Controller
      */
     public function create()
     {
-        return view('contact-us.create');
+        $item = ContactUs::first();
+        return view('contact-us.create',compact('item'));
     }
 
     /**
@@ -38,45 +40,54 @@ class ContactUsController extends Controller
     public function store(Request $request)
     {
         $data = $request->except('_token');
+        $file = $request->file('image');
+        $contact_us = ContactUs::where('id',1)->first();
         if (isset($data['status'])) {
             $status = 1;
         } else {
             $status = 0;
         }
-        $about_us = ContactUs::where('id',1)->get();
-        if (count($about_us) > 0){
-            $about_us->update([
-                'title' => $data['title'],
-                'subTitle' => $data['subTitle'],
-                'detailTitle' => $data['detailTitle'],
-                'emailIcon' => $data['emailIcon'],
-                'emailTitle' => $data['emailTitle'],
-                'addressIcon' => $data['addressIcon'],
-                'addressTitle' => $data['addressTitle'],
-                'websiteIcon' => $data['websiteIcon'],
-                'websiteTitle' => $data['websiteTitle'],
-                'phoneIcon' => $data['phoneIcon'],
-                'phoneTitle' => $data['phoneTitle'],
-                'faxIcon' => $data['faxIcon'],
-                'faxTitle' => $data['faxTitle'],
+        if (isset($file)) {
+            $imageAddress = $this->ImageUploader($file, 'images/blog/', 'auto', 'auto');
+            if (isset($contact_us)) {
+                $contact_us->update([
+                    'image' => $imageAddress,
+                ]);
+            }
+        }
+
+        if (isset($contact_us)){
+            $contact_us->update([
+                'address' => $data['address'],
+                'site' => $data['site'],
+                'email' => $data['email'],
+                'tel' => $data['tel'],
+                'mobile' => $data['mobile'],
+                'telegram' => $data['telegram'],
+                'instagram' => $data['instagram'],
+                'twitter' => $data['twitter'],
+                'linkedin' => $data['linkedin'],
+                'facebook' => $data['facebook'],
+                'start_time' => $data['start_time'],
+                'end_time' => $data['end_time'],
                 'status' => $status,
             ]);
             Alert::success('موفقیت', 'تماس با ما ویرایش شد');
         }else{
             ContactUs::create([
-                'title' => $data['title'],
-                'subTitle' => $data['subTitle'],
-                'detailTitle' => $data['detailTitle'],
-                'emailIcon' => $data['emailIcon'],
-                'emailTitle' => $data['emailTitle'],
-                'addressIcon' => $data['addressIcon'],
-                'addressTitle' => $data['addressTitle'],
-                'websiteIcon' => $data['websiteIcon'],
-                'websiteTitle' => $data['websiteTitle'],
-                'phoneIcon' => $data['phoneIcon'],
-                'phoneTitle' => $data['phoneTitle'],
-                'faxIcon' => $data['faxIcon'],
-                'faxTitle' => $data['faxTitle'],
+                'image' => $imageAddress,
+                'address' => $data['address'],
+                'site' => $data['site'],
+                'email' => $data['email'],
+                'tel' => $data['tel'],
+                'mobile' => $data['mobile'],
+                'telegram' => $data['telegram'],
+                'instagram' => $data['instagram'],
+                'twitter' => $data['twitter'],
+                'linkedin' => $data['linkedin'],
+                'facebook' => $data['facebook'],
+                'start_time' => $data['start_time'],
+                'end_time' => $data['end_time'],
                 'status' => $status,
             ]);
             Alert::success('موفقیت', 'تماس با ما ایجاد شد');

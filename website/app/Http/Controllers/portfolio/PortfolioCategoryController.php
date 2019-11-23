@@ -109,6 +109,9 @@ class PortfolioCategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $item = PortfolioCategory::find($id);
+        $item->delete();
+        Alert::success('موفقیت', 'آیتم مورد نظر حذف شد');
+        return redirect()->back();
     }
 }

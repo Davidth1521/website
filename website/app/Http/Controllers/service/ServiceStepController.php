@@ -126,6 +126,9 @@ class ServiceStepController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $item = ServiceStep::find($id);
+        $item->delete();
+        Alert::success('موفقیت', 'آیتم مورد نظر حذف شد');
+        return redirect()->back();
     }
 }
